@@ -1,5 +1,5 @@
 {
-  "name": "curio-sity",
+  "name": "harvard-curiosity",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
