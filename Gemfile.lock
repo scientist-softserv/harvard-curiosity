@@ -415,8 +415,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
-    sentry-raven (3.1.2)
-      faraday (>= 1.0)
     signet (0.16.1)
       addressable (~> 2.8)
       faraday (>= 0.17.5, < 3.0)
@@ -526,8 +524,7 @@ DEPENDENCIES
   redis
   rsolr (>= 1.0, < 3)
   sass-rails (>= 6)
-  selenium-webdriver
-  sentry-raven
+  selenium-webdriver (>= 4.0.0.rc1)
   sitemap_generator
   solr_wrapper (>= 0.3)
   spring
@@ -540,7 +537,7 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 2.7.5p203
 
 BUNDLED WITH
    2.1.4

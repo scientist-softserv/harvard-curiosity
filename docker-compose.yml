@@ -7,7 +7,6 @@ services:
     image: spotlight
     stdin_open: true
     tty: true
-    user: root
     env_file:
       - .env
     environment:
