@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  web: &app
+    build:
+      context: .
+    image: spotlight
+    stdin_open: true
+    tty: true
+    user: root
+    env_file:
+      - .env
+    environment:
+      - VIRTUAL_PORT=3000
+      - VIRTUAL_HOST=spotlight.test
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app/spotlight
+    networks:
+      internal:
+
+  redis:
+    image: bitnami/redis:6.2
+    command: redis-server --protected-mode no --stop-writes-on-bgsave-error no
+    volumes:
+      - redis:/data
+    networks:
+      internal:
+
+volumes:
+  redis:
+
+networks:
+      internal:

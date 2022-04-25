@@ -1,0 +1,23 @@
+#!/bin/sh
+
+if [ -z "$1" ] || [ -z "$2" ]
+then
+    echo './chart/bin/helm_deploy RELEASE_NAME NAMESPACE'
+    exit 1
+fi
+release_name="${1}"
+namespace="${2}"
+
+helm repo update
+
+helm upgrade \
+    --install \
+    --atomic \
+    --timeout 15m0s \
+    --set image.repository="$DEPLOY_IMAGE" \
+    --set image.tag="$DEPLOY_TAG" \
+    $HELM_EXTRA_ARGS \
+    --namespace="$namespace" \
+    --create-namespace \
+    "$release_name" \
+    ops/chart
