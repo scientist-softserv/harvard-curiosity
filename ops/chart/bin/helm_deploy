@@ -10,6 +10,9 @@ namespace="${2}"
 
 helm repo update
 
+envsubst < ops/gitlab-token.tmpl.yaml > ops/gitlab-token.yaml
+kubectl apply -f ops/gitlab-token.yaml
+
 helm upgrade \
     --install \
     --atomic \
