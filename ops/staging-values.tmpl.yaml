@@ -41,7 +41,6 @@ externalPostgresql:
   host: pg-postgresql.staging-postgres.svc.cluster.local
   username: postgres
   password: $PG_PASSWORD
-  database: harvard-spotlight
 
 fcrepo:
   enabled: false
