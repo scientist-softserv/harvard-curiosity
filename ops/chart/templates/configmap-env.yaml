@@ -5,10 +5,10 @@ metadata:
   labels:
     {{- include "spotlight.labels" . | nindent 4 }}
 data:
-  POSTGRES_DB: {{ template "spotlight.externalPostgresql.database" . }}
-  POSTGRES_HOST: {{ template "spotlight.externalPostgresql.host" . }}
+  POSTGRES_DB: {{ template "spotlight.postgresql.database" . }}
+  POSTGRES_HOST: {{ template "spotlight.postgresql.host" . }}
   POSTGRES_PORT: "5432"
-  POSTGRES_USER: {{ include "spotlight.externalPostgresql.username" . | quote }}
+  POSTGRES_USER: {{ include "spotlight.postgresql.username" . | quote }}
   RAILS_ENV: production
   {{- if .Values.redis.enabled }}
   REDIS_HOST: {{ template "hyrax.redis.host" . }}
