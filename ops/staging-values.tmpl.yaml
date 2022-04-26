@@ -20,7 +20,7 @@ podSecurityContext:
 ingress:
   enabled: true
   hosts:
-    - host: staging-harvard-spotlight.notch8.cloud
+    - host: staging-harvard-curiosity.notch8.cloud
       paths:
         - path: /
   annotations: {
@@ -30,7 +30,7 @@ ingress:
   }
   tls:
     - hosts:
-        - staging-harvard-spotlight.notch8.cloud
+        - staging-harvard-curiosity.notch8.cloud
       secretName: notch8cloud
 
 postgresql:
@@ -55,5 +55,5 @@ externalSolrCollection: "spotlight"
 
 env:
   configmap:
-    APP_HOST: staging-harvard-spotlight.notch8.cloud
+    APP_HOST: staging-harvard-curiosity.notch8.cloud
     SENTRY_DSN: $SENTRY_DSN
