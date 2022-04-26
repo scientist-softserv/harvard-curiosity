@@ -40,7 +40,8 @@ postgresql:
 externalPostgresql:
   host: pg-postgresql.staging-postgres.svc.cluster.local
   username: postgres
-  password: $PG_PASSWORD
+  password: $POSTGRES_PASSWORD
+  database: staging-harvard-spotlight
 
 fcrepo:
   enabled: false
@@ -48,10 +49,10 @@ externalFcrepoHost: fcrepo.staging-fcrepo.svc.cluster.local
 
 solr:
   enabled: false
-externalSolrPassword: $SOLR_PASSWORD
+externalSolrPassword: $SOLR_ADMIN_PASSWORD
 externalSolrHost: solr.staging-solr.svc.cluster.local
 externalSolrUser: admin
-externalSolrCollection: "spotlight"
+externalSolrCollection: "harvard-spotlight"
 
 env:
   configmap:
