@@ -1,12 +1,15 @@
 # CURIOSity
+
 CURIOSity enables researchers to discover and easily access a wealth of curated, publicly accessible, digitized materials.
 
 ## Technology Stack
 
 ##### Language
+
 Ruby on Rails
 
 ##### Framework
+
 Blacklight / Spotlight
 
 ## Running the stack
@@ -33,11 +36,11 @@ cp docker-compose.override.example.yml docker-compose.override.yml
 
 4. Build the Docker image(s)
 
-```docker-compose build```
+`docker-compose build`
 
 5. Build the Docker image(s) and bring up the stack
 
-```docker-compose up -d --build --force-recreate```
+`docker-compose up -d --build --force-recreate`
 
 After running the above commands, check that you see the following output in the terminal, then navigate to http://localhost:3000
 

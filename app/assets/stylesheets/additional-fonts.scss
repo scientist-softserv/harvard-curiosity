@@ -1,0 +1,11 @@
+//add Lora since it was not being imported successfully with google fonts
+@font-face {
+  font-family: 'Lora';
+  src: font-url("Lora-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Lora';
+  src: font-url("Lora-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}

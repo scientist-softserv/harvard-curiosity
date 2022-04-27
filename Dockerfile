@@ -30,13 +30,13 @@ RUN apk --no-cache upgrade && \
 RUN gem update bundler
 
 RUN mkdir -p /app/spotlight && \
-    mkdir -p /app/spotlight/tmp
+  mkdir -p /app/spotlight/tmp
 WORKDIR /app/spotlight
 
 COPY --chown=curiosity . /app/spotlight
 RUN bundle config set force_ruby_platform true && \
-    bundle install --jobs "$(nproc)" && \
-    yarn install
+  bundle install --jobs "$(nproc)" && \
+  yarn install
 
 USER curiosity
 

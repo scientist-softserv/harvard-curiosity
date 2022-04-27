@@ -43,6 +43,16 @@ GIT
       tophat
       underscore-rails (~> 1.6)
 
+GIT
+  remote: https://gitlab.com/harvard-library-web-team/harvard-patterns-gem.git
+  revision: 5ee485f2870bc76827d96dcd19c2bcd3fc58da78
+  tag: 1.1
+  specs:
+    harvard-patterns-gem (1.1)
+      rails
+      sass
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -400,6 +410,11 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -515,6 +530,7 @@ DEPENDENCIES
   devise-guests (~> 0.8)
   devise_invitable
   friendly_id
+  harvard-patterns-gem (= 1.1)!
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
