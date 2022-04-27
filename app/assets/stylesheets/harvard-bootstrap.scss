@@ -1,0 +1,198 @@
+// @import 'harvard-patterns';
+// @import 'gem-files';
+
+// BOOTSTRAP variables
+/*
+* Orson http://en.orson.io , autreplanete http://www.autreplanete.com/
+*
+**/
+
+// Brand Colors
+$blue: #0579b8;
+$indigo: #2a5280;
+$red: #eb001b;
+$yellow: #f8c21c;
+$teal: #3e6f7d;
+$white: #fff;
+$gray-100: #f9f9f9;
+$gray-200: #dfdfdf;
+$gray-300: #c0c0c0;
+$gray-400: #c0c0c0;
+$gray-500: #afafaf;
+$gray-550: #999;
+$gray-600: #6c6c6c;
+$gray-700: #414141;
+$gray-800: #414141;
+$gray-900: #1e1e1e;
+$black: #1e1e1e;
+$border-gray: #AFAFAF; // new variable
+$background-gray: #F3F3F3; // new variable
+$primary: #2797d8;
+
+
+// Body
+$body-color: $gray-700;
+
+
+// Links
+$link-color: $blue;
+$link-decoration: none;
+$link-hover-color: $blue;
+$link-hover-decoration: none;
+$link-fade: border 0.28s cubic-bezier(0.28,1.08,1,0.96); // new variable
+
+// Grid *BASED OFF OF BREAKPOINTS.SCSS
+$grid-breakpoints: (xs: 0, sm: 620px, md: 780px, lg: 970px, xl: 1170px);
+$container-max-widths: (sm: 100%, md: 100%, lg: 100%, xl: 1450px);
+$grid-gutter-width: 40px; //gets split in half to give margins and padding left/right
+
+
+// Components
+$border-width: 1px;
+$border-radius: 4px;
+$border-radius-lg: 4px;
+$border-radius-sm: 4px;
+
+
+// Fonts
+$font-family-sans-serif: sans-serif;
+$font-family-monospace: Georgia, serif;
+$font-family-base: Georgia, serif;
+$font-size-base: 1.188rem; // 19px
+$font-size-lg: 1.563rem; // 25px
+$font-size-sm: 0.938rem; // 15px
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+$font-weight-base: $font-weight-normal;
+$h1-font-size: 3.75rem; // 60px
+$h2-font-size: 2rem; // 32px
+$h3-font-size: 1.25rem; // 20px
+$h4-font-size: 1.25rem; // 20px
+$h5-font-size: 1.188rem; // 19px
+$h6-font-size: 1rem; // 15px
+$headings-margin-bottom: 1.25rem;
+$headings-font-weight: bold;
+$headings-color: $black;
+
+
+// Buttons
+$input-btn-padding-y: 0.75rem;
+$input-btn-padding-x: 1.438rem;
+$input-btn-padding-y-sm: 0.313rem;
+$input-btn-padding-x-sm: 0.563rem;
+$input-btn-padding-y-lg: 0.75rem;
+$input-btn-padding-x-lg: 1.438rem;
+$btn-font-weight: $font-weight-bold;
+$btn-box-shadow: none;
+$btn-focus-box-shadow: none;
+$btn-active-box-shadow: none;
+$btn-link-disabled-color: $gray-600;
+$btn-block-spacing-y: 0.5rem;
+$btn-border-radius: $border-radius;
+$btn-border-radius-lg: $border-radius;
+$btn-border-radius-sm: $border-radius;
+$button-fade: all 0.4s ease; // new variable
+$btn-transition: $button-fade;
+
+.btn-primary {
+  background-color: #2797d8;
+  border-color: #2797d8;
+}
+
+
+// Forms
+$input-color: $gray-600;
+$input-border-color: $border-gray;
+
+
+// Dropdown
+$dropdown-min-width: 100%;
+$dropdown-padding-y: 0;
+$dropdown-spacer: 0;
+$dropdown-border-color: $gray-600;
+$dropdown-box-shadow: 0 0.5rem 1rem rgba($black, 0.175);
+$dropdown-link-hover-bg: $background-gray;
+$dropdown-item-padding-x: 1.21rem;
+$dropdown-transition: transform 0.5s ease; // new variable
+
+.dropdown-toggle {
+  &.btn-sm {
+    & + .dropdown-menu {
+      .dropdown-item {
+        padding: 3px 0.47rem;
+      }
+    }
+  }
+
+  &::after {
+  	transition: $dropdown-transition;
+    border-top: 0.5em solid currentColor !important;
+    border-left: 0.425em solid transparent !important;
+    border-right: 0.425em solid transparent !important;
+    vertical-align: 1px !important;
+  }
+
+  &[aria-expanded="true"]{
+    border-radius: 4px 4px 0 0;
+
+    &::after {
+      transform: scaleY(-1);
+    }
+  }
+}
+
+.show.dropdown-menu {
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+// Navbar
+$navbar-toggler-padding-y: 0;
+$navbar-toggler-padding-x: 0;
+$navbar-dark-color: $white;
+$navbar-dark-hover-color: $white;
+$navbar-dark-active-color: $white;
+$navbar-dark-toggler-border-color: transparent;
+$navbar-light-toggler-border-color: transparent;
+
+
+
+
+// Pagination
+$pagination-border-width: none;
+$pagination-hover-bg: $gray-100;
+$pagination-active-color: $gray-600;
+$pagination-active-bg: $gray-100;
+$pagination-disabled-color: $gray-600;
+$pagination-disabled-border-color: transparent;
+
+// bootstrap pagination
+.pagination {
+  width: 100%;
+}
+ul.pagination {
+	margin: 0 auto;
+	padding-top: 20px;
+	border-top: 1px solid $gray-400;
+}
+ul.pagination, ul.pagination a {
+  font-size: 17px;
+  font-weight: 700;
+}
+.page-link {
+  border-bottom: none;
+}
+.pagination > .disabled > a {
+	font-weight: normal;
+}
+
+
+// Cards
+$card-spacer-y: 1.25rem;
+$card-spacer-x: 1.25rem;
+$card-border-width: 1px;
+$card-border-radius: none;
+$card-border-color: $gray-400;
+$card-cap-bg: transparent;
+
+

@@ -1,0 +1,32 @@
+<%# OVERRIDE Spotlight 3.3.0 to bring in Harvard theming for top navbar %>
+<nav class="navbar navbar-expand-md navbar-dark topbar" role="navigation" aria-label="<%= t('spotlight.topbar.label') %>">
+  <div class="<%= container_classes %>">
+    <%= link_to(main_app.root_path, class: 'mb-0 navbar-brand site-title-nav') do %>
+      <span class='hl-top-header-title'>CURIOSITY</span><span class='hl-top-header-title hl-top-header-title-collections'> Collections</span>
+    <% end %>
+    <% if current_user %>
+      <button class="navbar-toggler navbar-toggler-right px-2 mx-2" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="<%= t :toggle_nav %>">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <% end %>
+    <% if !current_user %>
+      <div class="d-md-none d-flex align-items-stretch harvard-mobile-logo">
+        <div class="hl__headerLogo d-flex align-items-center px-2">
+          <%= link_to('https://library.harvard.edu') do %>
+            <img class='logo-shield' alt="Harvard logo" src="/assets/harvard-shield-only.png">
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="collapse navbar-collapse justify-content-md-end align-items-stretch" id="user-util-collapse">
+      <div class="hl__headerLogo d-flex align-items-center">
+        <%= link_to('https://library.harvard.edu') do %>
+          <img alt="Harvard logo" src="/assets/hl_header-logo-7f4fd0b3eec2c4109062effb1d0cd53021e512ce57895a97d7e9f38f97bab887.svg">
+        <% end %>
+      </div>
+      <% if current_user %>
+        <%= render partial: 'shared/user_util_links' %>
+      <% end %>
+    </div>
+  </div>
+</nav>
