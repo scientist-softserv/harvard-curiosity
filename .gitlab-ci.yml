@@ -50,11 +50,10 @@ spotlight.staging:
   stage: go
   extends:
     - .deploy
-  only:
-    refs:
-      - main
-      - branches
-  when: manual
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_COMMIT_BRANCH != "main"
+      when: manual
   variables:
     DEPLOY_IMAGE: $CI_REGISTRY_IMAGE
     DEPLOY_TAG: $CI_COMMIT_SHORT_SHA
@@ -62,7 +61,7 @@ spotlight.staging:
       --values ops/staging-values.yaml
   script:
     - envsubst < ops/staging-values.tmpl.yaml > ops/staging-values.yaml
-    - ./ops/chart/bin/helm_deploy harvard-spotlight-staging staging
+    - ./ops/chart/bin/helm_deploy staging-harvard-curiosity staging-harvard-curiosity
   tags:
     - docker
 

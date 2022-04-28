@@ -40,7 +40,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver', '>= 4.0.0.rc1'
+  gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
@@ -69,3 +69,6 @@ gem 'blacklight-oembed', '~> 1.0'
 gem 'devise_invitable'
 gem 'pg', '~> 1.2'
 gem 'redis'
+
+# Sentry-raven for error handling
+gem "sentry-raven"
