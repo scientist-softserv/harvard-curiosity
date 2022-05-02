@@ -31,9 +31,11 @@ RUN gem update bundler
 
 RUN mkdir -p /app/spotlight && \
     mkdir /app/bundle && \
+    mkdir /app/spotlight/tmp && \
     mkdir /app/spotlight/node_modules && \
     chown -R ${APP_ID_NAME} /app/bundle && \
-    chown -R ${APP_ID_NAME} /app/spotlight/node_modules
+    chown -R ${APP_ID_NAME} /app/spotlight/node_modules && \
+    chown -R ${APP_ID_NAME} /app/spotlight/tmp
 WORKDIR /app/spotlight
 
 COPY --chown=${APP_ID_NAME} . /app/spotlight
