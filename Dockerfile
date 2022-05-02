@@ -30,16 +30,18 @@ RUN apk --no-cache upgrade && \
 RUN gem update bundler
 
 RUN mkdir -p /app/spotlight && \
-  mkdir -p /app/spotlight/tmp
+    mkdir /app/bundle && \
+    mkdir /app/spotlight/node_modules && \
+    chown -R ${APP_ID_NAME} /app/bundle && \
+    chown -R ${APP_ID_NAME} /app/spotlight/node_modules
 WORKDIR /app/spotlight
 
-COPY --chown=curiosity . /app/spotlight
-RUN bundle config set force_ruby_platform true && \
-  bundle install --jobs "$(nproc)" && \
-  yarn install
+COPY --chown=${APP_ID_NAME} . /app/spotlight
+USER ${APP_ID_NAME}
 
-USER curiosity
-
-RUN RAILS_ENV=production SECRET_KEY_BASE=`bin/rake secret` DB_ADAPTER=nulldb DATABASE_URL='postgresql://fake' bundle exec rake assets:precompile
+RUN mkdir -p /app/spotlight/tmp && \
+    bundle config set force_ruby_platform true && \
+    bundle install --jobs "$(nproc)" --path /app/bundle && \
+    RAILS_ENV=production SECRET_KEY_BASE=`bin/rake secret` DB_ADAPTER=nulldb DATABASE_URL='postgresql://fake' bundle exec rake assets:precompile
 
 CMD ["bundle", "exec", "puma", "-b", "tcp://0.0.0.0:3000"]
