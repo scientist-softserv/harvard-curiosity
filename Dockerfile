@@ -27,23 +27,22 @@ RUN apk --no-cache upgrade && \
   addgroup -S ${GROUP_ID_NAME} -g ${GROUP_ID_NUMBER} && \
   adduser -h /home/${APP_ID_NAME} -s /bin/sh -u ${APP_ID_NUMBER} -S ${APP_ID_NAME} -G ${GROUP_ID_NAME}
 
+
 RUN gem update bundler
 
-RUN mkdir -p /app/spotlight && \
-    mkdir /app/bundle && \
-    mkdir /app/spotlight/tmp && \
-    mkdir /app/spotlight/node_modules && \
-    chown -R ${APP_ID_NAME} /app/bundle && \
-    chown -R ${APP_ID_NAME} /app/spotlight/node_modules && \
-    chown -R ${APP_ID_NAME} /app/spotlight/tmp
+RUN mkdir -p /app/spotlight
 WORKDIR /app/spotlight
 
-COPY --chown=${APP_ID_NAME} . /app/spotlight
-USER ${APP_ID_NAME}
+ARG APP_PATH=.
+COPY --chown=${APP_ID_NAME} $APP_PATH/Gemfile* /app/spotlight/
 
-RUN mkdir -p /app/spotlight/tmp && \
-    bundle config set force_ruby_platform true && \
-    bundle install --jobs "$(nproc)" --path /app/bundle && \
-    RAILS_ENV=production SECRET_KEY_BASE=`bin/rake secret` DB_ADAPTER=nulldb DATABASE_URL='postgresql://fake' bundle exec rake assets:precompile
+RUN bundle config set force_ruby_platform true && \
+    bundle install --jobs "$(nproc)"
+
+COPY --chown=${APP_ID_NAME} $APP_PATH /app/spotlight
+
+RUN sh -l -c " \
+  yarn install && \
+  RAILS_ENV=production SECRET_KEY_BASE='bin/rake secret' DB_ADAPTER=nulldb DATABASE_URL='postgresql://fake' bundle exec rake assets:precompile"
 
 CMD ["bundle", "exec", "puma", "-b", "tcp://0.0.0.0:3000"]
