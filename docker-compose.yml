@@ -15,7 +15,10 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - .:/app/spotlight
+      - .:/app/spotlight:cached
+      - node:/app/spotlight/node_modules
+      - assets:/app/spotlight/public/assets
+      - cache:/app/spotlight/tmp/cache
     networks:
       internal:
 
@@ -29,6 +32,9 @@ services:
 
 volumes:
   redis:
+  node:
+  assets:
+  cache:
 
 networks:
       internal:
