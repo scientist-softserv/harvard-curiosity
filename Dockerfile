@@ -27,7 +27,6 @@ RUN apk --no-cache upgrade && \
   addgroup -S ${GROUP_ID_NAME} -g ${GROUP_ID_NUMBER} && \
   adduser -h /home/${APP_ID_NAME} -s /bin/sh -u ${APP_ID_NUMBER} -S ${APP_ID_NAME} -G ${GROUP_ID_NAME}
 
-
 RUN gem update bundler
 
 RUN mkdir -p /app/spotlight
