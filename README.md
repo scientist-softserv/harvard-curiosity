@@ -54,7 +54,8 @@ You can find login credentials in the [db/seeds.rb](db/seeds.rb) file. These SHO
 
 To import these:
 
-```docker exec -it curiosity_web_1 sh
+```bash
+docker exec -it curiosity_web_1 sh
 rails db:migrate
 rails db:seed
 ```
