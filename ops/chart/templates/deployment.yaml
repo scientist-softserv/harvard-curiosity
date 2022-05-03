@@ -65,8 +65,7 @@ spec:
           command:
             - sh
             - -c
-            - >
-              bin/db-wait.sh $POSTGRES_HOST:$POSTGRES_PORT bundle exec rake db:prepare
+            - bin/db-migrate-seed.sh
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
