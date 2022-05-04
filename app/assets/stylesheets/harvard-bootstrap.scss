@@ -13,13 +13,14 @@ $indigo: #2a5280;
 $red: #eb001b;
 $yellow: #f8c21c;
 $teal: #3e6f7d;
+$darkteal: #405E65; // new variable
 $white: #fff;
-$gray-100: #f9f9f9;
+$gray-100: #f3f3f3;
 $gray-200: #dfdfdf;
 $gray-300: #c0c0c0;
 $gray-400: #c0c0c0;
 $gray-500: #afafaf;
-$gray-550: #999;
+$gray-550: #999; // new variable
 $gray-600: #6c6c6c;
 $gray-700: #414141;
 $gray-800: #414141;
@@ -115,6 +116,11 @@ $dropdown-link-hover-bg: $background-gray;
 $dropdown-item-padding-x: 1.21rem;
 $dropdown-transition: transform 0.5s ease; // new variable
 
+// resets the font size for links since it somewhere gets set to 17 in harvard patterns gem
+a {
+  font-size: 14px
+}
+
 .dropdown-toggle {
   &.btn-sm {
     & + .dropdown-menu {
@@ -170,18 +176,41 @@ $pagination-disabled-border-color: transparent;
 .pagination {
   width: 100%;
 }
+
 ul.pagination {
 	margin: 0 auto;
 	padding-top: 20px;
-	border-top: 1px solid $gray-400;
+	border-top: 2px solid $gray-400;
 }
-ul.pagination, ul.pagination a {
+
+ul.pagination, ul.pagination a, .page-link {
   font-size: 17px;
   font-weight: 700;
+  border-radius: $border-radius;
 }
-.page-link {
-  border-bottom: none;
+
+.page-item {
+  padding-right: 15px;
+
+  .page-link {
+    border: 0;
+    color: $blue;
+    min-width: 40px;
+    text-align: center;
+    &:hover {
+      background-color: $gray-100;
+      border-color: $gray-100;
+    }
+  }
+
+  &.active .page-link {
+    background-color: $gray-200;
+    border-color: $gray-200;
+    color: $gray-700;
+
+  }
 }
+
 .pagination > .disabled > a {
 	font-weight: normal;
 }
