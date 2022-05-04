@@ -1,0 +1,57 @@
+@import 'harvard-bootstrap';
+
+#documents {
+  .blacklight-exhibit_tags {
+    a {
+      border-bottom: 0;
+    }
+  }
+
+  .document-counter {
+    display: none;
+  }
+
+  &.documents-list .document .document-thumbnail {
+    padding-left: 0;
+    float: none;
+    img {
+      max-width: unset;
+      width: 180px;
+    }
+  }
+
+  .documentHeader {
+    .document-title-heading {
+      font-size: 18px;
+      text-transform: unset;
+      a {
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  .dl-invert dt {
+    text-align: unset;
+    font-family: 'Trueno';
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: $black;
+    font-weight: 600;
+  }
+}
+
+.search-widgets {
+  button {
+    border: 1px solid $gray-500;
+    color: $gray-550;
+    &:hover {
+      background-color: $gray-200;
+      border: 1px solid $gray-200;
+      color: $gray-600;
+    }
+  }
+}
+
+.breadcrumb {
+  background-color: $gray-100;
+}

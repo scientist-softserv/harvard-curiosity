@@ -1,0 +1,13 @@
+<% # container for a single doc -%>
+<article class="document d-flex flex-column flex-md-row<%= render_document_class document %> document-position-<%= document_counter%> " data-document-counter="<%= document_counter %>" itemscope itemtype="<%= document.itemtype %>">
+  <% render_document_partials document,
+    blacklight_config.view_config(document_index_view_type).partials,
+    document_counter: document_counter %>
+  <div>
+    <%= render 'thumbnail', {document: document, document_counter: document_counter} %>
+  </div>
+  <div class="d-flex flex-column ml-3 w-100">
+    <%= render 'index_header', {document: document, document_counter: document_counter} %>
+    <%= render 'index', {document: document, document_counter: document_counter} %>
+  </div>
+</article>
