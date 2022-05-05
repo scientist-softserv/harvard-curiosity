@@ -84,7 +84,7 @@ body {
     font-family: 'Trueno';
     font-size: 24px;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 700;
     font-style: normal;
     font-stretch: normal;
     line-height: 1.67;
@@ -93,9 +93,9 @@ body {
 
     &.hl-top-header-title-collections {
       font-family: 'Lora';
-      font-size: 28px;
+      font-weight: 300;
       font-style: italic;
-      padding-left: 10px;
+      padding-left: 5px;
       text-transform: none;
       letter-spacing: normal;
     }
@@ -138,32 +138,78 @@ body {
   }
 }
 
-.exhibit-card {
-  padding-bottom: 5.5rem;
-  border: none;
+.exhibit-card-container {
+  position: relative;
+  /* For the Polyfill */
+  --css-contain: layout inline-size;
 
-  .card-img {
-    background-color: transparent;
-    padding: 10px;
+  .exhibit-card-img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  .card-img-overlay {
-    background: $white;
-  }
-
-  .card-title {
-    font-size: 24px;
-    color: $gray-900;
+  .exhibit-card-title {
+    font-family: "Trueno", sans-serif;
+    position: absolute;
+    line-height: 36px;
+    font-size: 32px;
+    color: $white;
     line-height: 30px;
-    padding-bottom: 5px;
     text-transform: none;
     letter-spacing: 1px;
+    bottom: 5%;
   }
 
+  .exhibit-card-overlay-description, 
+  .exhibit-card-overlay-title {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transition: .8s ease;
+  }
+  
+  .exhibit-card-overlay-description {
+    background-color: $transparent-black;
+    opacity: 0;
+  }
+
+  .exhibit-card-overlay-title {
+    background: linear-gradient(#00000014, #000000b6);
+    opacity: 1;
+  }
   .description {
-    font-size: 12px;
-    color: $gray-550;
-    font-family: "Trueno";
-    line-height: 1.4;
+    font-family: 'Lora';
+    font-weight: 400;
+    color: $white;
+    font-size: 17px;
+    font-style: italic;
+    position: absolute;
+    width: inherit;
+    bottom: 5%;
+  }
+
+
+  &:hover .exhibit-card-overlay-description {
+    opacity: 1;
+  }
+
+  &:hover .exhibit-card-title {
+    opacity: 0;
+  }
+
+  /* For the Polyfill */
+  @media --css-container and (max-width: 290px) {
+    .description {
+      font-size: 13px;
+    }
+    .exhibit-card-title {
+      font-size: 20px;
+      line-height: 28px;
+    }
   }
 }
