@@ -13,7 +13,7 @@
       <div class="d-md-none d-flex align-items-stretch harvard-mobile-logo">
         <div class="hl__headerLogo d-flex align-items-center px-2">
           <%= link_to('https://library.harvard.edu') do %>
-            <img class='logo-shield' alt="Harvard logo" src="/assets/harvard-shield-only.png">
+            <%= image_tag("harvard-shield-only.png", alt: "Harvard Library Logo", class: 'logo-shield') %>
           <% end %>
         </div>
       </div>
@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse justify-content-md-end align-items-stretch" id="user-util-collapse">
       <div class="hl__headerLogo d-flex align-items-center">
         <%= link_to('https://library.harvard.edu') do %>
-          <img alt="Harvard logo" src="/assets/hl_header-logo-7f4fd0b3eec2c4109062effb1d0cd53021e512ce57895a97d7e9f38f97bab887.svg">
+        <%= embedded_svg('harvard-library-full') %>
         <% end %>
       </div>
       <% if current_user %>
