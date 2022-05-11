@@ -25,21 +25,27 @@ RUN apk --no-cache upgrade && \
   yarn \
   zip && \
   addgroup -S ${GROUP_ID_NAME} -g ${GROUP_ID_NUMBER} && \
-  adduser -h /home/${APP_ID_NAME} -s /bin/sh -u ${APP_ID_NUMBER} -S ${APP_ID_NAME} -G ${GROUP_ID_NAME}
+  adduser -h /home/${APP_ID_NAME} -s /bin/sh -u ${APP_ID_NUMBER} -S ${APP_ID_NAME} -G ${GROUP_ID_NAME} && \
+  mkdir -p /app && \
+  chown -R ${APP_ID_NAME}:${GROUP_ID_NAME} /app && \
+  gem update bundler
 
-RUN gem update bundler
-
-RUN mkdir -p /app/spotlight && \
-  mkdir -p /app/spotlight/tmp
+USER ${APP_ID_NAME}:${GROUP_ID_NAME}
 WORKDIR /app/spotlight
 
-COPY --chown=curiosity . /app/spotlight
-RUN bundle config set force_ruby_platform true && \
-  bundle install --jobs "$(nproc)" && \
-  yarn install
+COPY --chown=${APP_ID_NAME}:${GROUP_ID_NAME} . /app/spotlight
+RUN mkdir /app/bundle && \
+  bundle config set force_ruby_platform true && \
+  bundle config set path /app/bundle && \
+  bundle install --jobs "$(nproc)"
 
-USER curiosity
+# These 3 lines deal with a permissions bug in Docker found in some version
+USER root
+RUN chown ${APP_ID_NAME}:${GROUP_ID_NAME} /app/spotlight
+USER ${APP_ID_NAME}:${GROUP_ID_NAME}
+# the above lines can be removed with all Docker versions on ci runners are upgraded
 
-RUN RAILS_ENV=production SECRET_KEY_BASE=`bin/rake secret` DB_ADAPTER=nulldb DATABASE_URL='postgresql://fake' bundle exec rake assets:precompile
+RUN mkdir -p /app/spotlight/tmp/pids && \
+  RAILS_ENV=production SECRET_KEY_BASE=`bin/rake secret` DB_ADAPTER=nulldb DATABASE_URL='postgresql://fake' bundle exec rake assets:precompile
 
 CMD ["bundle", "exec", "puma", "-b", "tcp://0.0.0.0:3000"]
