@@ -1,0 +1,23 @@
+<%# OVERRIDE spotlight to move the search bar out of the exhibit nav %>
+<div id="exhibit-navbar" class="exhibit-navbar navbar navbar-light navbar-expand-md" role="navigation" aria-label="<%= t('spotlight.exhibitnavbar.label') %>">
+  <div class="container flex-column flex-md-row">
+    <% if resource_masthead? %>
+      <%= link_to(current_exhibit.title, spotlight.exhibit_path(current_exhibit), class: 'navbar-brand') %>
+    <% end %>
+    <ul class="navbar-nav <%= resource_masthead? ? 'justify-content-md-end' : '' %>">
+      <li class="nav-item <%= "active" if current_page?([spotlight, current_exhibit]) %>">
+        <%= link_to t(:'spotlight.curation.nav.home'), [spotlight, current_exhibit], class: 'nav-link' %>
+      </li>
+      <% current_exhibit.main_navigations.displayable.each do |navigation| %>
+        <%= render partial: "shared/#{navigation.nav_type}_navbar", locals: { navigation: navigation } %>
+      <% end %>
+    </ul>
+  </div>
+  <% if should_render_spotlight_search_bar? %>
+    <div class="exhibit-search-form-wrapper">
+      <div class='exhibit-search-form ml-auto'>
+        <%= render_search_bar %>
+      </div>
+    </div>
+  <% end %>
+</div>

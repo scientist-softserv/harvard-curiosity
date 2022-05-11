@@ -1,0 +1,156 @@
+@import 'harvard-bootstrap';
+
+//styles the title text in the hero
+.masthead.image-masthead {
+  .site-title.h1, small {
+    text-shadow: 1px 1px 0 $black;
+    color: $white;
+    font-family: "Trueno", sans-serif;
+    font-style: unset;
+    font-weight: 700;
+  }
+}
+
+#exhibit-navbar {
+  background-color: $teal;
+  padding: 0;
+  width: 97%;
+  .navbar-nav {
+    width: 100%;
+  }
+  .nav-link {
+    text-transform: uppercase;
+    color: $white;
+    letter-spacing: 1px;
+    padding: 8px 20px;
+    border-bottom: 0;
+  }
+  .dropdown-menu {
+    background-color: $teal;
+    border: 0;
+    .dropdown-item {
+      color: $white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      &:hover {
+        background-color: $darkteal;
+      }
+    }
+  }
+}
+
+.exhibit-search-form-wrapper, #exhibit-navbar {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exhibit-search-form-wrapper{
+    width: 100%;
+    .exhibit-search-form {
+      position: relative;
+      padding: 20px;
+      background-color: $darkteal;
+      button#search {
+        padding: 6px 12px;
+      }
+    }
+  @media (min-width: 768px){
+    .exhibit-search-form {
+      width: 50%;
+    }
+  }
+}
+
+.page-sidebar {
+  .facets {
+    background-color: $gray-100;
+    padding-bottom: 10px;
+    .facets-header {
+      background-color: $white;
+      .facets-heading {
+        font-weight: 700;
+        font-size: 17px;
+        padding: 0px 10px;
+      }
+    }
+    #facet-panel-collapse {
+      padding: 0 25px;
+      margin: 0;
+    }
+  }
+  .card {
+    &.facet-limit-active {
+      .card-header {
+        background-color: transparent !important;
+      }
+    }
+    &.facet-limit {
+      background-color: transparent;
+      border: 0;
+      .card-header {
+        background-color: transparent;
+        border-bottom: 0;
+        border-top: 1px solid $gray-500;
+        &:first-child {
+          border-radius: 0;
+        }
+        .btn {
+          padding: 25px 0 25px 0 !important;
+          font-size: 14px;
+        }
+        .btn::after {
+          color: $red;
+        }
+
+      }
+      .card-body {
+        padding: 1rem 0;
+        a {
+          color: $black;
+          font-weight: 400;
+        }
+        .facet-values.list-unstyled {
+          .facet-count {
+            font-family: 'Trueno';
+          }
+          .facet-select {
+            font-size: 14px;
+          }
+          li {
+            .selected {
+              color: $black !important;
+              font-family: 'Trueno';
+              font-weight: 600;
+            }
+            .remove {
+              line-height: 0;
+              .remove-icon {
+                transform: scale(.7);
+                &:hover, &:focus {
+                  background: $gray-400;
+                  border-color: $gray-400;
+                }
+              }
+            }
+          }
+          
+        }
+      }
+    }
+    .btn {
+    background: transparent;
+    color: $black;
+      &:hover, &:focus {
+        background: transparent;
+      }
+    }
+  }
+  .facets-collapse {
+    .facet-limit:first-child {
+      .card-header:first-child {
+        border-top: 0;
+      }
+    }
+  }
+}

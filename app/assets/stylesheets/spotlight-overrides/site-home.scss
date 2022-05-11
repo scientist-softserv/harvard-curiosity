@@ -1,0 +1,218 @@
+@import 'harvard-bootstrap';
+
+//the following 3 styles for html, and #main-container make the footer stick to the bottom & not cover content
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  #main-container {
+    flex-grow: 1;
+  }
+  @media (min-width: 1200px){
+    #main-container {
+      width: 1170px;
+    }
+  }
+  @media (min-width: 1280px){
+    #main-container, .container {
+      width: 100%;
+      max-width: 1400px;
+    }
+  }
+}
+.region.hl__footer {
+  position: unset;
+}
+
+// styles the exhibit tags on the home page
+.nav.nav-pills.tags {
+  .nav-item {
+    margin: 0 10px;
+    transition: .15s;
+    border-radius: 0.25rem;
+    margin-bottom: 10px;
+    &:hover {
+      -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
+    }
+    .nav-link{
+      background-color: $gray-200;
+      color: $black;
+      border-bottom: 0;
+      font-size: 14px;
+      &:hover, &:focus {
+        border: 0;
+        border-color: unset
+      }
+      &.active {
+        background-color: $gray-500;
+        color: $white;
+      }
+    }
+  }
+}
+
+.topbar.navbar {
+  background: unset !important;
+  background-image: linear-gradient(247deg, #52757e, #335c67) !important;
+  padding: 0;
+  #user-util-collapse {
+    min-height: 54px;
+    ul.navbar-nav, .hl__headerLogo {
+      padding: 0.5rem 1rem;
+      background-color: $black;
+    }
+  }
+  .harvard-mobile-logo {
+    height: 54px;
+    background-color: $black;
+    .logo-shield {
+      max-height: 40px;
+    }
+  }
+
+  .site-title-nav {
+    padding: 0.2rem 1rem;
+  }
+  .hl-top-header-title {
+    font-family: 'Trueno';
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.67;
+    letter-spacing: 1.1px;
+    color: $white;
+
+    &.hl-top-header-title-collections {
+      font-family: 'Lora';
+      font-weight: 300;
+      font-style: italic;
+      padding-left: 5px;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+  }
+  a {
+    color: unset;
+    border: 0;
+    &:hover {
+      border-color: transparent;
+    }
+  }
+  .dropdown-item:active {
+    background-color: $gray-200;
+  }
+}
+
+.masthead {
+  color: $gray-900;
+  border-bottom: 0;
+  margin-bottom: 0.4rem;
+    .site-title-container {
+      max-height: unset;
+    .site-title.h1 {
+      font-family: "Trueno", sans-serif;
+      font-size: 54px;
+      letter-spacing: 3.05px;
+      line-height: 74px;
+      padding-top: 25px;
+      font-weight: 700;
+    }
+    small {
+      font-family: "Lora", serif;
+      font-size: 26px;
+      font-style: italic;
+      letter-spacing: initial;
+      line-height: 40.04px;
+      padding-top: 20px;
+    }
+    .site-title-wrapper {
+      white-space: normal;
+      text-align: center;
+    }
+  }
+}
+
+.exhibit-card-container {
+  position: relative;
+  /* For the Polyfill */
+  --css-contain: layout inline-size;
+
+  .exhibit-card-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .exhibit-card-title {
+    font-family: "Trueno", sans-serif;
+    position: absolute;
+    line-height: 36px;
+    font-size: 32px;
+    color: $white;
+    line-height: 30px;
+    text-transform: none;
+    letter-spacing: 1px;
+    bottom: 5%;
+  }
+
+  .exhibit-card-overlay-description, 
+  .exhibit-card-overlay-title {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    transition: .8s ease;
+  }
+  
+  .exhibit-card-overlay-description {
+    background-color: $transparent-black;
+    opacity: 0;
+  }
+
+  .exhibit-card-overlay-title {
+    background: linear-gradient(#00000014, #000000b6);
+    opacity: 1;
+  }
+  .description {
+    font-family: 'Lora';
+    font-weight: 400;
+    color: $white;
+    font-size: 17px;
+    font-style: italic;
+    position: absolute;
+    width: inherit;
+    bottom: 5%;
+  }
+
+
+  &:hover .exhibit-card-overlay-description {
+    opacity: 1;
+  }
+
+  &:hover .exhibit-card-title {
+    opacity: 0;
+  }
+
+  /* For the Polyfill */
+  @media --css-container and (max-width: 290px) {
+    .description {
+      font-size: 13px;
+    }
+    .exhibit-card-title {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+}
