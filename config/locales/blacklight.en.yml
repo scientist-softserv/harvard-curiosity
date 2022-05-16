@@ -1,3 +1,4 @@
 en:
   blacklight:
-    application_name: 'Blacklight'
+    application_name: "Harvard Curiosity"
+    back_to_search: "« Back to Search"

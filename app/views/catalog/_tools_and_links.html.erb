@@ -1,0 +1,40 @@
+<div id="tools" class="sidebar-container p-4 mb-4">
+      <h2 class="clearfix h5">Tools & Related Links</h2>
+<%# TODO: Need to figure out how to generate these links from actual harvard metadata. %>
+<%#
+      <div class="permalink"><span class="fa fa-link"></span> &nbsp;<a href="#">Permalink</a></div>
+        <dl class="dl-more-details clearfix">
+        <dt class="blacklight-title_extended clearfix">More item details</dt>
+        <dd class="blacklight-title_extended">
+          <a href="#">HOLLIS Record</a>
+        </dd>
+      </dl> 
+%>
+        <dl class="dl-iiif dl-more-details clearfix">
+          <dt class="blacklight-title_extended clearfix">
+            <%= embedded_svg('IIIFLogoBlack') %>
+          </dt>
+            <script>
+              function copyManifestToClipBoard(manifest_url) {
+                const el = document.createElement('textarea');
+                el.value = manifest_url;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                alert("Copied the text: '" + el.value + "' to clipboard");
+                document.body.removeChild(el);
+              }
+            </script>
+            <% @manifest_url = manifest_exhibit_solr_document_url %>
+            <dd class="blacklight-title_extended">
+              <a href="javascript:void(0);" onclick="copyManifestToClipBoard('<%= manifest_exhibit_solr_document_url %>')">
+                Copy Manifest Link
+              </a>
+            </dd>
+          <dd>
+            <a href="https://iiif.io/community/faq/" target="_blank">What is IIIF?</a>
+          </dd>
+        </dl>
+    </div>
+
+

@@ -1,0 +1,12 @@
+<% if current_exhibit.contacts.published.present? %>
+  <div class= 'sidebar-container p-4' >
+    <h2 class='contacts-header h5'><%= t :'spotlight.about_pages.contacts.header' %></h2>
+    <ol class="nav sidenav contacts flex-column">
+      <% current_exhibit.contacts.published.each do |contact| %>
+        <li itemscope itemtype="http://schema.org/Person">
+          <%= render partial: "spotlight/about_pages/contact_properties", locals: {contact: contact} %>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+<% end %>

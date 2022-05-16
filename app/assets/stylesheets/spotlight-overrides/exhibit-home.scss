@@ -2,6 +2,11 @@
 
 //styles the title text in the hero
 .masthead.image-masthead {
+  .background-container {
+    border-right: none;
+    filter: none;
+  }
+
   .site-title.h1, small {
     text-shadow: 1px 1px 0 $black;
     color: $white;
@@ -79,6 +84,11 @@
       margin: 0;
     }
   }
+  @media (max-width: 991px) {
+    .facets {
+      background-color: transparent;
+    }
+  }
   .card {
     &.facet-limit-active {
       .card-header {
@@ -153,4 +163,8 @@
       }
     }
   }
+}
+
+.items-block .items-col .box {
+  margin-top: -3rem;
 }
