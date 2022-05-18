@@ -80,6 +80,15 @@
 
     .openseadragon-container.col-md-6 {
       margin-top: 1rem;
+      .controls {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 0;
+      }
+      .openseadragon-viewer {
+        border: 1px solid $gray-300;
+      }
     }
 
     @media (min-width: 768px) {
@@ -90,5 +99,11 @@
         max-width: unset;
       }
     }
+  }
+}
+
+.blacklight-catalog-edit {
+  .sidebar {
+    display: none;
   }
 }

@@ -110,9 +110,10 @@ body {
       border-color: transparent;
     }
   }
-  .dropdown-item:active {
-    background-color: $gray-200;
-  }
+}
+
+.dropdown-item:active {
+  background-color: $gray-200;
 }
 
 .masthead {

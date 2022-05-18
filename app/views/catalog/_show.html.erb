@@ -5,12 +5,14 @@
 <div class='row'>
   <div class='col-lg-8'>
     <dl class="row dl-invert document-metadata">
-        <dt class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-3">
-          title:
-        </dt>
-        <dd class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-9">
-          <%= @document._source[:full_title_tesim].first %>
-        </dd> 
+        <% if @document._source[:full_title_tesim].present? %>
+          <dt class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-3">
+            title:
+          </dt>
+          <dd class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-9">
+            <%= @document._source[:full_title_tesim].first %>
+          </dd>
+        <% end %>
       <% doc_presenter.fields_to_render.each do |field_name, field| -%>
         <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-3"><%= render_document_show_field_label document, field: field_name %></dt>
         <dd class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-9"><%= doc_presenter.field_value field %></dd>
