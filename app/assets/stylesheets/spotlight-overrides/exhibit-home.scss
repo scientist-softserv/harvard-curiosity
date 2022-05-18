@@ -165,6 +165,19 @@
   }
 }
 
-.items-block .items-col .box {
-  margin-top: -3rem;
+.blacklight-home_pages {
+  .items-block .items-col .box {
+    margin-top: -3rem;
+  }
+
+  .openseadragon-container {
+    .controls {
+      display: flex;
+      justify-content: flex-end;
+      padding: 0;
+    }
+  }
+  .openseadragon-canvas {
+    border: 1px solid $gray-300 !important;
+  }
 }

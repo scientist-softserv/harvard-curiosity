@@ -82,3 +82,5 @@
 # Spotlight::Engine.config.page_configurations = {
 #   'my-local-config': ->(context) { context.my_custom_data_path(context.current_exhibit) }
 # }
+
+Spotlight::Engine.config.exhibit_themes = %w[default no_thumbnail_or_viewer vanilla_spotlight]
