@@ -3,7 +3,7 @@ module ApplicationHelper
 
   def embedded_svg(filename, options = {})
     assets = Rails.application.assets
-    asset = assets.find_asset(filename)
+    asset = assets&.find_asset(filename)
 
     if asset
       file = asset.source.force_encoding("UTF-8")
