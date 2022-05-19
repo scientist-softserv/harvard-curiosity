@@ -44,7 +44,7 @@ $link-hover-decoration: none;
 $link-fade: border 0.28s cubic-bezier(0.28,1.08,1,0.96); // new variable
 
 // Grid *BASED OFF OF BREAKPOINTS.SCSS
-$grid-breakpoints: (xs: 0, sm: 620px, md: 780px, lg: 970px, xl: 1170px);
+$grid-breakpoints: (xs: 0, sm: 620px, md: 767px, lg: 970px, xl: 1170px);
 $container-max-widths: (sm: 100%, md: 100%, lg: 100%, xl: 1450px);
 $grid-gutter-width: 40px; //gets split in half to give margins and padding left/right
 
