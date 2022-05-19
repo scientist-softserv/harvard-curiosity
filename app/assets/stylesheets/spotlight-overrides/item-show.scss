@@ -49,24 +49,54 @@
         }
       }
   
-
-      dd.blacklight-spotlight_upload_full_title_tesim {
-        font-size: 24px;
+      .field-button {
+        letter-spacing: 1px;
+        font-size: 16px;
+        text-transform: uppercase;
+        color: $black;
         font-weight: bold;
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        direction: rtl;
+        &::after {
+          transform: scale(.75);
+          color: $gray-600;
+        }
+      }
+      .dropdown-toggle[aria-expanded="true"]::after {
+        transform: scaleY(-1) scale(.75);
       }
 
+      
       dt {
         font-weight: bold;
         &::after {
           display: none;
         }
+        &.mobile-fields {
+          border-bottom: 1px solid #c0c0c0;
+          margin-bottom: 10px;    
+        }
+        @media (max-width: 780px) {
+          border-bottom: 1px solid #c0c0c0;
+        }
       }
 
-      @media (min-width: 768px) {
-        dd {
+      dd {
+        @media (min-width: 768px) {
           padding-left: 2rem;
           padding-top: 30px;
         }
+        &.mobile-fields {
+          border-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+      
+      dd.blacklight-spotlight_upload_full_title_tesim {
+        font-size: 24px;
+        font-weight: bold;
       }
     }
 
