@@ -94,30 +94,33 @@
   }
 }
 
-.search-widgets {
-  width: unset;
-  min-width: unset;
-  @media (min-width: 781px) {
+#sortAndPerPage.sort-pagination {
+  .search-widgets {
+    width: unset;
     min-width: unset;
-  }
-  button {
-    border: 1px solid $gray-500;
-    color: $gray-550;
-    &:hover {
-      background-color: $gray-200;
-      border: 1px solid $gray-200;
-      color: $gray-600;
+    @media (min-width: 781px) {
+      min-width: unset;
+      width: 100%;
     }
-  }
-  .btn.btn-icon {
-    padding: 0.2rem;
-  }
-  .per_page-dropdown, .view-type-group {
-    margin: 0
-  }
-
-  .btn-outline-secondary {
-    margin-top: 0
+    button {
+      border: 1px solid $gray-500;
+      color: $gray-550;
+      &:hover {
+        background-color: $gray-200;
+        border: 1px solid $gray-200;
+        color: $gray-600;
+      }
+    }
+    .btn.btn-icon {
+      padding: 0.2rem;
+    }
+    .per_page-dropdown, .view-type-group {
+      margin: 0
+    }
+  
+    .btn-outline-secondary {
+      margin-top: 0
+    }
   }
 }
 
