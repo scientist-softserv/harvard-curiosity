@@ -1,0 +1,109 @@
+@import 'harvard-bootstrap';
+
+.blacklight-catalog-show {
+  .constraints-container#appliedParams {
+    margin-bottom: 0 !important;
+    .btn-outline-secondary {
+      text-align: left
+    }
+  }
+  .document {
+    h1 {
+      display: none;
+    }
+
+    .sidebar {
+      padding: 50px 15px 15px 15px;
+      .sidebar-container {
+        border: 1px solid $gray-300;
+        .contact-properties div {
+          word-break: break-word;
+        }
+      }
+      #tools {
+        dl dt {
+          border-top: 2px dotted $gray-500;
+          color: $gray-600;
+          font-family: "Trueno", Helvetica, Arial, sans-serif;
+          font-size: 14px;
+          letter-spacing: 1.5px;
+          margin: 0;
+          padding: 30px 0 20px;
+          text-transform: uppercase;
+        }
+        .dl-iiif svg {
+          height: 20px;
+          width: 30px;
+          opacity: 0.7;
+        }
+      }
+    }
+
+    dl.document-metadata {
+      width: unset;
+      padding: 50px 15px 15px 15px;
+
+      @media (min-width: 971px) {
+        &.row {
+          width: unset;
+        }
+      }
+  
+
+      dd.blacklight-spotlight_upload_full_title_tesim {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      dt {
+        font-weight: bold;
+        &::after {
+          display: none;
+        }
+      }
+
+      @media (min-width: 768px) {
+        dd {
+          padding-left: 2rem;
+          padding-top: 30px;
+        }
+      }
+    }
+
+    .btn.btn-primary.float-right {
+      margin: 1rem 0 0 auto;
+    }
+
+    .osd-toolbar .pagination {
+      border-bottom: 0;
+    }
+
+    .openseadragon-container.col-md-6 {
+      margin-top: 1rem;
+      .controls {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 0;
+      }
+      .openseadragon-viewer {
+        border: 1px solid $gray-300;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .openseadragon-container.col-md-6 {
+        flex-basis: 0;
+        flex-grow: 1;
+        flex: unset;
+        max-width: unset;
+      }
+    }
+  }
+}
+
+.blacklight-catalog-edit {
+  .sidebar {
+    display: none;
+  }
+}

@@ -13,6 +13,9 @@ body {
   font-size: 14px;
   #main-container {
     flex-grow: 1;
+    .nav.contacts, .dl-more-details {
+      margin-bottom: 0
+    }
   }
   @media (min-width: 1200px){
     #main-container {
@@ -107,9 +110,10 @@ body {
       border-color: transparent;
     }
   }
-  .dropdown-item:active {
-    background-color: $gray-200;
-  }
+}
+
+.dropdown-item:active {
+  background-color: $gray-200;
 }
 
 .masthead {

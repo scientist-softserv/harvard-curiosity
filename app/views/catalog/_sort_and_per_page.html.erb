@@ -1,0 +1,6 @@
+<%# OVERRIDE Blacklight 7.0.0 to render the constaints in the search results in a different place %>
+
+<div id="sortAndPerPage" class="sort-pagination d-block d-sm-flex justify-content-between align-items-start">
+  <%= render 'constraints' %>
+  <%= render_results_collection_tools wrapping_class: "search-widgets float-md-right" %>
+</div>

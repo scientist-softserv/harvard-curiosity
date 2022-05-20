@@ -1,5 +1,59 @@
 @import 'harvard-bootstrap';
 
+.blacklight-catalog-index {
+  #main-container #appliedParams{
+    display: flex;
+    .catalog_startOverLink {
+      border: 1px solid $gray-500;
+      border-radius: 4px;
+      background-color: $gray-100;
+      padding: 5px 9px;
+      font-size: 14px;
+      &:hover {
+        border: 1px solid $gray-500;
+      }
+    }
+    .btn-group.applied-filter.constraint {
+      border: 1px solid $gray-500;
+      border-radius: 4px;
+      padding-right: 5px;
+      background-color: $gray-100;
+      margin: 0 8px 0 0 !important;
+      .constraint-value {
+        color: $gray-600;
+        background: transparent;
+        margin: 0;
+        .filter-name::after {
+          padding-left: 1px;
+          padding-right: 4px;
+          color: $gray-600;
+        }
+      }
+      .btn-outline-secondary {
+        display: flex;
+        align-items: center;
+        border: 0;
+        &:hover {
+          border: 0;
+        }
+        .remove-icon {
+          transform: scale(.75);
+        }
+      }
+    }
+  }
+
+  .curator-actions, .view-type, .per_page-dropdown {
+    margin: 0 !important;
+    .btn-secondary {
+      margin-top: 0;
+    }
+  }
+  .curator-actions {
+    margin-bottom: 4px !important;
+  }
+}
+
 #documents {
   .blacklight-exhibit_tags {
     a {
@@ -41,6 +95,11 @@
 }
 
 .search-widgets {
+  width: unset;
+  min-width: unset;
+  @media (min-width: 781px) {
+    min-width: unset;
+  }
   button {
     border: 1px solid $gray-500;
     color: $gray-550;
@@ -49,6 +108,16 @@
       border: 1px solid $gray-200;
       color: $gray-600;
     }
+  }
+  .btn.btn-icon {
+    padding: 0.2rem;
+  }
+  .per_page-dropdown, .view-type-group {
+    margin: 0
+  }
+
+  .btn-outline-secondary {
+    margin-top: 0
   }
 }
 

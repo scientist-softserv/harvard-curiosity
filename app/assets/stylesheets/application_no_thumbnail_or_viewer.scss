@@ -1,0 +1,39 @@
+// this is the Harvard exhibits NO THUMBNAIL & NO VIEWER theme
+
+ @import 'blacklight_gallery.css.scss';
+ @import 'blacklight_oembed.css.scss';
+ @import 'blacklight.scss';
+ @import 'openseadragon.css';
+ @import 'spotlight.scss';
+
+ #documents {
+  .document-thumbnail {
+    display: none;
+  }
+  .documentHeader .document-title-heading {
+    a, .document-counter {
+      font-size: 16px
+    }
+    .document-counter {
+      display: inline;
+      font-weight: 600;
+    }
+  }
+}
+
+#document {
+  .openseadragon-container {
+    display: none;
+  }
+}
+
+.blacklight-catalog-show {
+  dl.document-metadata {
+    dd, dt {
+      &.blacklight-spotlight_upload_full_title_tesim {
+        margin-top: 0;
+        padding-top: 0;
+      }
+    }
+  }
+}
