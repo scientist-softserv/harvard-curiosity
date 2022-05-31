@@ -75,3 +75,5 @@ gem 'redis'
 
 # Sentry-raven for error handling
 gem "sentry-raven"
+
+gem 'delayed_job_active_record'
