@@ -1,6 +1,6 @@
 @import 'harvard-bootstrap';
 
-.browse-landing {
+.browse-landing  {
   .image-overlay {
     border: 0;
     border-radius: 0;
@@ -44,6 +44,15 @@
   .long-description-text {
     margin: ($spacer * 2) 0;
     width: 40em;
+  }
+}
+
+.blacklight-feature_pages {
+  .category-subtitle {
+    font-family: "Lora", serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 700;
   }
 }
 
