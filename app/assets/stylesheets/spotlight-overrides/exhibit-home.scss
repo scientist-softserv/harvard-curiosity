@@ -16,6 +16,11 @@
   }
 }
 
+.nav-link {
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
 #exhibit-navbar {
   background-color: $teal;
   padding: 0;
@@ -26,7 +31,6 @@
   .nav-link {
     text-transform: uppercase;
     color: $white;
-    letter-spacing: 1px;
     padding: 8px 20px;
     border-bottom: 0;
   }
@@ -37,7 +41,8 @@
       color: $white;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 14px;
+      letter-spacing: 2px;
       &:hover {
         background-color: $darkteal;
       }
@@ -162,6 +167,19 @@
         border-top: 0;
       }
     }
+  }
+}
+
+#content {
+  li {
+    padding-left: 25px;
+    &::marker {
+      color: $red;
+      font-size: 1.2em;
+    }
+  }
+  .tab-content li {
+    padding-left: 0;
   }
 }
 
