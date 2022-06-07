@@ -8,6 +8,9 @@ fi
 release_name="${1}"
 namespace="${2}"
 
+envsubst < ./chart/templates/gitlab-token.tmpl.yaml > ./chart/templates/gitlab-token.yaml
+kubectl apply -f ./chart/templates/gitlab-token.yaml
+
 helm repo update
 
 helm upgrade \
