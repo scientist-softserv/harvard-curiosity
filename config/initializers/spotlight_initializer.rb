@@ -84,3 +84,7 @@
 # }
 
 Spotlight::Engine.config.exhibit_themes = %w[default no_thumbnail_or_viewer vanilla_spotlight]
+
+#changes the dimensions of the exhibit masthead
+Spotlight::Engine.config.featured_image_masthead_size = [2000, 350]
+Spotlight::Engine.config.masthead_initial_crop_selection = [1600, 280]

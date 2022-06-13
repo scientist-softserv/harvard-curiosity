@@ -144,7 +144,9 @@ body {
       max-height: unset;
     .site-title.h1 {
       font-family: "Trueno", sans-serif;
+      font-size: 54px;
       letter-spacing: 3.05px;
+      line-height: 74px;
       padding-top: 25px;
       font-weight: 700;
     }
@@ -155,6 +157,7 @@ body {
       letter-spacing: initial;
       line-height: 40.04px;
       padding-top: 20px;
+      font-weight: 500;
     }
     .site-title-wrapper {
       white-space: normal;
