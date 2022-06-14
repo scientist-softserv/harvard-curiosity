@@ -16,6 +16,9 @@ spotlight.build:
     - docker build -f Dockerfile . --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
     - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   tags:
     - local
 
@@ -32,15 +35,21 @@ spotlight.build:
 #     - bundle check || bundle
 #     - bundle exec pronto run -f gitlab -c origin/main
 #     - cd /app/samvera/hyrax-webapp && bundle exec rubocop -P
+#   rules:
+#       - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 #   tags:
 #     - docker
 
 # test:
 #   stage: go
 #   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-#   allow_failure: true
 #   variables:
-
+#   allow_failure: false
+  # rules:
+  #   - if: $CI_COMMIT_BRANCH == "main"
+  #   - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  # tags:
+  #   - docker
 
 spotlight.staging:
   stage: go
@@ -57,7 +66,7 @@ spotlight.staging:
   allow_failure: true
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_COMMIT_BRANCH != "main" && $CI_COMMIT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: manual
   tags:
     - docker
