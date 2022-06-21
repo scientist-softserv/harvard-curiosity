@@ -46,6 +46,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'database_cleaner-active_record'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -55,6 +56,9 @@ gem 'blacklight-spotlight', github: 'projectblacklight/spotlight'
 
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
+  gem 'debug'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 gem 'rsolr', '>= 1.0', '< 3'
 gem 'bootstrap', '~> 4.0'

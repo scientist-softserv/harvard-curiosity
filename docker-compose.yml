@@ -37,4 +37,4 @@ volumes:
   cache:
 
 networks:
-      internal:
+  internal:
