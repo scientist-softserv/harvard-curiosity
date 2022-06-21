@@ -6,7 +6,10 @@
 #
 default: &default
   adapter: postgresql
+  host: <%= ENV.fetch('POSTGRES_HOST') { 'postgres' } %>
   database: <%= ENV.fetch("POSTGRES_DB") { 'spotlight' } %>
+  username: <%= ENV.fetch('POSTGRES_USER') { 'spotlight_user' } %>
+  password: <%= ENV.fetch('POSTGRES_PASSWORD') { 'spotlight_password' } %>
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
@@ -23,4 +26,3 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] || "postgresql://#{ENV['POSTGRES_USER']}:#{ENV['POSTGRES_PASSWORD']}@#{ENV['POSTGRES_HOST']}:#{ENV['POSTGRES_PORT']}/#{ENV['POSTGRES_DB']}" %>
