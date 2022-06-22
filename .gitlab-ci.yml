@@ -22,7 +22,7 @@ spotlight.build:
   tags:
     - local
 
-# lint:
+# spotlight.lint:
 #   stage: go
 #   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
 #   variables:
@@ -40,16 +40,44 @@ spotlight.build:
 #   tags:
 #     - docker
 
-# test:
-#   stage: go
-#   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-#   variables:
-#   allow_failure: false
-  # rules:
-  #   - if: $CI_COMMIT_BRANCH == "main"
-  #   - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-  # tags:
-  #   - docker
+spotlight.test:
+  stage: go
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  services:
+    - name: postgres:latest
+    - name: solr:8.8
+      command:
+        - "sh -c solr-precreate spotlight /opt/solr/server/configsets/spotlightconf"
+  variables:
+    IN_DOCKER: "true"
+    POSTGRES_DB: spotlight_test
+    POSTGRES_HOST: postgres
+    POSTGRES_PASSWORD: spotlight_password
+    POSTGRES_USER: spotlight_user
+    RAILS_ENV: test
+  allow_failure: true
+  before_script:
+    - rm -f /app/spotlight/tmp/capybara/*
+    - rm -rf $CI_PROJECT_DIR/capybara
+    - cd /app/spotlight
+    - bin/rails db:create db:migrate
+  script:
+    - bin/rspec --format progress --format RspecJunitFormatter --out rspec.xml
+  after_script:
+    - test -e /app/spotlight/tmp/capybara && cp -r /app/spotlight/tmp/capybara $CI_PROJECT_DIR/capybara
+    - test -e /app/spotlight/rspec.xml && cp /app/spotlight/rspec.xml $CI_PROJECT_DIR/rspec.xml
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  artifacts:
+    when: always
+    paths:
+      - capybara/*.html
+      - rspec.xml
+    reports:
+      junit: rspec.xml
+  tags:
+    - docker
 
 spotlight.staging:
   stage: go
