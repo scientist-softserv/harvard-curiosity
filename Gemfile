@@ -78,6 +78,11 @@ gem 'devise_invitable'
 gem 'pg', '~> 1.2'
 gem 'redis'
 
+# gems for linting
+gem 'pronto'
+gem 'pronto-rubocop', require: false
+gem 'rubocop', require: false
+
 # Sentry-raven for error handling
 gem "sentry-raven"
 

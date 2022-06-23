@@ -11,6 +11,7 @@ ARG GROUP_ID_NAME=curiosity
 RUN apk --no-cache upgrade && \
   apk add --no-cache \
   build-base \
+  cmake \
   curl \
   git \
   imagemagick \
