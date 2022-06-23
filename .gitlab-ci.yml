@@ -22,23 +22,23 @@ spotlight.build:
   tags:
     - local
 
-# spotlight.lint:
-#   stage: go
-#   image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
-#   variables:
-#     PRONTO_GITLAB_API_ENDPOINT: "https://gitlab.com/api/v4"
-#   before_script:
-#     - export PRONTO_GITLAB_API_PRIVATE_TOKEN=$GITLAB_API_TOKEN
-#   allow_failure: false
-#   script:
-#     - git fetch && git checkout main && git checkout ${CI_COMMIT_SHORT_SHA}
-#     - bundle check || bundle
-#     - bundle exec pronto run -f gitlab -c origin/main
-#     - cd /app/samvera/hyrax-webapp && bundle exec rubocop -P
-#   rules:
-#       - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-#   tags:
-#     - docker
+spotlight.lint:
+  stage: go
+  image: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+  variables:
+    PRONTO_GITLAB_API_ENDPOINT: "https://gitlab.com/api/v4"
+  before_script:
+    - export PRONTO_GITLAB_API_PRIVATE_TOKEN=$GITLAB_API_TOKEN
+  allow_failure: true
+  script:
+    - git fetch && git checkout main && git checkout ${CI_COMMIT_SHORT_SHA}
+    - bundle check || bundle
+    - bundle exec pronto run -f gitlab -c origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - cd /app/spotlight && bundle exec rubocop -P
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  tags:
+    - docker
 
 spotlight.test:
   stage: go
