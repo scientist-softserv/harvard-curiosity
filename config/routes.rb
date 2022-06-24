@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
   root to: 'spotlight/exhibits#index'
   mount Spotlight::Engine, at: 'spotlight'
   mount Blacklight::Engine => '/'
-#  root to: "catalog#index" # replaced by spotlight root path
+  #  root to: "catalog#index" # replaced by spotlight root path
   concern :searchable, Blacklight::Routes::Searchable.new
 
   # resources :exhibit_finder, only: %i[show index]
@@ -34,5 +33,4 @@ Rails.application.routes.draw do
     get '/admin_users/clear_mask_role', to: 'admin_users#clear_mask_role'
     get '/admin_users/mask_role/:role', to: 'admin_users#mask_role'
   end
-
 end

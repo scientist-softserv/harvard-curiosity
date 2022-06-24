@@ -51,7 +51,7 @@ module Spotlight
           Spotlight::Contact,
           Spotlight::CustomField,
           Translation
-          ], exhibit_id: user.exhibit_roles.pluck(:resource_id)
+        ], exhibit_id: user.exhibit_roles.pluck(:resource_id)
         can :read, Spotlight::JobTracker, on_id: user.exhibit_roles.pluck(:resource_id), on_type: 'Spotlight::Exhibit'
         can :read, Spotlight::Language, exhibit_id: user.exhibit_roles.pluck(:resource_id)
         can [:read, :curate], Spotlight::Exhibit, id: user.exhibit_roles.pluck(:resource_id)
