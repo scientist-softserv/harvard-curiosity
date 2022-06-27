@@ -117,6 +117,11 @@ $dropdown-link-hover-bg: $background-gray;
 $dropdown-item-padding-x: 1.21rem;
 $dropdown-transition: transform 0.5s ease; // new variable
 
+// resets the font size for links since it somewhere gets set to 17 in harvard patterns gem
+a {
+  font-size: 14px
+}
+
 .dropdown-toggle {
   &.btn-sm {
     & + .dropdown-menu {
