@@ -33,4 +33,8 @@ Rails.application.routes.draw do
     get '/admin_users/clear_mask_role', to: 'admin_users#clear_mask_role'
     get '/admin_users/mask_role/:role', to: 'admin_users#mask_role'
   end
+
+  authenticate :user, lambda { |u| u.superadmin? } do
+    mount DelayedJobWeb, at: "/delayed_job"
+  end
 end

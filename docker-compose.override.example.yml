@@ -6,9 +6,26 @@ version: '3.8'
 services:
   web: &app
     depends_on:
+      - worker
       - postgres
       - db_migrate
       - solr
+
+  worker:
+    image: spotlight
+    env_file:
+      - .env
+    environment:
+      - MALLOC_ARENA_MAX=2
+    command: bin/rails jobs:work
+    depends_on:
+      - postgres
+      - db_migrate
+      - solr
+    volumes:
+      - .:/app/spotlight:cached
+    networks:
+      internal:
 
   db_migrate:
     image: spotlight
