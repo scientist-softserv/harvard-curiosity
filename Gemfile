@@ -89,3 +89,4 @@ gem 'rubocop-rspec', require: false
 gem 'sentry-raven'
 
 gem 'delayed_job_active_record'
+gem 'delayed_job_web'
