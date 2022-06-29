@@ -27,4 +27,10 @@ Rails.application.routes.draw do
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # allow routing to masked pages
+  scope module: 'spotlight' do
+    get '/admin_users/clear_mask_role', to: 'admin_users#clear_mask_role'
+    get '/admin_users/mask_role/:role', to: 'admin_users#mask_role'
+  end
 end
