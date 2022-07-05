@@ -13,12 +13,9 @@ services:
       - VIRTUAL_PORT=3000
       - VIRTUAL_HOST=spotlight.test
     ports:
-      - 3000:3000
+      - 21407:4000
     volumes:
-      - .:/app/spotlight:cached
-      - node:/app/spotlight/node_modules
-      - assets:/app/spotlight/public/assets
-      - cache:/app/spotlight/tmp/cache
+      - .:/app/spotlight
     networks:
       internal:
 
@@ -32,9 +29,6 @@ services:
 
 volumes:
   redis:
-  node:
-  assets:
-  cache:
 
 networks:
   internal:

@@ -16,7 +16,7 @@ Blacklight / Spotlight
 
 ### Important URLs
 
-dev: http://localhost:3000
+dev: https://localhost:21407/
 
 ## Local Development Environment Setup Instructions
 
@@ -48,13 +48,11 @@ cp docker-compose.override.example.yml docker-compose.override.yml
 
 ### 5. Build the Docker image(s) and bring up the stack
 
-`docker compose up -d --build --force-recreate`
+`docker compose -f docker-compose.yml -f docker-compose.override.yml up -d --build --force-recreate`
 
-After running the above commands, check that you see the following output in the terminal, then navigate to http://localhost:3000
+After running the above commands, check that you see the following output in the terminal, then navigate to https://localhost:21407/
 
 `curiosity-db_migrate-1 exited with code 0`
-
-NOTE: I still had to shell in and run rails db:migrate
 
 ### Admin login info
 
@@ -63,9 +61,9 @@ You can find login credentials in the [db/seeds.rb](db/seeds.rb) file. These SHO
 To import these:
 
 ```bash
-docker exec -it curiosity_web_1 sh
-rails db:migrate
-rails db:seed
+docker exec -it harvard-curiosity-web-1 sh
+bundle exec rails db:migrate
+bundle exec rails db:seed
 ```
 
 ### How to run the test stack
