@@ -44,6 +44,13 @@ externalPostgresql:
   database: staging-harvard-spotlight
 
 fcrepo:
+  resources:
+    limits:
+      memory: "4Gi"
+      cpu: "2"
+    requests:
+      memory: "2Gi"
+      cpu: "1"
   enabled: false
 externalFcrepoHost: fcrepo.staging-fcrepo.svc.cluster.local
 
