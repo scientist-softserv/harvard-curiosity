@@ -5,8 +5,8 @@
   .background-container {
     border-right: none;
     filter: none;
+    background-position: center;
   }
-
   .site-title.h1, small {
     text-shadow: 1px 1px 0 $black;
     color: $white;
@@ -14,20 +14,33 @@
     font-style: unset;
     font-weight: 700;
   }
+  .site-title-container .site-title.h1 {
+    font-size: 40px;
+    line-height: 45px;
+    @media (max-width: 991px) {
+      font-size: 25px;
+      line-height: 30px;
+    }
+  }
+}
+
+.nav-link {
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
 #exhibit-navbar {
   background-color: $teal;
   padding: 0;
   width: 97%;
+  max-width: 1450px;
   .navbar-nav {
     width: 100%;
   }
   .nav-link {
     text-transform: uppercase;
     color: $white;
-    letter-spacing: 1px;
-    padding: 8px 20px;
+    padding: 8px 40px;
     border-bottom: 0;
   }
   .dropdown-menu {
@@ -37,7 +50,8 @@
       color: $white;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 14px;
+      letter-spacing: 2px;
       &:hover {
         background-color: $darkteal;
       }
@@ -45,24 +59,28 @@
   }
 }
 
-.exhibit-search-form-wrapper, #exhibit-navbar {
+#exhibit-navbar {
   margin-left: auto;
   margin-right: auto;
 }
 
 .exhibit-search-form-wrapper{
-    width: 100%;
-    .exhibit-search-form {
-      position: relative;
-      padding: 20px;
-      background-color: $darkteal;
-      button#search {
-        padding: 6px 12px;
-      }
+  width: 100%;
+  background-color: $darkteal;
+  .exhibit-search-form {
+    position: relative;
+    padding: 10px 55px;
+    button#search {
+      padding: 6px 12px;
     }
-  @media (min-width: 768px){
-    .exhibit-search-form {
-      width: 50%;
+    .search-query-form {
+      width: 100%;
+    }
+    @media (max-width: 1199px) {
+      padding: 10px 55px 10px 10px;
+    }
+    @media (max-width: 991px) {
+      padding: 10px 35px;
     }
   }
 }
@@ -162,6 +180,19 @@
         border-top: 0;
       }
     }
+  }
+}
+
+#content {
+  li {
+    padding-left: 25px;
+    &::marker {
+      color: $red;
+      font-size: 1.2em;
+    }
+  }
+  .tab-content li {
+    padding-left: 0;
   }
 }
 

@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -54,34 +54,34 @@ Rails.application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  config.cache_store = :redis_cache_store, { url: ENV.fetch('REDIS_URL', nil) }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "CURIOSity_production"
   if ENV['SMTP_ENABLED'].present? && ENV['SMTP_ENABLED'].to_s == 'true'
     config.action_mailer.smtp_settings = {
-      user_name: ENV['SMTP_USER_NAME'],
-      password: ENV['SMTP_PASSWORD'],
-      address: ENV['SMTP_ADDRESS'],
-      domain: ENV['SMTP_DOMAIN'],
-      port: ENV['SMTP_PORT'],
+      user_name: ENV.fetch('SMTP_USER_NAME', nil),
+      password: ENV.fetch('SMTP_PASSWORD', nil),
+      address: ENV.fetch('SMTP_ADDRESS', nil),
+      domain: ENV.fetch('SMTP_DOMAIN', nil),
+      port: ENV.fetch('SMTP_PORT', nil),
       enable_starttls_auto: true,
-      authentication: ENV['SMTP_TYPE']
+      authentication: ENV.fetch('SMTP_TYPE', nil)
     }
     # ActionMailer Config
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.perform_deliveries = true
     config.action_mailer.raise_delivery_errors = false
-    config.action_mailer.asset_host = ENV['APP_HOST']
+    config.action_mailer.asset_host = ENV.fetch('APP_HOST', nil)
   else
     config.action_mailer.delivery_method = :test
   end
 
-  config.action_mailer.default_url_options = { host: ENV['APP_HOST'], protocol: 'https' }
+  config.action_mailer.default_url_options = { host: ENV.fetch('APP_HOST', nil), protocol: 'https' }
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -108,7 +108,7 @@ Rails.application.configure do
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)

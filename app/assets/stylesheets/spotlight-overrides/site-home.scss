@@ -10,7 +10,17 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 19px;
+  @media (max-width: 767px) {
+    font-size: 17px
+  }
+  a {
+    font-size: 19px;
+    @media (max-width: 767px) {
+      font-size: 17px
+    }
+  }
+
   #main-container {
     flex-grow: 1;
     .nav.contacts, .dl-more-details {
@@ -28,6 +38,14 @@ body {
       max-width: 1400px;
     }
   }
+  h1, .h1 {
+    font-size: 60px;
+    line-height: 74px;
+    @media(max-width: 767px) {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
 }
 .region.hl__footer {
   position: unset;
@@ -37,24 +55,23 @@ body {
 .nav.nav-pills.tags {
   .nav-item {
     margin: 0 10px;
-    transition: .15s;
-    border-radius: 0.25rem;
     margin-bottom: 10px;
-    &:hover {
-      -webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, .3);
-    }
-    .nav-link{
-      background-color: $gray-200;
+    border-radius: 4px;
+    .nav-link {
+      transition: all 0.4s ease;
+      font-size: 12px;
+      line-height: 16px;
+      padding: 5px 9px;
+      border: 1px solid $black;
       color: $black;
-      border-bottom: 0;
-      font-size: 14px;
-      &:hover, &:focus {
-        border: 0;
-        border-color: unset
-      }
-      &.active {
-        background-color: $gray-500;
+      background-color: transparent;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.17px;
+      &:hover, &:focus, &.active  {
+        border: 1px solid $gray-600;
+        background-color: $gray-600;
         color: $white;
       }
     }
@@ -112,8 +129,11 @@ body {
   }
 }
 
-.dropdown-item:active {
-  background-color: $gray-200;
+.dropdown-item {
+  &.active, &:active, &:hover, &:focus {
+    color: $black;
+    background-color: $gray-100;
+  }
 }
 
 .masthead {
@@ -137,6 +157,7 @@ body {
       letter-spacing: initial;
       line-height: 40.04px;
       padding-top: 20px;
+      font-weight: 500;
     }
     .site-title-wrapper {
       white-space: normal;

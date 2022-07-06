@@ -1,6 +1,6 @@
 @import 'harvard-bootstrap';
 
-.browse-landing {
+.browse-landing  {
   .image-overlay {
     border: 0;
     border-radius: 0;
@@ -18,24 +18,45 @@
       margin-bottom: 0;
       top: unset;
       transform: unset;
+      text-shadow: 1px 1px 0 #1e1e1e;
       .title {
         font-size: 32px;
         color: $white;
         text-transform: none;
       }
-      .item-count {
+      .item-count, .category-subtitle {
         text-transform: none;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 400;
         margin-top: 0;
         letter-spacing: 0;
+        color: $white;
+      }
+      .category-subtitle {
+        font-family: "Lora", serif;
+        font-style: italic;
+        font-size: 22px;
       }
     }
   }
+
+  .long-description-text {
+    margin: ($spacer * 2) 0;
+    width: 40em;
+  }
 }
 
-.blacklight-feature_pages,
-.blacklight-about_pages {
+.blacklight-feature_pages {
+  .category-subtitle {
+    font-family: "Lora", serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+.blacklight-feature_pages-show,
+.blacklight-about_pages-show, .blacklight-browse-show, .blacklight-catalog-show {
   #main-container {
     margin-top: 1rem;
     .st__content-block--text {
@@ -49,9 +70,75 @@
       line-height: 42px;
       margin-bottom: 20px;
     }
+
+    h1 {
+      line-height: 40px;
+      .title {
+        font-weight: 700;
+        font-size: 32px;
+        text-transform: uppercase;
+        letter-spacing: 2.4px;
+      }
+      .item-count {
+        font-size: 1.8rem;
+        font-weight: 300;
+        &::before {
+          content: " \000B7 ";
+          color: #6c757d;
+          padding-right: 0.5rem;
+          font-weight: 800;
+        }
+      }
+      .subtitle {
+        font-size: 1.8rem;
+        font-weight: 500;
+        &::before {
+          content: "";
+          padding-right: 0;
+        }
+      }
+    }
+
+    #document .blacklight-exhibit_tags, .document .blacklight-exhibit_tags {
+      a {
+        font-family: 'Trueno';
+        transition: all 0.4s ease;
+        font-size: 12px;
+        line-height: 16px;
+        padding: 5px 9px;
+        border: 1px solid $black;
+        color: $black;
+        background-color: transparent;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1.17px;
+        &:hover, &:focus, &.active  {
+          border: 1px solid $gray-600;
+          background-color: $gray-600;
+          color: $white;
+        }
+      }
+    }
+
+    .long-description-text {
+      margin: unset;
+      width: unset;
+    }
+    
+    .very-long-description-text {
+      width: auto;
+    
+      @media (min-width: breakpoint-min("md")) {
+        column-gap: unset;
+        column-width: unset;
+      }
+    }
+
     .spotlight-flexbox.browse-categories {
       justify-content: space-between;
     }
+
     .page-sidebar {
       .nav-heading.h4 {
         background-color: $gray-100;
@@ -72,27 +159,41 @@
           margin-top: 1.5rem;
           a, a.nav-link {
             color: $black;
-            line-height: 1.5;
-            text-transform: uppercase;
+            line-height: 32px;
             letter-spacing: 1px;
-          }
+            text-transform: capitalize;
+            font-size: 14px;
+            border-bottom-width: 0;
+            &:hover {
+              border: none;
+              text-decoration: underline;
+              text-decoration-thickness: 3px;
+              text-underline-offset: 3px;
+              text-decoration-color: rgba(5, 121, 184, 0.3);
+              }            
+            }
           h2.h6 {
             font-size: 14px;
+            a {
+              letter-spacing: 2.4px;
+              text-transform: uppercase;
+            }
           }
           &.active {
             color: $black;
+            font-size: 14px;
+            text-transform: capitalize;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 3px;
+            text-decoration-color: rgba(5, 121, 184, 0.3);
             a, a.nav-link {
               color: $black;
-              line-height: 1.5;
-              text-transform: uppercase;
               letter-spacing: 1px;
+              text-decoration-color: rgba(5, 121, 184, 0.3);
             }
             h2.h6 {
               font-weight: 600;
-              text-decoration: underline;
-              text-decoration-thickness: 3px;
-              text-decoration-color:  rgba(5, 121, 184, 0.3);
-              text-underline-offset: 3px;
               line-height: 1.6;
             }
           }
@@ -102,12 +203,24 @@
               margin-top: .5rem;
               list-style: none;
               margin-left: 0;
+              letter-spacing: 1px;
               a {
                 color: $black;
                 font-weight: 400;
+                text-decoration-color: transparent;
+                &:hover {
+                  text-decoration: underline;
+                  text-decoration-thickness: 3px;
+                  text-underline-offset: 3px;
+                  text-decoration-color: rgba(5, 121, 184, 0.3);
+                }
               }
               &.active {
                 font-family: 'Trueno';
+                text-decoration: underline;
+                text-decoration-thickness: 3px;
+                text-underline-offset: 3px;
+                text-decoration-color: rgba(5, 121, 184, 0.3);
               }
             }
           }

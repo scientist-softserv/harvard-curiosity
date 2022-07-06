@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_08_152378) do
+ActiveRecord::Schema.define(version: 2022_05_26_001043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,21 @@ ActiveRecord::Schema.define(version: 2022_04_08_152378) do
     t.index ["document_id"], name: "index_bookmarks_on_document_id"
     t.index ["document_type", "document_id"], name: "index_bookmarks_on_document_type_and_document_id"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -334,6 +349,7 @@ ActiveRecord::Schema.define(version: 2022_04_08_152378) do
     t.string "role"
     t.integer "resource_id"
     t.string "resource_type"
+    t.string "role_mask"
     t.index ["resource_type", "resource_id", "user_id"], name: "index_spotlight_roles_on_resource_and_user_id", unique: true
   end
 

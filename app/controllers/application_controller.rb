@@ -5,5 +5,4 @@ class ApplicationController < ActionController::Base
   include Spotlight::Controller
 
   layout :determine_layout if respond_to? :layout
-
 end

@@ -4,20 +4,43 @@
 <%# default partial to display solr document fields in catalog show view -%>
 <div class='row'>
   <div class='col-lg-8'>
-    <dl class="row dl-invert document-metadata">
-        <% if @document._source[:full_title_tesim].present? %>
-          <dt class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-3">
-            title:
-          </dt>
-          <dd class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-9">
-            <%= @document._source[:full_title_tesim].first %>
-          </dd>
-        <% end %>
+    <%# Mobile, collapsed view of metadata %>
+    <dl class="row dl-invert document-metadata d-md-none">
+      <% if @document._source[:full_title_tesim].present? %>
+        <dt class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-3 mobile-fields">
+          <button class="field-button dropdown-toggle" type="button" data-toggle="collapse" data-target="#field-full_title_tesim">
+            title
+          </button>
+        </dt>
+        <dd id='field-full_title_tesim' class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-9 collapse mobile-fields">
+          <%= @document._source[:full_title_tesim].first %>
+        </dd>
+      <% end %>
       <% doc_presenter.fields_to_render.each do |field_name, field| -%>
-        <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-3"><%= render_document_show_field_label document, field: field_name %></dt>
-        <dd class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-9"><%= doc_presenter.field_value field %></dd>
+        <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-3 mobile-fields">
+          <button class="field-button dropdown-toggle" type="button" data-toggle="collapse" data-target="#field-<%= field_name.parameterize %>">
+            <%= (render_document_show_field_label document, field: field_name).chop %>
+          </button>
+        </dt>
+        <dd id='field-<%= field_name.parameterize %>' class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-9 collapse mobile-fields"><%= doc_presenter.field_value field %></dd>
       <% end -%>
     </dl>
+    <%# Tablet/desktop view of metadata %>
+    <dl class="row dl-invert document-metadata d-none d-md-flex">
+      <% if @document._source[:full_title_tesim].present? %>
+        <dt class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-4">
+          title:
+        </dt>
+        <dd class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-8">
+          <%= @document._source[:full_title_tesim].first %>
+        </dd>
+      <% end %>
+      <% doc_presenter.fields_to_render.each do |field_name, field| -%>
+        <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-4"><%= render_document_show_field_label document, field: field_name %></dt>
+        <dd class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-8"><%= doc_presenter.field_value field %></dd>
+      <% end -%>
+    </dl>
+    <%# end metadata %>
   </div>
   <div class='col-lg-4 sidebar'>
     <%= render 'tools_and_links' %>

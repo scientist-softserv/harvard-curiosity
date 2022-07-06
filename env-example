@@ -1,6 +1,7 @@
 RAILS_LOG_TO_STDOUT="true"
-DATABASE_URL=postgres://spotlight_user:spotlight_password@postgres/spotlight
-RAILS_ENV=development
+POSTGRES_HOST=postgres
+POSTGRES_USER=spotlight_user
+POSTGRES_PASSWORD=spotlight_password
 REDIS_HOST=redis
 SOLR_PORT=8983
 SOLR_HOST=solr
