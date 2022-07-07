@@ -47,7 +47,7 @@ spotlight.test:
     - name: postgres:latest
     - name: solr:8.8
       command:
-        - "sh -c solr-precreate spotlight /opt/solr/server/configsets/spotlightconf"
+        - "sh -c 'mkdir -p /tmp/spotlightconf && cd /tmp/spotlightconf && wget old.notch8.com/harvardspotlightconf.tgz && tar zxfv harvardspotlightconf.tgz && solr-precreate spotlight /tmp/spotlightconf'"
   variables:
     IN_DOCKER: "true"
     POSTGRES_DB: spotlight_test

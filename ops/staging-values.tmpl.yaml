@@ -40,7 +40,7 @@ postgresql:
 externalPostgresql:
   host: pg-postgresql.staging-postgres.svc.cluster.local
   username: postgres
-  password: $POSTGRES_PASSWORD
+  password: $STAGING_POSTGRES_PASSWORD
   database: staging-harvard-spotlight
 
 fcrepo:
