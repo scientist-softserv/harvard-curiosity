@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
     environment:
-      - VIRTUAL_PORT=3000
+      - VIRTUAL_PORT=4000
       - VIRTUAL_HOST=spotlight.test
     ports:
       - 21407:4000
