@@ -53,8 +53,8 @@ WORKDIR /app/spotlight
 
 COPY --chown=${APP_ID_NAME}:${GROUP_ID_NAME} Gemfile* /app/spotlight/
 
-# Uncomment if developing Spotlight OAIPMH Resources Gem within this application
-# COPY --chown=1001:1001 ./vendor/spotlight-oaipmh-resources /app/spotlight/vendor/spotlight-oaipmh-resources
+# Uncomment if developing the spotlight-oaipmh-resources gem within this application
+# COPY --chown=${APP_ID_NAME}:${GROUP_ID_NAME} ./vendor/spotlight-oaipmh-resources /app/spotlight/vendor/spotlight-oaipmh-resources
 
 RUN mkdir /app/bundle && \
   bundle config set force_ruby_platform true && \
