@@ -91,7 +91,7 @@ gem 'sentry-raven'
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 
-# bring in the Harvard Harvesting gem, commented out version is used for development.
-# do not build with the second version uncommented.
+# To develop the spotlight-oaipmh-resources gem locally, clone the repo into the vendor/ directory,
+# comment out the below line, and uncomment the line below it. Rebuild the Docker image to call bundler
 # gem 'spotlight-oaipmh-resources', git: 'https://github.com/harvard-lts/spotlight-oaipmh-resources', branch: 'main'
 # gem 'spotlight-oaipmh-resources', path: 'vendor/spotlight-oaipmh-resources'
