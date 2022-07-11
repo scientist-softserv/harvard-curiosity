@@ -94,7 +94,6 @@ spotlight.staging:
   allow_failure: true
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
-      when: manual
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: manual
   tags:
