@@ -16,8 +16,8 @@ module Spotlight
       can :manage, :all if user.superadmin?
 
       # exhibit admin
-      if (user.is_masked?)
-        if (user.masked_role.eql?('admin'))
+      if user.is_masked?
+        if user.masked_role.eql?('admin')
           can [:update, :import, :export, :destroy], Spotlight::Exhibit
           can :manage, [Spotlight::BlacklightConfiguration, Spotlight::ContactEmail, Spotlight::Language]
           can :manage, Spotlight::Role, resource_type: 'Spotlight::Exhibit'
@@ -31,7 +31,7 @@ module Spotlight
       can :manage, [PaperTrail::Version, Spotlight::FeaturedImage] if user.exhibit_roles.any?
 
       # exhibit curator
-      if (user.is_masked?)
+      if user.is_masked?
         can :manage, [
           Spotlight::Attachment,
           Spotlight::Search,

@@ -13,7 +13,7 @@ spotlight.build:
   stage: build
   script:
     - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
-    - docker build -f Dockerfile . --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker build -f Dockerfile . --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA --build-arg GROUP_ID_NUMBER=55000
     - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
     - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
   rules:
@@ -47,7 +47,7 @@ spotlight.test:
     - name: postgres:latest
     - name: solr:8.8
       command:
-        - "sh -c solr-precreate spotlight /opt/solr/server/configsets/spotlightconf"
+        - "sh -c 'mkdir -p /tmp/spotlightconf && cd /tmp/spotlightconf && wget old.notch8.com/harvardspotlightconf.tgz && tar zxfv harvardspotlightconf.tgz && solr-precreate spotlight /tmp/spotlightconf'"
   variables:
     IN_DOCKER: "true"
     POSTGRES_DB: spotlight_test
@@ -94,7 +94,6 @@ spotlight.staging:
   allow_failure: true
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
-      when: manual
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
       when: manual
   tags:

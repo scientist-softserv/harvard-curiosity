@@ -26,7 +26,8 @@ ingress:
   annotations: {
     kubernetes.io/ingress.class: "nginx",
     nginx.ingress.kubernetes.io/proxy-body-size: "0",
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-prod,
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   }
   tls:
     - hosts:
@@ -40,10 +41,17 @@ postgresql:
 externalPostgresql:
   host: pg-postgresql.staging-postgres.svc.cluster.local
   username: postgres
-  password: $POSTGRES_PASSWORD
+  password: $STAGING_POSTGRES_PASSWORD
   database: staging-harvard-spotlight
 
 fcrepo:
+  resources:
+    limits:
+      memory: "4Gi"
+      cpu: "2"
+    requests:
+      memory: "2Gi"
+      cpu: "1"
   enabled: false
 externalFcrepoHost: fcrepo.staging-fcrepo.svc.cluster.local
 

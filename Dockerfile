@@ -5,7 +5,7 @@ ENV RAILS_SERVE_STATIC_FILES="1"
 ENV RAILS_LOG_TO_STDOUT="1"
 ARG APP_ID_NUMBER=55000
 ARG APP_ID_NAME=curiosity
-ARG GROUP_ID_NUMBER=55000
+ARG GROUP_ID_NUMBER=1636
 ARG GROUP_ID_NAME=curiosity
 
 RUN apk --no-cache upgrade && \
@@ -53,6 +53,9 @@ WORKDIR /app/spotlight
 
 COPY --chown=${APP_ID_NAME}:${GROUP_ID_NAME} Gemfile* /app/spotlight/
 
+# Uncomment if developing the spotlight-oaipmh-resources gem within this application
+# COPY --chown=${APP_ID_NAME}:${GROUP_ID_NAME} ./vendor/spotlight-oaipmh-resources /app/spotlight/vendor/spotlight-oaipmh-resources
+
 RUN mkdir /app/bundle && \
   bundle config set force_ruby_platform true && \
   bundle config set path /app/bundle && \
@@ -74,4 +77,4 @@ RUN mkdir -p /app/spotlight/tmp/cache/downloads && \
   mkdir /app/certs && \
   openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -subj "/C=US/ST=Massachusetts/L=Cambridge/O=Library Technology Services/CN=*.lib.harvard.edu" -extensions SAN -reqexts SAN -config /etc/ssl1.1/openssl.cnf -keyout /app/certs/server.key -nodes -out /app/certs/server.pem
 
-CMD ["passenger", "start", "--port", "4000", "--log-file", "/dev/stdout", "--no-install-runtime", "--no-compile-runtime","--ssl","--ssl-certificate","/app/certs/server.pem","--ssl-certificate-key","/app/certs/server.key", "--environment","development"]
+CMD ["passenger", "start", "--port", "4000", "--log-file", "/dev/stdout", "--no-install-runtime", "--no-compile-runtime","--ssl","--ssl-certificate","/app/certs/server.pem","--ssl-certificate-key","/app/certs/server.key"]
