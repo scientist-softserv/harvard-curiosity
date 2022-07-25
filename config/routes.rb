@@ -37,4 +37,6 @@ Rails.application.routes.draw do
   authenticate :user, ->(u) { u.superadmin? } do
     mount DelayedJobWeb, at: '/delayed_job'
   end
+
+  match '*unmatched', to: 'application#not_found', via: :all
 end
