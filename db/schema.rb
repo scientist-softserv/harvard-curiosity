@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_26_001043) do
+ActiveRecord::Schema.define(version: 2022_07_21_190621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -289,6 +289,16 @@ ActiveRecord::Schema.define(version: 2022_05_26_001043) do
     t.index ["exhibit_id"], name: "index_spotlight_main_navigations_on_exhibit_id"
   end
 
+  create_table "spotlight_oaipmh_harvesters", force: :cascade do |t|
+    t.bigint "exhibit_id"
+    t.string "base_url"
+    t.string "set"
+    t.string "mapping_file"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["exhibit_id"], name: "index_spotlight_oaipmh_harvesters_on_exhibit_id"
+  end
+
   create_table "spotlight_pages", id: :serial, force: :cascade do |t|
     t.string "title"
     t.string "type"
@@ -340,6 +350,7 @@ ActiveRecord::Schema.define(version: 2022_05_26_001043) do
     t.binary "metadata"
     t.integer "index_status"
     t.integer "upload_id"
+    t.string "external_id"
     t.index ["index_status"], name: "index_spotlight_resources_on_index_status"
     t.index ["upload_id"], name: "index_spotlight_resources_on_upload_id"
   end

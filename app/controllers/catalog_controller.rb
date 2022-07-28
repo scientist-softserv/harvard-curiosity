@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# OVERRIDE show method from Blacklight 7.24.0
 
 ##
 # Simplified catalog controller
@@ -50,5 +51,22 @@ class CatalogController < ApplicationController
     config.add_results_collection_tool(:sort_widget)
     config.add_results_collection_tool(:per_page_widget)
     config.add_results_collection_tool(:view_type_group)
+  end
+
+  # OVERRIDE from Blacklight 7.24.0: make the show page path accept uppercase and lowercase urns in the browser to be compatible with previous spotlight urls.
+  def show
+    uppercase_id = params[:id].upcase
+    if (params[:id] =~ /[a-z]/).present?
+      redirect_to({ action: :show, id: uppercase_id }, status: 301)
+    end
+
+    deprecated_response, @document = search_service.fetch(uppercase_id)
+    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, 'The @response instance variable is deprecated; use @document.response instead.')
+
+    respond_to do |format|
+      format.html { @search_context = setup_next_and_previous_documents }
+      format.json
+      additional_export_formats(@document, format)
+    end
   end
 end
