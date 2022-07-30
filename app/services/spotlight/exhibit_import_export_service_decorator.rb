@@ -115,6 +115,24 @@ module Spotlight
         end
       end
 
+      # OVERRIDE: fix feature/child page JSON issue when importing exhibits from earlier spotlight versions.
+      # In earlier versions of spotlight, the JSON files included nested child_pages.
+      # In this version, the child_pages are just feature_pages that have a parent_page_slug.
+      # This block handles child_pages and turns them into feature_pages so they can be imported
+      child_pages_array = []
+      hash[:feature_pages].each do |attr|
+        next if attr[:child_pages].blank?
+
+        parent_page_slug_hash = { parent_page_slug: attr[:slug] }
+        attr[:child_pages].each do |child_page|
+          child_page.merge!(parent_page_slug_hash)
+          child_page.delete(:child_pages)
+          child_pages_array.push(child_page)
+        end
+        attr.delete(:child_pages)
+      end
+      hash[:feature_pages].concat(child_pages_array)
+
       hash[:feature_pages].each do |attr|
         masthead = attr.delete(:masthead)
         thumbnail = attr.delete(:thumbnail)
