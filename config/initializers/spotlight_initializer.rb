@@ -57,6 +57,10 @@ Spotlight::Engine.config.upload_fields = [
     label: -> { I18n.t(:'spotlight.search.fields.unique-id_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
+    field_name: :'search-id_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.search-id_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
     field_name: :series_tesim,
     label: -> { I18n.t(:'spotlight.search.fields.series_tesim') }
   ),
@@ -396,7 +400,6 @@ Spotlight::Engine.config.upload_fields = [
     field_name: :'permalink-ww_tesim',
     label: -> { I18n.t(:'spotlight.search.fields.permalink-ww_tesim') }
   ),
-
   Spotlight::UploadFieldConfig.new(
     field_name: :thumbnail_url_ssm,
     label: -> { I18n.t(:'spotlight.search.fields.thumbnail_url_ssm') },
@@ -407,7 +410,6 @@ Spotlight::Engine.config.upload_fields = [
     label: -> { I18n.t(:'spotlight.search.fields.full_image_url_ssm') },
     blacklight_options: { if: false }
   )
-
 ]
 # Spotlight::Engine.config.upload_title_field = nil # UploadFieldConfig.new(...)
 # Spotlight::Engine.config.uploader_storage = :file
