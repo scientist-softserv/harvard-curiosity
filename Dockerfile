@@ -56,9 +56,10 @@ COPY --chown=${APP_ID_NAME}:${GROUP_ID_NAME} Gemfile* /app/spotlight/
 # Uncomment if developing the spotlight-oaipmh-resources gem within this application
 # COPY --chown=${APP_ID_NAME}:${GROUP_ID_NAME} ./vendor/spotlight-oaipmh-resources /app/spotlight/vendor/spotlight-oaipmh-resources
 
+ENV BUNDLE_APP_CONFIG /app/bundle
 RUN mkdir /app/bundle && \
-  bundle config set force_ruby_platform true && \
-  bundle config set path /app/bundle && \
+  bundle config set --local force_ruby_platform true && \
+  bundle config set --local path /app/bundle && \
   bundle install --jobs "$(nproc)"
 
 COPY --chown=${APP_ID_NAME}:${GROUP_ID_NAME} . /app/spotlight
