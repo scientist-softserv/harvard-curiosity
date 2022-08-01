@@ -12,7 +12,7 @@ shared:
     className: nfs
 
 podSecurityContext:
-  runAsUser: 55000
+  runAsUser: 197
   runAsGroup: 55000
   fsGroup: 55000
   fsGroupChangePolicy: "OnRootMismatch"
