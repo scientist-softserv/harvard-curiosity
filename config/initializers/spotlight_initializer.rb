@@ -38,21 +38,105 @@
 # Spotlight::Engine.config.thumbnail_field = :thumbnail_url_ssm
 
 # ==> Uploaded item configuration
-# Spotlight::Engine.config.upload_fields = [
-#   UploadFieldConfig.new(
-#     field_name: config.upload_description_field,
-#     label: -> { I18n.t(:"spotlight.search.fields.#{config.upload_description_field}") },
-#     form_field_type: :text_area
-#   ),
-#   UploadFieldConfig.new(
-#     field_name: :spotlight_upload_attribution_tesim,
-#     label: -> { I18n.t(:'spotlight.search.fields.spotlight_upload_attribution_tesim') }
-#   ),
-#   UploadFieldConfig.new(
-#     field_name: :spotlight_upload_date_tesim,
-#     label: -> { I18n.t(:'spotlight.search.fields.spotlight_upload_date_tesim') }
-#   )
-# ]
+Spotlight::Engine.config.upload_fields = [
+  Spotlight::UploadFieldConfig.new(
+    field_name: :spotlight_upload_description_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.spotlight_upload_description_tesim') },
+    form_field_type: :text_area
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :spotlight_upload_attribution_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.spotlight_upload_attribution_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :spotlight_upload_date_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.spotlight_upload_date_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :contributor_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.contributor_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :subjects_ssim,
+    label: -> { I18n.t(:'spotlight.search.fields.subjects_ssim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :language_ssim,
+    label: -> { I18n.t(:'spotlight.search.fields.language_ssim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :'citation-title_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.citation-title_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :creator_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.creator_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :'start-date_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.start-date_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :'end-date_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.end-date_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :date_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.date_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :format_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.format_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :repository_ssim,
+    label: -> { I18n.t(:'spotlight.search.fields.repository_ssim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :type_ssim,
+    label: -> { I18n.t(:'spotlight.search.fields.type_ssim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :origin_ssim,
+    label: -> { I18n.t(:'spotlight.search.fields.origin_ssim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :biography_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.biography_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :'statement-of-responsibility_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.statement-of-responsibility_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :citation_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.citation_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :'physical-form_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.physical-form_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :'language-info_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.language-info_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :publications_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.publications_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :funding_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.funding_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :funding_ssim,
+    label: -> { I18n.t(:'spotlight.search.fields.funding_ssim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :rights_tesim,
+    label: -> { I18n.t(:'spotlight.search.fields.rights_tesim') }
+  )
+]
 # Spotlight::Engine.config.upload_title_field = nil # UploadFieldConfig.new(...)
 # Spotlight::Engine.config.uploader_storage = :file
 # Spotlight::Engine.config.allowed_upload_extensions = %w(jpg jpeg png)

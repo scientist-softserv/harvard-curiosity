@@ -31,3 +31,28 @@
 
 en:
   hello: "Hello world"
+  spotlight:
+    search:
+      fields:
+        contributor_tesim: "Contributor"
+        subjects_ssim: "Subjects"
+        language_ssim: "Language"
+        citation-title_tesim: "Citation Title"
+        creator_tesim: "Creator"
+        start-date_tesim: "Start Date"
+        end-date_tesim: "End Date"
+        date_tesim: "Date"
+        format_tesim: "Format"
+        repository_ssim: "Repository"
+        type_ssim: "Type"
+        origin_ssim: "Origin"
+        biography_tesim: "Biography"
+        statement-of-responsibility_tesim: "Statement Of Responsibility"
+        citation_tesim: "Citation"
+        physical-form_tesim: "Physical Form"
+        language-info_tesim: "Language Info"
+        publications_tesim: "Publications"
+        funding_tesim: "Funding"
+        funding_ssim: "Funding"
+        rights_tesim: "Rights"
+
