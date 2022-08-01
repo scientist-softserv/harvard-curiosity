@@ -6,6 +6,7 @@ SOLR_PORT=8983
 SOLR_HOST=solr
 SOLR_URL=http://solr:8983/solr/spotlight
 APP_HOST=spotlight.test
+CONFIG_HOSTS=''
 
 SMTP_ADDRESS=
 SMTP_DOMAIN=
