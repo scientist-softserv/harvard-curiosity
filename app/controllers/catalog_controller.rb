@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # OVERRIDE show method from Blacklight 7.24.0
 
 ##
@@ -17,6 +18,8 @@ class CatalogController < ApplicationController
     config.view.slideshow!.document_component = Blacklight::Gallery::SlideshowComponent
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.show.partials.insert(1, :openseadragon)
+
+    config.index.thumbnail_field = Spotlight::Engine.config.thumbnail_field
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
       qt: 'search',
@@ -56,12 +59,11 @@ class CatalogController < ApplicationController
   # OVERRIDE from Blacklight 7.24.0: make the show page path accept uppercase and lowercase urns in the browser to be compatible with previous spotlight urls.
   def show
     uppercase_id = params[:id].upcase
-    if (params[:id] =~ /[a-z]/).present?
-      redirect_to({ action: :show, id: uppercase_id }, status: 301)
-    end
+    redirect_to({ action: :show, id: uppercase_id }, status: :moved_permanently) if (params[:id] =~ /[a-z]/).present?
 
     deprecated_response, @document = search_service.fetch(uppercase_id)
-    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, 'The @response instance variable is deprecated; use @document.response instead.')
+    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response,
+                                                                      'The @response instance variable is deprecated; use @document.response instead.')
 
     respond_to do |format|
       format.html { @search_context = setup_next_and_previous_documents }

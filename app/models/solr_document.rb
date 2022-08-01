@@ -22,4 +22,13 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  def resource_type_field
+    :"#{Spotlight::Engine.config.solr_fields.prefix}spotlight_resource_type#{Spotlight::Engine.config.solr_fields.string_suffix}"
+  end
+
+  def uploaded_resource?
+    self[self.class.resource_type_field].present? &&
+      self[self.class.resource_type_field].include?('spotlight/resources/uploads')
+  end
 end
