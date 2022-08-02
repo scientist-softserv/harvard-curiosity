@@ -237,14 +237,6 @@ Spotlight::Engine.config.upload_fields = [
     label: -> { I18n.t(:'spotlight.search.fields.note_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
-    field_name: :thumbnail_url_ssm,
-    label: -> { I18n.t(:'spotlight.search.fields.thumbnail_url_ssm') }
-  ),
-  Spotlight::UploadFieldConfig.new(
-    field_name: :full_image_url_ssm,
-    label: -> { I18n.t(:'spotlight.search.fields.full_image_url_ssm') }
-  ),
-  Spotlight::UploadFieldConfig.new(
     field_name: :'additional-digital-items_tesim',
     label: -> { I18n.t(:'spotlight.search.fields.additional-digital-items_tesim') }
   ),
@@ -311,10 +303,6 @@ Spotlight::Engine.config.upload_fields = [
   Spotlight::UploadFieldConfig.new(
     field_name: :'permalink-dag_tesim',
     label: -> { I18n.t(:'spotlight.search.fields.permalink-dag_tesim') }
-  ),
-  Spotlight::UploadFieldConfig.new(
-    field_name: :'permalink-dcp_tesim',
-    label: -> { I18n.t(:'spotlight.search.fields.permalink-dcp_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'permalink-epj_tesim',
