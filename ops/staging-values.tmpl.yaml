@@ -66,3 +66,4 @@ env:
   configmap:
     APP_HOST: staging-harvard-curiosity.notch8.cloud
     SENTRY_DSN: $SENTRY_DSN
+    AUTH_STRATEGY: login

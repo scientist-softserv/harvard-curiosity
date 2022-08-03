@@ -1,8 +1,8 @@
 module Spotlight
   # OVERRIDE ExhibitImportExportService from Spotlight v3.3.0
-  module ExhibitImportExportServiceDecorator
+  module ExhibitImportExportServiceDecorator # rubocop:disable Metrics/ModuleLength
     # OVERRIDE: re-attach associated records after resetting Exhibit.id
-    def from_hash!(hash)
+    def from_hash!(hash) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
       hash = hash.deep_symbolize_keys.reverse_merge(
         main_navigations: {},
         contact_emails: {},
@@ -146,12 +146,8 @@ module Spotlight
 
       feature_pages = exhibit.feature_pages.index_by(&:slug)
       hash[:feature_pages].each do |attr|
-        next unless attr[:parent_page_slug]
+        feature_pages[attr[:slug]].parent_page_id = feature_pages[attr[:parent_page_slug]].id if attr[:parent_page_slug]
 
-        feature_pages[attr[:slug]].parent_page_id = feature_pages[attr[:parent_page_slug]].id
-      end
-
-      hash[:feature_pages].each do |attr|
         ar = exhibit.feature_pages.find_or_initialize_by(slug: attr[:slug])
 
         (attr[:translated_pages] || []).each do |tattr|
