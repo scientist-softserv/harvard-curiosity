@@ -1,10 +1,10 @@
 require 'active_support/core_ext/integer/time'
 
-Rails.application.configure do
+Rails.application.configure do # rubocop:disable Metrics/BlockLength
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.hosts << 'spotlight.test'
-  hosts_array = ENV.fetch('CONFIG_HOSTS', nil).split('|')
+  hosts_array = ENV.fetch('CONFIG_HOSTS', []).split('|')
   hosts_array.each do |host|
     config.hosts << host
   end
