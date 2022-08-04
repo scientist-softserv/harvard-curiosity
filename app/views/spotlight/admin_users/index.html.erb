@@ -12,9 +12,8 @@
       <tbody class="table">
         <% @site.roles.map(&:user).each do |user| %>
           <tr>
-            <td class="<%= 'invite-pending' if user.invite_pending? %>">
+            <td>
               <%= user.email %>
-              <span class='badge badge-warning pending-label'><%= t('.pending') %></span>
             </td>
             <td>
               <%= link_to(t('.destroy'), admin_user_path(user), method: :delete, class: 'btn btn-sm btn-danger float-right') unless user == current_user %>
@@ -53,9 +52,8 @@
       <tbody class="table">
         <% @users.each do |user| %>
           <tr>
-            <td class="<%= 'invite-pending' if user.invite_pending? %>">
+            <td>
               <%= user.email %>
-              <span class='badge badge-warning pending-label'><%= t('.pending') %></span>
             </td>
             <td class="role">
               <%= user.roles.map { |r| r.role.titleize }.uniq.join(", ") %>
