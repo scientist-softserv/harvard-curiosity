@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# OVERRIDE spotlight 3.3.0 to add mask roles
+# OVERRIDE spotlight 3.3.0 to add mask roles, remove calls to Invite
 
 module Spotlight
   ##
@@ -17,7 +17,7 @@ module Spotlight
 
     def create
       if update_roles
-        Spotlight::InviteUsersService.call(resource: @site)
+        # OVERRIDE Spotlight 3.3.0 - CAS instead of inviteable Spotlight::InviteUsersService.call(resource: @site)
         flash[:notice] = t('spotlight.admin_users.create.success')
       else
         flash[:error] = t('spotlight.admin_users.create.error')
@@ -57,7 +57,7 @@ module Spotlight
         #First role since the only people that mask are Site Admins
         if (Spotlight::Role::ROLES.include?(params[:role]))
           role.update ({:role_mask => params[:role]})
-        end   
+        end
       end
       if (!url.nil?)
         #Redirect to the previous url
@@ -66,7 +66,7 @@ module Spotlight
         redirect_to main_app.root_url
       end
     end
-    
+
     def clear_mask_role
       url = request.referrer
       role = site_admin_role

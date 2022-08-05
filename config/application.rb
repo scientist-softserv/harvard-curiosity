@@ -21,6 +21,8 @@ module CURIOSity
     # config.eager_load_paths << Rails.root.join("extras")
     config.active_job.queue_adapter = :delayed_job
 
+    config.rack_cas.server_url = 'https://www.pin1.harvard.edu/cas' # replace with your server URL
+    config.rack_cas.service = '/users/service' # If your user model isn't called User, change this
     config.to_prepare do
       # Allows us to use decorator files
       Dir.glob(File.join(File.dirname(__FILE__), '../app/**/*_decorator*.rb')).sort.each do |c|

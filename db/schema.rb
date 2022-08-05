@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_21_190621) do
+ActiveRecord::Schema.define(version: 2022_08_02_224427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -296,7 +296,10 @@ ActiveRecord::Schema.define(version: 2022_07_21_190621) do
     t.string "mapping_file"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.string "metadata_type"
     t.index ["exhibit_id"], name: "index_spotlight_oaipmh_harvesters_on_exhibit_id"
+    t.index ["user_id"], name: "index_spotlight_oaipmh_harvesters_on_user_id"
   end
 
   create_table "spotlight_pages", id: :serial, force: :cascade do |t|
@@ -467,11 +470,13 @@ ActiveRecord::Schema.define(version: 2022_07_21_190621) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "versions", force: :cascade do |t|

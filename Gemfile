@@ -36,8 +36,6 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
 end
 
 group :test do
@@ -66,6 +64,7 @@ gem 'blacklight-oembed', '~> 1.0'
 gem 'bootstrap', '~> 4.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'devise_cas_authenticatable'
 gem 'devise-guests', '~> 0.8'
 gem 'devise_invitable'
 gem 'friendly_id'
@@ -93,5 +92,5 @@ gem 'delayed_job_web'
 
 # bring in the Harvard Harvesting gem, commented out version is used for development.
 # do not build with the second version uncommented.
-gem 'spotlight-oaipmh-resources', git: 'https://github.com/harvard-lts/spotlight-oaipmh-resources', tag: 'v3.0.0-beta.1'
+gem 'spotlight-oaipmh-resources', git: 'https://github.com/harvard-lts/spotlight-oaipmh-resources', branch: 'main'
 # gem 'spotlight-oaipmh-resources', path: 'vendor/spotlight-oaipmh-resources'

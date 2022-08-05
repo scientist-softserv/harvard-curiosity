@@ -1,8 +1,8 @@
 module Spotlight
   # OVERRIDE ExhibitImportExportService from Spotlight v3.3.0
-  module ExhibitImportExportServiceDecorator
+  module ExhibitImportExportServiceDecorator # rubocop:disable Metrics/ModuleLength
     # OVERRIDE: re-attach associated records after resetting Exhibit.id
-    def from_hash!(hash)
+    def from_hash!(hash) # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength,Metrics/PerceivedComplexity
       hash = hash.deep_symbolize_keys.reverse_merge(
         main_navigations: {},
         contact_emails: {},
@@ -146,12 +146,8 @@ module Spotlight
 
       feature_pages = exhibit.feature_pages.index_by(&:slug)
       hash[:feature_pages].each do |attr|
-        next unless attr[:parent_page_slug]
+        feature_pages[attr[:slug]].parent_page_id = feature_pages[attr[:parent_page_slug]].id if attr[:parent_page_slug]
 
-        feature_pages[attr[:slug]].parent_page_id = feature_pages[attr[:parent_page_slug]].id
-      end
-
-      hash[:feature_pages].each do |attr|
         ar = exhibit.feature_pages.find_or_initialize_by(slug: attr[:slug])
 
         (attr[:translated_pages] || []).each do |tattr|
@@ -203,12 +199,24 @@ module Spotlight
       end
 
       hash[:resources].each do |attr|
-        upload = attr.delete(:upload)
+        if attr[:type] == "Spotlight::Resources::Harvester"
+          attr[:base_url] = attr&.[](:data)&.[](:base_url)
+          attr[:type] = attr&.[](:data)&.[](:type)
+          attr[:set] =  attr&.[](:data)&.[](:set)
+          attr[:mapping_file] = attr&.[](:data)&.[](:mapping_file)
+          attr[:metadata_type] = attr&.[](:data)&.[](:type)
+          attr[:user_id] = attr&.[](:data)&.[](:user)&.[](:id)
 
-        ar = exhibit.resources.find_or_initialize_by(type: attr[:type], url: attr[:url])
-        ar.update(attr)
+          Spotlight::OaipmhHarvester.create(exhibit: exhibit, **attr.except(:type, :data, :url))
 
-        deserialize_featured_image(ar, :upload, upload) if upload
+        else
+          upload = attr.delete(:upload)
+
+          ar = exhibit.resources.find_or_initialize_by(type: attr[:type], url: attr[:url])
+          ar.update(attr)
+
+          deserialize_featured_image(ar, :upload, upload) if upload
+        end
       end
 
       hash[:attachments].each do |attr|

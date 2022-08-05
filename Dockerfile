@@ -47,6 +47,10 @@ RUN apk --no-cache upgrade && \
   printf "[SAN]\nsubjectAltName=DNS:*.hul.harvard.edu,DNS:*.lts.harvard.edu" >> /etc/ssl1.1/openssl.cnf && \
   chown -R ${APP_ID_NAME}: /etc/ssl1.1
 
+# Make commands not require bundle exec ever time
+ADD https://gist.githubusercontent.com/orangewolf/6488ee51a477e4955e1e5c585428d7c4/raw/ae20f4e03135a15aee1a3600461316cafc5c5253/bash_aliases /root/.bash_aliases
+ADD https://gist.githubusercontent.com/orangewolf/6488ee51a477e4955e1e5c585428d7c4/raw/ae20f4e03135a15aee1a3600461316cafc5c5253/bash_aliases /home/app/.bash_aliases
+
 USER ${APP_ID_NAME}:${GROUP_ID_NAME}
 
 WORKDIR /app/spotlight
