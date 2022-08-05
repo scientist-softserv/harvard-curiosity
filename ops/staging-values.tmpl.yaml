@@ -11,11 +11,23 @@ shared:
     size: 10Gi
     className: nfs
 
-podSecurityContext:
+podSecurityContext: &podSecValues
   runAsUser: 197
   runAsGroup: 55000
   fsGroup: 55000
   fsGroupChangePolicy: "OnRootMismatch"
+
+worker:
+  enabled: true
+  replicaCount: 1
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "250m"
+    limits:
+      memory: "2Gi"
+      cpu: "1000m"
+  podSecurityContext: *podSecValues
 
 ingress:
   enabled: true

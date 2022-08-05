@@ -93,20 +93,6 @@ spec:
           volumeMounts:
              - name: uploads
                mountPath: /app/spotlight/public/uploads
-          ports:
-            - name: https
-              containerPort: 4000
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: https
-              scheme: HTTPS
-          readinessProbe:
-            httpGet:
-              path: /
-              port: https
-              scheme: HTTPS
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:
