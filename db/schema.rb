@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_01_170948) do
+ActiveRecord::Schema.define(version: 2022_08_02_224427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -296,7 +296,10 @@ ActiveRecord::Schema.define(version: 2022_08_01_170948) do
     t.string "mapping_file"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.string "metadata_type"
     t.index ["exhibit_id"], name: "index_spotlight_oaipmh_harvesters_on_exhibit_id"
+    t.index ["user_id"], name: "index_spotlight_oaipmh_harvesters_on_user_id"
   end
 
   create_table "spotlight_pages", id: :serial, force: :cascade do |t|
