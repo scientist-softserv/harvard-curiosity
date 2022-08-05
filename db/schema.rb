@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_02_224427) do
+ActiveRecord::Schema.define(version: 2022_08_05_154351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 2022_08_02_224427) do
     t.integer "weight", default: 50
     t.integer "site_id"
     t.string "theme"
+    t.string "set_name"
     t.index ["masthead_id"], name: "index_spotlight_exhibits_on_masthead_id"
     t.index ["site_id"], name: "index_spotlight_exhibits_on_site_id"
     t.index ["slug"], name: "index_spotlight_exhibits_on_slug", unique: true
