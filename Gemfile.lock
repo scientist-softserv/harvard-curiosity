@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/harvard-lts/spotlight-oaipmh-resources
-  revision: a2e1fb510eee850d09a3b216b85602739862b7d3
+  revision: 7ceec0f74d0f459e135ba11f5798c8d9d0acbbdc
   branch: main
   specs:
     spotlight-oaipmh-resources (3.0.0.pre.beta.1)
