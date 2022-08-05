@@ -61,6 +61,10 @@ Create the name of the service account to use
 {{- end }}
 {{- end }}
 
+{{- define "spotlight.workerName" -}}
+{{- default (printf "%s-worker" (include "spotlight.fullname" .)) .Values.worker.name }}
+{{- end }}
+
 
 {{/*
 Set values for postgresql connection
