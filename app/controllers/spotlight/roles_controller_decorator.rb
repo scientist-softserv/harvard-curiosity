@@ -1,7 +1,7 @@
 # Make sure roles are uniq
 module Spotlight::RolesControllerDecorator
   def update_all
-    authorize_nested_attributes! exhibit_params[:roles_attributes], Role
+    authorize_nested_attributes! exhibit_params[:roles_attributes], Spotlight::Role
 
     if @exhibit.update(exhibit_params)
       notice = any_deleted ? t(:'helpers.submit.role.destroyed') : t(:'helpers.submit.role.updated')

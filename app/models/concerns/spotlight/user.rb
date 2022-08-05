@@ -53,7 +53,7 @@ module Spotlight
       role = masked_role
       !role.nil? && !role.empty?
     end
-    
+
     def get_formatted_mask
       role = masked_role
       formatted = 'Public (Read Only)'
@@ -76,7 +76,7 @@ module Spotlight
     end
 
     def invite_pending?
-      invited_to_sign_up? && !invitation_accepted?
+      false
     end
 
     alias_attribute :user_key, :email
