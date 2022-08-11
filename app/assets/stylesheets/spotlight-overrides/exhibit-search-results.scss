@@ -89,6 +89,10 @@
       font-weight: 600;
     }
   }
+  
+  .document-metadata .search-results-col {
+    overflow-wrap: break-word;
+  }
 }
 
 #sortAndPerPage.sort-pagination {

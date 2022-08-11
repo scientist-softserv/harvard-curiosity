@@ -50,13 +50,12 @@ en:
         funding_ssim: "Funding"
         rights_tesim: "Rights"
 
-
         unique-id_tesim: "Unique Id"
         search-id_tesim: "Search Id"
         series_tesim: "Series"
         series_ssim: "Series'"
-        creator-contributor_tesim: "Creator/Contributor"
-        creators-contributors_ssim: "Creators/Contributors"
+        creator-contributor_tesim: "Creator / Contributor"
+        creators-contributors_ssim: "Creators / Contributors"
         creator_tesim: "Creator"
         contributor_tesim: "Contributor"
         publisher_tesim: "Publisher"
@@ -137,5 +136,3 @@ en:
 
         thumbnail_url_ssm: "Thumbnail Url"
         full_image_url_ssm: "Raw Image Url"
-
-
