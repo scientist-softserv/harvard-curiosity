@@ -62,6 +62,9 @@ externalSolrHost: solr.staging-solr.svc.cluster.local
 externalSolrUser: admin
 externalSolrCollection: "harvard-spotlight"
 
+worker:
+  enabled: true
+
 env:
   configmap:
     APP_HOST: staging-harvard-curiosity.notch8.cloud
