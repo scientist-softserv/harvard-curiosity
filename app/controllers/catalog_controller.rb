@@ -45,10 +45,10 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'creators-contributors_ssim', label: 'Creators / Contributors', limit: true
     config.add_facet_field 'place-of-origin_ssim', label: 'Place of Origin', limit: true
-    config.add_facet_field 'publisher_ssim', label: 'Creators / Contributors', limit: true
+    config.add_facet_field 'publisher_ssim', label: 'Publisher', limit: true
     config.add_facet_field 'creation-date_ssim', label: 'Creation Date', limit: true
     config.add_facet_field 'language_ssim', label: 'Language', limit: true
-    config.add_facet_field 'creators_contributors_ssim', label: 'Genre', limit: true
+    config.add_facet_field 'genre_ssim', label: 'Genre', limit: true
     config.add_facet_field 'subjects_ssim', label: 'Subjects', limit: true
     config.add_facet_field 'places_ssim', label: 'Places', limit: true
     config.add_facet_field 'series_ssim', label: 'Series', limit: true
