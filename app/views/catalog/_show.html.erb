@@ -37,7 +37,7 @@
       <% end %>
       <% doc_presenter.fields_to_render.each do |field_name, field| -%>
         <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-4"><%= render_document_show_field_label document, field: field_name %></dt>
-        <dd class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-8"><%= sanitize doc_presenter.field_value(field, except_operations: [Blacklight::Rendering::Join]).join("<br />") %></dd>
+        <dd class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-8"><%= render_presented_show_field_value(doc_presenter: doc_presenter, field: field).html_safe %></dd>
       <% end -%>
     </dl>
     <%# end metadata %>
