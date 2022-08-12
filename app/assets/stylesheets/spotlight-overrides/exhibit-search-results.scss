@@ -90,8 +90,13 @@
     }
   }
   
-  .document-metadata .search-results-col {
-    overflow-wrap: break-word;
+  .document-metadata {
+    .search-results-col {
+      overflow-wrap: break-word;
+    }
+    .blacklight-unique-id_tesim, .blacklight-search-id_tesim {
+      display: none;
+    }
   }
 }
 
