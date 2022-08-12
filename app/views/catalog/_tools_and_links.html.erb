@@ -14,6 +14,7 @@
           <dt class="blacklight-title_extended clearfix">
             <%= embedded_svg('IIIFLogoBlack') %>
           </dt>
+          <% if @manifest_url.present? %>
             <script>
               function copyManifestToClipBoard(manifest_url) {
                 const el = document.createElement('textarea');
@@ -25,12 +26,12 @@
                 document.body.removeChild(el);
               }
             </script>
-            <% @manifest_url = manifest_exhibit_solr_document_url %>
             <dd class="blacklight-title_extended">
-              <a href="javascript:void(0);" onclick="copyManifestToClipBoard('<%= manifest_exhibit_solr_document_url %>')">
+              <a href="javascript:void(0);" onclick="copyManifestToClipBoard('<%= @manifest_url %>')">
                 Copy Manifest Link
               </a>
             </dd>
+          <% end %>
           <dd>
             <a href="https://iiif.io/community/faq/" target="_blank">What is IIIF?</a>
           </dd>

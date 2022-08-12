@@ -397,6 +397,11 @@ Spotlight::Engine.config.upload_fields = [
     field_name: :full_image_url_ssm,
     label: -> { I18n.t(:'spotlight.search.fields.full_image_url_ssm') },
     blacklight_options: { if: false }
+  ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :manifest_url_ssm,
+    label: -> { I18n.t(:'spotlight.search.fields.manifest_url_ssm') },
+    blacklight_options: { if: false }
   )
 ]
 # Spotlight::Engine.config.upload_title_field = nil # UploadFieldConfig.new(...)
