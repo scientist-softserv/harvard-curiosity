@@ -76,6 +76,7 @@ class CatalogController < ApplicationController
     deprecated_response, @document = search_service.fetch(uppercase_id)
     @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response,
                                                                       'The @response instance variable is deprecated; use @document.response instead.')
+    @manifest_url = @document['manifest_url_ssm']&.first
 
     respond_to do |format|
       format.html { @search_context = setup_next_and_previous_documents }
