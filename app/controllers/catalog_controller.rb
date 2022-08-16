@@ -43,17 +43,17 @@ class CatalogController < ApplicationController
     # https://github.com/projectblacklight/spotlight/issues/1812#issuecomment-327345318
     config.add_facet_fields_to_solr_request!
 
-    config.add_facet_field 'creators-contributors_ssim', label: 'Creators / Contributors', limit: true
-    config.add_facet_field 'place-of-origin_ssim', label: 'Place of Origin', limit: true
-    config.add_facet_field 'publisher_ssim', label: 'Publisher', limit: true
-    config.add_facet_field 'creation-date_ssim', label: 'Creation Date', limit: true
-    config.add_facet_field 'language_ssim', label: 'Language', limit: true
-    config.add_facet_field 'genre_ssim', label: 'Genre', limit: true
-    config.add_facet_field 'subjects_ssim', label: 'Subjects', limit: true
-    config.add_facet_field 'places_ssim', label: 'Places', limit: true
-    config.add_facet_field 'series_ssim', label: 'Series', limit: true
-    config.add_facet_field 'digital-format_ssim', label: 'Digital Format', limit: true
-    config.add_facet_field 'repository_ssim', label: 'Repository', limit: true
+    config.add_facet_field 'creators-contributors_ssim', label: I18n.t(:'spotlight.search.fields.creators-contributors_ssim'), limit: true
+    config.add_facet_field 'place-of-origin_ssim', label: I18n.t(:'spotilight.search.fields.place-of-origin_ssim'), limit: true
+    config.add_facet_field 'publisher_ssim', label: I18n.t(:'spotilight.search.fields.publisher_ssim'), limit: true
+    config.add_facet_field 'creation-date_ssim', label: I18n.t(:'spotilight.search.fields.creation-date_ssim'), limit: true
+    config.add_facet_field 'language_ssim', label: I18n.t(:'spotilight.search.fields.language_ssim'), limit: true
+    config.add_facet_field 'genre_ssim', label: I18n.t(:'spotilight.search.fields.genre_ssim'), limit: true
+    config.add_facet_field 'subjects_ssim', label: I18n.t(:'spotilight.search.fields.subjects_ssim'), limit: true
+    config.add_facet_field 'places_ssim', label: I18n.t(:'spotilight.search.fields.places_ssim'), limit: true
+    config.add_facet_field 'series_ssim', label: I18n.t(:'spotilight.search.fields.series_ssim'), limit: true
+    config.add_facet_field 'digital-format_ssim', label: I18n.t(:'spotilight.search.fields.digital-format_ssim'), limit: true
+    config.add_facet_field 'repository_ssim', label: I18n.t(:'spotilight.search.fields.repository_ssim'), limit: true
 
     # Set which views by default only have the title displayed, e.g.,
     # config.view.gallery.title_only_by_default = true
@@ -84,4 +84,5 @@ class CatalogController < ApplicationController
       additional_export_formats(@document, format)
     end
   end
+
 end
