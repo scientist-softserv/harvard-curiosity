@@ -53,7 +53,7 @@ en:
         unique-id_tesim: "Unique Id"
         search-id_tesim: "Search Id"
         series_tesim: "Series"
-        series_ssim: "Series'"
+        series_ssim: "Series"
         creator-contributor_tesim: "Creator / Contributor"
         creators-contributors_ssim: "Creators / Contributors"
         creator_tesim: "Creator"
