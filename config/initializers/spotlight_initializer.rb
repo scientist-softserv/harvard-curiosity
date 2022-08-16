@@ -499,6 +499,10 @@ Spotlight::Engine.config.upload_fields = [
     blacklight_options: { if: false }
   ),
   Spotlight::UploadFieldConfig.new(
+    field_name: :urn_ssi,
+    label: -> { I18n.t(:'spotlight.search.fields.urn_ssi') }
+  ),
+  Spotlight::UploadFieldConfig.new(
     field_name: :manifest_url_ssm,
     label: -> { I18n.t(:'spotlight.search.fields.manifest_url_ssm') },
     blacklight_options: { if: false }
