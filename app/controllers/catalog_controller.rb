@@ -35,7 +35,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field 'all_fields', label: I18n.t('spotlight.search.fields.search.all_fields')
 
-    config.add_sort_field 'relevance', sort: 'score desc', label: I18n.t('spotlight.search.fields.sort.relevance')
+    config.add_sort_field 'relevance', sort: 'score desc, id asc', label: I18n.t('spotlight.search.fields.sort.relevance')
 
     config.add_field_configuration_to_solr_request!
 
@@ -44,16 +44,16 @@ class CatalogController < ApplicationController
     config.add_facet_fields_to_solr_request!
 
     config.add_facet_field 'creators-contributors_ssim', label: I18n.t(:'spotlight.search.fields.creators-contributors_ssim'), limit: true
-    config.add_facet_field 'place-of-origin_ssim', label: I18n.t(:'spotilight.search.fields.place-of-origin_ssim'), limit: true
-    config.add_facet_field 'publisher_ssim', label: I18n.t(:'spotilight.search.fields.publisher_ssim'), limit: true
-    config.add_facet_field 'creation-date_ssim', label: I18n.t(:'spotilight.search.fields.creation-date_ssim'), limit: true
-    config.add_facet_field 'language_ssim', label: I18n.t(:'spotilight.search.fields.language_ssim'), limit: true
-    config.add_facet_field 'genre_ssim', label: I18n.t(:'spotilight.search.fields.genre_ssim'), limit: true
-    config.add_facet_field 'subjects_ssim', label: I18n.t(:'spotilight.search.fields.subjects_ssim'), limit: true
-    config.add_facet_field 'places_ssim', label: I18n.t(:'spotilight.search.fields.places_ssim'), limit: true
-    config.add_facet_field 'series_ssim', label: I18n.t(:'spotilight.search.fields.series_ssim'), limit: true
-    config.add_facet_field 'digital-format_ssim', label: I18n.t(:'spotilight.search.fields.digital-format_ssim'), limit: true
-    config.add_facet_field 'repository_ssim', label: I18n.t(:'spotilight.search.fields.repository_ssim'), limit: true
+    config.add_facet_field 'place-of-origin_ssim', label: I18n.t(:'spotlight.search.fields.place-of-origin_ssim'), limit: true
+    config.add_facet_field 'publisher_ssim', label: I18n.t(:'spotlight.search.fields.publisher_ssim'), limit: true
+    config.add_facet_field 'creation-date_ssim', label: I18n.t(:'spotlight.search.fields.creation-date_ssim'), limit: true
+    config.add_facet_field 'language_ssim', label: I18n.t(:'spotlight.search.fields.language_ssim'), limit: true
+    config.add_facet_field 'genre_ssim', label: I18n.t(:'spotlight.search.fields.genre_ssim'), limit: true
+    config.add_facet_field 'subjects_ssim', label: I18n.t(:'spotlight.search.fields.subjects_ssim'), limit: true
+    config.add_facet_field 'places_ssim', label: I18n.t(:'spotlight.search.fields.places_ssim'), limit: true
+    config.add_facet_field 'series_ssim', label: I18n.t(:'spotlight.search.fields.series_ssim'), limit: true
+    config.add_facet_field 'digital-format_ssim', label: I18n.t(:'spotlight.search.fields.digital-format_ssim'), limit: true
+    config.add_facet_field 'repository_ssim', label: I18n.t(:'spotlight.search.fields.repository_ssim'), limit: true
 
     # Set which views by default only have the title displayed, e.g.,
     # config.view.gallery.title_only_by_default = true
