@@ -30,10 +30,13 @@
 }
 
 #exhibit-navbar {
-  background-color: $teal;
   padding: 0;
   width: 97%;
   max-width: 1450px;
+  flex-flow: column nowrap;
+  .exhibit-nav-items {
+    background-color: $teal;
+  }
   .navbar-nav {
     width: 100%;
   }
@@ -66,22 +69,23 @@
 
 .exhibit-search-form-wrapper{
   width: 100%;
-  background-color: $darkteal;
+  background-color: rgba(0, 0, 0, 0.6);
   .exhibit-search-form {
     position: relative;
-    padding: 10px 55px;
     button#search {
       padding: 6px 12px;
     }
     .search-query-form {
       width: 100%;
     }
-    @media (max-width: 1199px) {
-      padding: 10px 55px 10px 10px;
+    .fulltext-helper-text {
+      color: $white;
+      font-family: "Trueno", sans-serif;
+      font-size: smaller;
     }
-    @media (max-width: 991px) {
-      padding: 10px 35px;
-    }
+  }
+  @media (min-width: 991px) {
+    width: 25%;
   }
 }
 

@@ -135,4 +135,5 @@ en:
         permalink-ww_tesim: "Permalink Ww"
         thumbnail_url_ssm: "Thumbnail Url"
         full_image_url_ssm: "Raw Image Url"
+        urn_ssi: "URN"
         manifest_url_ssm: "Manifest Url"

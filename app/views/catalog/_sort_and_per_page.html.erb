@@ -1,6 +1,16 @@
-<%# OVERRIDE Blacklight 7.0.0 to render the constaints in the search results in a different place %>
+<%# OVERRIDE Blacklight 7.0.0 to render the constaints in the search results in a different place and add full text search metadata %>
 
 <div id="sortAndPerPage" class="sort-pagination d-block d-sm-flex justify-content-between align-items-start pt-3">
   <%= render 'constraints' %>
   <%= render_results_collection_tools wrapping_class: "search-widgets float-md-right align-items-center" %>
 </div>
+<% if params['fulltext']%>
+  <div class="alert alert-info" role="alert">
+  <% if @ft_document_list.any? %>
+    Showing results in full text. <%= link_to "Show metadata results only.", "#{request.path}?#{request.params.except('fulltext', 'page', 'controller', 'action').to_query}" %>
+  <% end %>
+  <% if @ft_document_list.empty? %>
+    Your search returned no results in full text. <%= link_to "Show metadata results instead.", "#{request.path}?#{request.params.except('fulltext', 'page', 'controller', 'action').to_query}" %>
+  <% end %>
+  </div>
+<% end %>

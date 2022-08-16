@@ -199,7 +199,7 @@ module Spotlight
       end
 
       hash[:resources].each do |attr|
-        if attr[:type] == "Spotlight::Resources::Harvester"
+        if attr[:type] == 'Spotlight::Resources::Harvester'
           attr[:base_url] = attr&.[](:data)&.[](:base_url)
           attr[:type] = attr&.[](:data)&.[](:type)
           attr[:set] =  attr&.[](:data)&.[](:set)
