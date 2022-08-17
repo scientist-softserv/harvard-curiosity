@@ -512,7 +512,7 @@ Spotlight::Engine.config.upload_fields = [
 # Spotlight::Engine.config.uploader_storage = :file
 # Spotlight::Engine.config.allowed_upload_extensions = %w(jpg jpeg png)
 
-# Spotlight::Engine.config.featured_image_thumb_size = [400, 300]
+Spotlight::Engine.config.featured_image_thumb_size = [800, 600]
 # Spotlight::Engine.config.featured_image_square_size = [400, 400]
 
 # ==> Google Analytics integration
