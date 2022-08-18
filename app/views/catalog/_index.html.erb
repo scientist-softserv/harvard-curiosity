@@ -8,14 +8,14 @@
     <dt class="blacklight-<%= field_name.parameterize %> col-md-3 pr-0 search-results-col mb-2"><%= (render_index_field_label document, field: field_name).chop %></dt>
     <dd class="blacklight-<%= field_name.parameterize %> col-md-9 search-results-col mb-2"><%= doc_presenter.field_value field %></dd>
   <% end -%>
-  <% if params['fulltext'] && @ft_document_list[document[:urn_ssi]].present? %>
+  <% if params['fulltext'] && urn_doc = @ft_document_list[document[:urn_ssi]] %>
     <dt class='col-md-3 pr-0 search-results-col mb-2'>
-      <a href=<%= @ft_document_list[document['urn_ssi']]&.[]('fts_link')%> class='fts-dt'>
-        Matches in Full Text (1 of <%= @ft_document_list[document['urn_ssi']]&.[]('numFound') %>):
+      <a href=<%= urn_doc['fts_link'] %> class='fts-dt'>
+        Matches in Full Text (1 of <%= urn_doc['numFound'] %>):
       </a>
     </dt>
     <dl class='col-md-9 search-results-col mb-2'>
-      <%= highlight(@ft_document_list[document['urn_ssi']]&.[]('context'), params[:q]) %>
+      <%= highlight(urn_doc['context']), params[:q]) %>
     </dl>
   <% end %>
 </dl>
