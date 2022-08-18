@@ -4,12 +4,11 @@
   <%= render 'constraints' %>
   <%= render_results_collection_tools wrapping_class: "search-widgets float-md-right align-items-center" %>
 </div>
-<% if params['fulltext']%>
+<% if params['fulltext'] %>
   <div class="alert alert-info" role="alert">
-  <% if @ft_document_list.any? %>
+  <% if @ft_document_list.present? %>
     Showing results in full text. <%= link_to "Show metadata results only.", "#{request.path}?#{request.params.except('fulltext', 'page', 'controller', 'action').to_query}" %>
-  <% end %>
-  <% if @ft_document_list.empty? %>
+  <% else %>
     Your search returned no results in full text. <%= link_to "Show metadata results instead.", "#{request.path}?#{request.params.except('fulltext', 'page', 'controller', 'action').to_query}" %>
   <% end %>
   </div>
