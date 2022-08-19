@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/harvard-lts/spotlight-oaipmh-resources
-  revision: 7ceec0f74d0f459e135ba11f5798c8d9d0acbbdc
+  revision: a7732304f3968bc15cf2596f4b9506eb726f83d2
   branch: main
   specs:
     spotlight-oaipmh-resources (3.0.0.pre.beta.1)
@@ -244,7 +244,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.10.0)
+    faraday (1.10.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -362,7 +362,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.2)
+    minitest (5.16.3)
     mods (3.0.3)
       edtf (~> 3.0)
       iso-639
