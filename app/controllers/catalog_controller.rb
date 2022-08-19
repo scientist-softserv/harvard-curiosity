@@ -85,12 +85,12 @@ class CatalogController < ApplicationController
     end
   end
 
-  # rubocop:disable Layout/LineLength, Metrics/MethodLength, Metrics/AbcSize
+  # rubocop:disable Layout/LineLength, Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity
   def index
     # If we have an empty string for "fulltext", do we need to worry about querying for full text?  There's implementation details in the view that assume if we pass the fulltext parameter
     if params[:fulltext]
       # TODO: Consider parameterizing this with an ENV
-      ft_solr = RSolr.connect url: ENV.fetch("FTS_COLLECTION_URL") { 'https://fts.lib.harvard.edu/solr/fts-collection' }
+      ft_solr = RSolr.connect url: ENV.fetch('FTS_COLLECTION_URL', 'https://fts.lib.harvard.edu/solr/fts-collection')
       ft_response = ft_solr.get 'select', params: fts_solr_params
 
       @ft_document_list = {}
@@ -99,6 +99,7 @@ class CatalogController < ApplicationController
       ft_document_list_raw.each do |g|
         doc = g['doclist']['docs'].first
         next unless doc
+
         urn = doc['urn']&.upcase
         # NOTE: We need the URN for what we're building, but what happens if the resulting object doesn't
         # have an URN?
@@ -114,8 +115,8 @@ class CatalogController < ApplicationController
         # expression) the 100 characters before and after the "q" param.
         context = doc['content'][/.{0,100}#{params[:q]}.{0,100}/im]
 
-        @ft_document_list[urn] = g['doclist'].merge("context" => context,
-                                                    "fts_link" => fts_search_link(g['groupValue']))
+        @ft_document_list[urn] = g['doclist'].merge('context' => context,
+                                                    'fts_link' => fts_search_link(g['groupValue']))
       end
       # use [:numFound] for 1 of XX results in this book
       # use [:context] for snippet of result
@@ -165,7 +166,7 @@ class CatalogController < ApplicationController
       document_export_formats(format)
     end
   end
-  # rubocop:enable Layout/LineLength, Metrics/MethodLength
+  # rubocop:enable Layout/LineLength, Metrics/MethodLength, Metrics/CyclomaticComplexity
 
   private
 
@@ -185,7 +186,7 @@ class CatalogController < ApplicationController
   # rubocop:enable Metrics/AbcSize
 
   def fts_search_link(object_id)
-    fts_link = ENV.fetch("FTS_SEARCH_URL") { 'https://fts.lib.harvard.edu/fts/search' } + '?'
+    fts_link = "#{ENV.fetch('FTS_SEARCH_URL', 'https://fts.lib.harvard.edu/fts/search')}?"
     fts_link += "query=#{params[:q] || '*'}"
     # including the set causes fts to ignore the ID
     # fts_link += "&S=#{current_exhibit.set_name.presence || '*'}"
