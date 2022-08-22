@@ -244,6 +244,33 @@ module Spotlight
         exhibit.owned_taggings.build(attr.except(:tag).merge(tag_id: tag.id))
       end
     end
+
+    # OVERRIDE: replace incoming, hard-coded base url with dynamic env variable
+    def deserialize_featured_image(obj, method, data)
+      file = data.delete(:image)
+      image = obj.public_send("build_#{method}")
+      # OVERRIDE BEGIN
+      data[:iiif_tilesource] = transform_featured_image_base_url(data.fetch(:iiif_tilesource))
+      # OVERRIDE END
+      image.update(data)
+      if file
+        image.image = CarrierWave::SanitizedFile.new tempfile: StringIO.new(Base64.decode64(file[:content])),
+                                                     filename: file[:filename],
+                                                     content_type: file[:content_type]
+        # Unset the iiif_tilesource field as the new image should be different, because
+        # the source has been reloaded
+        image.iiif_tilesource = nil
+      end
+      image.save!
+      obj.update(method => image)
+    end
+
+    # OVERRIDE: add new method to replace an image's base url if APP_HOST is configured
+    def transform_featured_image_base_url(base_url)
+      return base_url if ENV.fetch('APP_HOST', nil).blank?
+
+      base_url.gsub('https://curiosity.lib.harvard.edu/images', "https://#{ENV.fetch('APP_HOST')}/images")
+    end
   end
 end
 
