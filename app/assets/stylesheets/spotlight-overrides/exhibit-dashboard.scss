@@ -27,3 +27,12 @@
     max-width: 90%;
   }
 }
+
+.reindexingHistory, .pageHistory, .updatedItems {
+  table.table-striped {
+    td {
+      word-wrap: break-word;
+      font-size: smaller;
+    }
+  }
+}

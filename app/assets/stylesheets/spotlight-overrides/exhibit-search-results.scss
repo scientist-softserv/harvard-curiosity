@@ -42,6 +42,10 @@
       }
     }
   }
+  .documents-list .document-position-1 {
+    margin-top: 15px;
+    padding-top: 1rem;
+  }
 }
 
 #documents {
@@ -87,6 +91,19 @@
       letter-spacing: 1.5px;
       color: $black;
       font-weight: 600;
+    }
+  }
+  
+  .document-metadata {
+    .search-results-col {
+      overflow-wrap: break-word;
+      .fts-dt {
+        font-size: 14px;
+        line-height: 1.2;
+      }
+    }
+    .blacklight-unique-id_tesim, .blacklight-search-id_tesim {
+      display: none;
     }
   }
 }
