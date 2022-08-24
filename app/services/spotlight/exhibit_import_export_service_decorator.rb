@@ -188,7 +188,11 @@ module Spotlight
         deserialize_featured_image(ar, :avatar, avatar) if avatar
       end
 
+      # OVERRIDE: skip importing duplicate fields that cause issues
+      default_fields = Spotlight::Engine.config.upload_fields.map(&:field_name).map(&:to_s)
       hash[:custom_fields].each do |attr|
+        next if default_fields.include?(attr[:field])
+
         ar = exhibit.custom_fields.find_or_initialize_by(slug: attr[:slug])
         ar.update(attr)
       end
