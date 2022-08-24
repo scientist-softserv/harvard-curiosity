@@ -113,7 +113,7 @@ class CatalogController < ApplicationController
 
         # NOTE: We're getting the 'content' for the document (a string) and selecting (via a regular
         # expression) the 100 characters before and after the "q" param.
-        context = doc['content'][/.{0,100}#{params[:q]}.{0,100}/im]
+        context = doc['content']&.[](/.{0,100}#{params[:q]}.{0,100}/im)
 
         @ft_document_list[urn] = g['doclist'].merge('context' => context,
                                                     'fts_link' => fts_search_link(g['groupValue']))
