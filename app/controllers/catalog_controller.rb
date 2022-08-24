@@ -43,15 +43,21 @@ class CatalogController < ApplicationController
     # https://github.com/projectblacklight/spotlight/issues/1812#issuecomment-327345318
     config.add_facet_fields_to_solr_request!
 
-    config.add_facet_field 'creators-contributors_ssim', label: I18n.t(:'spotlight.search.fields.creators-contributors_ssim'), limit: true
+    config.add_facet_field 'creators-contributors_ssim', label: I18n.t(:'spotlight.search.facets.creators-contributors_ssim'), limit: true
     config.add_facet_field 'place-of-origin_ssim', label: I18n.t(:'spotlight.search.fields.place-of-origin_ssim'), limit: true
     config.add_facet_field 'publisher_ssim', label: I18n.t(:'spotlight.search.fields.publisher_ssim'), limit: true
+    # TODO: replace with date_ssim?
     config.add_facet_field 'creation-date_ssim', label: I18n.t(:'spotlight.search.fields.creation-date_ssim'), limit: true
     config.add_facet_field 'language_ssim', label: I18n.t(:'spotlight.search.fields.language_ssim'), limit: true
     config.add_facet_field 'genre_ssim', label: I18n.t(:'spotlight.search.fields.genre_ssim'), limit: true
+    config.add_facet_field 'culture_ssim', label: I18n.t(:'spotlight.search.fields.culture_ssim'), limit: true
+    config.add_facet_field 'style-period_ssim', label: I18n.t(:'spotlight.search.fields.style-period_ssim'), limit: true
+    config.add_facet_field 'materials-techniques_ssim', label: I18n.t(:'spotlight.search.facets.materials-techniques_ssim'), limit: true
     config.add_facet_field 'subjects_ssim', label: I18n.t(:'spotlight.search.fields.subjects_ssim'), limit: true
-    config.add_facet_field 'places_ssim', label: I18n.t(:'spotlight.search.fields.places_ssim'), limit: true
+    # TODO: curator tag / exhibit tag
+    config.add_facet_field 'places_ssim', label: I18n.t(:'spotlight.search.facets.places_ssim'), limit: true
     config.add_facet_field 'series_ssim', label: I18n.t(:'spotlight.search.fields.series_ssim'), limit: true
+    config.add_facet_field 'in-collection_tesim', label: I18n.t(:'spotlight.search.fields.in-collection_tesim'), limit: true
     config.add_facet_field 'digital-format_ssim', label: I18n.t(:'spotlight.search.fields.digital-format_ssim'), limit: true
     config.add_facet_field 'repository_ssim', label: I18n.t(:'spotlight.search.fields.repository_ssim'), limit: true
 
