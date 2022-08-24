@@ -136,7 +136,20 @@ en:
         full_image_url_ssm: "Raw Image Url"
         urn_ssi: "URN"
         manifest_url_ssm: "Manifest Url"
-      facets:
-        creators-contributors_ssim: 'Creator / Contributor'
-        materials-techniques_ssim: 'Material / Technique'
-        places_ssim: 'Place'
+        facet:
+          creation-date_ssim: 'Date'
+          creators-contributors_ssim: 'Creator / Contributor'
+          culture_ssim: 'Culture'
+          digital-format_ssim: 'Digital Format'
+          exhibit_tags: 'Curator Tag'
+          genre_ssim: 'Genre'
+          in-collection_tesim: 'In Collection'
+          language_ssim: 'Language'
+          materials-techniques_ssim: 'Material / Technique'
+          place-of-origin_ssim: 'Place of Origin'
+          places_ssim: 'Place'
+          publisher_ssim: 'Publisher'
+          repository_ssim: 'Repository'
+          series_ssim: 'Series'
+          style-period_ssim: 'Style / Period'
+          subjects_ssim: 'Subject'
