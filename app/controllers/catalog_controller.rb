@@ -7,7 +7,7 @@
 class CatalogController < ApplicationController
   include Blacklight::Catalog
 
-  configure_blacklight do |config|
+  configure_blacklight do |config| # rubocop:disable Metrics/BlockLength
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
 
