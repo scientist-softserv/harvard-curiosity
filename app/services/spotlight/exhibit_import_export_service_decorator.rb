@@ -62,7 +62,7 @@ module Spotlight
       deserialize_featured_image(exhibit, :thumbnail, hash[:thumbnail]) if hash[:thumbnail]
 
       # OVERRIDE: filter out incoming facets that conflict with default facets before updating
-      if blacklight_configuration_hash = hash[:blacklight_configuration]&.with_indifferent_access.presence
+      if (blacklight_configuration_hash = hash[:blacklight_configuration]&.with_indifferent_access.presence)
         non_default_facets = blacklight_configuration_hash[:facet_fields].except(*exhibit.blacklight_config.facet_field_names)
         blacklight_configuration_hash[:facet_fields] = non_default_facets
 
