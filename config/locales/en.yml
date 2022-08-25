@@ -49,7 +49,6 @@ en:
         funding_tesim: "Funding"
         funding_ssim: "Funding"
         rights_tesim: "Rights"
-
         unique-id_tesim: "Unique Id"
         search-id_tesim: "Search Id"
         series_tesim: "Series"
@@ -137,3 +136,22 @@ en:
         full_image_url_ssm: "Raw Image Url"
         urn_ssi: "URN"
         manifest_url_ssm: "Manifest Url"
+        facet:
+          creation-date_ssim: 'Date'
+          creators-contributors_ssim: 'Creator / Contributor'
+          culture_ssim: 'Culture'
+          digital-format_ssim: 'Digital Format'
+          genre_ssim: 'Genre'
+          in-collection_tesim: 'In Collection'
+          language_ssim: 'Language'
+          materials-techniques_ssim: 'Material / Technique'
+          place-of-origin_ssim: 'Place of Origin'
+          places_ssim: 'Place'
+          publisher_ssim: 'Publisher'
+          repository_ssim: 'Repository'
+          series_ssim: 'Series'
+          style-period_ssim: 'Style / Period'
+          subjects_ssim: 'Subject'
+          # NOTE: Doesn't work unless the Spotlight::BlacklightConfiguration object is overwritten
+          # to explicitly use this label. See 74d9e33f602ff08996e98d3f6810c079685159e6 for example
+          # exhibit_tags: 'Curator Tag'
