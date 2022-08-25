@@ -141,7 +141,6 @@ en:
           creators-contributors_ssim: 'Creator / Contributor'
           culture_ssim: 'Culture'
           digital-format_ssim: 'Digital Format'
-          exhibit_tags: 'Curator Tag'
           genre_ssim: 'Genre'
           in-collection_tesim: 'In Collection'
           language_ssim: 'Language'
@@ -153,3 +152,6 @@ en:
           series_ssim: 'Series'
           style-period_ssim: 'Style / Period'
           subjects_ssim: 'Subject'
+          # NOTE: Doesn't work unless the Spotlight::BlacklightConfiguration object is overwritten
+          # to explicitly use this label. See 74d9e33f602ff08996e98d3f6810c079685159e6 for example
+          # exhibit_tags: 'Curator Tag'
