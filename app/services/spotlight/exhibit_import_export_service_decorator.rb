@@ -61,7 +61,13 @@ module Spotlight
       deserialize_featured_image(exhibit, :masthead, hash[:masthead]) if hash[:masthead]
       deserialize_featured_image(exhibit, :thumbnail, hash[:thumbnail]) if hash[:thumbnail]
 
-      exhibit.blacklight_configuration.update hash[:blacklight_configuration].with_indifferent_access if hash[:blacklight_configuration]
+      # OVERRIDE: filter out incoming facets that conflict with default facets before updating
+      if blacklight_configuration_hash = hash[:blacklight_configuration]&.with_indifferent_access.presence
+        non_default_facets = blacklight_configuration_hash[:facet_fields].except(*exhibit.blacklight_config.facet_field_names)
+        blacklight_configuration_hash[:facet_fields] = non_default_facets
+
+        exhibit.blacklight_configuration.update(blacklight_configuration_hash)
+      end
 
       hash[:main_navigations].each do |attr|
         ar = exhibit.main_navigations.find_or_initialize_by(nav_type: attr[:nav_type])
