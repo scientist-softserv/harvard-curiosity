@@ -188,7 +188,11 @@ module Spotlight
         deserialize_featured_image(ar, :avatar, avatar) if avatar
       end
 
+      # OVERRIDE: skip importing duplicate fields that cause issues
+      default_fields = Spotlight::Engine.config.upload_fields.map(&:field_name).map(&:to_s)
       hash[:custom_fields].each do |attr|
+        next if default_fields.include?(attr[:field])
+
         ar = exhibit.custom_fields.find_or_initialize_by(slug: attr[:slug])
         ar.update(attr)
       end
@@ -199,16 +203,20 @@ module Spotlight
       end
 
       hash[:resources].each do |attr|
+        # OVERRIDE: convert old Harvesters into new OaipmhHarvesters
         if attr[:type] == 'Spotlight::Resources::Harvester'
+          attr[:mapping_file] = if File.file?("public/uploads/modsmapping/#{attr&.[](:data)&.[](:mapping_file)}")
+                                  attr&.[](:data)&.[](:mapping_file)
+                                else
+                                  'Default Mapping File'
+                                end
           attr[:base_url] = attr&.[](:data)&.[](:base_url)
           attr[:type] = attr&.[](:data)&.[](:type)
           attr[:set] =  attr&.[](:data)&.[](:set)
-          attr[:mapping_file] = attr&.[](:data)&.[](:mapping_file)
           attr[:metadata_type] = attr&.[](:data)&.[](:type)
           attr[:user_id] = attr&.[](:data)&.[](:user)&.[](:id)
 
           Spotlight::OaipmhHarvester.create(exhibit: exhibit, **attr.except(:type, :data, :url))
-
         else
           upload = attr.delete(:upload)
 
