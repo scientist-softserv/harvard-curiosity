@@ -100,6 +100,9 @@ class CatalogController < ApplicationController
       @ft_document_list = {}
 
       ft_document_list_raw = ft_response.dig('grouped', 'objectId', 'groups') || []
+      matches = ft_response.dig('grouped', 'objectId', 'ngroups')
+      matches = (matches.to_i / 2) + fts_solr_params[:rows].to_i if matches >= ft_document_list_raw.length
+      matches = (fts_solr_params[:start] + ft_document_list_raw.length) if ft_document_list_raw.length < fts_solr_params[:rows].to_i
       ft_document_list_raw.each do |g|
         doc = g['doclist']['docs'].first
         next unless doc
@@ -112,7 +115,9 @@ class CatalogController < ApplicationController
         # log a missing URN?
         #
         # NOTE: By skipping a record, we could be mis-reporting our pagination results.  We may say
-        # that there are 5 records when one record didn't have an URN, so we instead render 4.
+        # that there are 5 records when one record didn't have an URN, so we instead render 4. This
+        # is something that harvard needs to deal with if their FTS set has items that that shouldn't
+        # be there.
         next unless urn
 
         # NOTE: We're getting the 'content' for the document (a string) and selecting (via a regular
@@ -124,17 +129,15 @@ class CatalogController < ApplicationController
       end
       # use [:numFound] for 1 of XX results in this book
       # use [:context] for snippet of result
+      # use [:fts_link] for the link to the FTS UI
 
-      # NOTE: We're removing the the last found facet and replacing it with the exhibit specific
-      # facet.  In the development environment, that facet was "exhibit_visibility".
-      #
-      # QUESTION: are we specifically wanting to remove the last facet or the "exhibit_visibility"?
+      # NOTE: We're removing the exhibit_visibility facet and replacing it with the exhibit specific facet.
       #
       # CONJECTURE: We are doing the following replacement to preserve the facet_field counts
       # between the Blacklight query below and the SOLR query above.
       #
       # See https://github.com/projectblacklight/spotlight/blob/ebed5d6cd5413427d431e2db0705745ce648fff6/spec/models/spotlight/solr_document_sidecar_spec.rb#L17 for how this facet field name is generated.
-      facet_fields = blacklight_config.facet_fields.values.map(&:field)[0..-2] + ["exhibit_#{current_exhibit.slug}_public_bsi"]
+      facet_fields = blacklight_config.facet_fields.values.map(&:field).excluding('exhibit_visibility') + ["exhibit_#{current_exhibit.slug}_public_bsi"]
       raw_response = ::Blacklight.default_index.connection.get('select',
                                                                params: { q: params[:q],
                                                                          facet: true,
@@ -143,13 +146,9 @@ class CatalogController < ApplicationController
                                                                          start: fts_solr_params[:start] })
       sidecars = Spotlight::SolrDocumentSidecar.where(urn: @ft_document_list.keys, exhibit_id: current_exhibit.id)
 
-      docs = sidecars.map do |sidecar|
-        # NOTE: In a previous version, we had an `if sidecar.present?`; this did not appear
-        # necessary as the above query should only return objects that are "present?"
-        sidecar.to_solr.stringify_keys
-      end
-
+      docs = sidecars.map { |sidecar| sidecar.to_solr.stringify_keys }
       raw_response['response']['docs'] = docs
+      raw_response['response']['numFound'] = matches.to_i || raw_response['response']['numFound'].to_i
       @response = ::Blacklight::Solr::Response.new(raw_response, raw_response['responseHeader'], blacklight_config: blacklight_config)
       @document_list = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(@response.docs,
                                                                              'The @document_list instance variable is deprecated; use @response.documents instead.')
