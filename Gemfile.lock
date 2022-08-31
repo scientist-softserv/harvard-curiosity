@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/harvard-lts/spotlight-oaipmh-resources
-  revision: b603279c37a7a7c91e8fd5752a3f5b0a47d1cf16
-  tag: v3.0.0-beta.3
+  revision: 194fb2ad838e5ff323f7632d8f5e146f74be4745
+  tag: v3.0.0-beta.4
   specs:
-    spotlight-oaipmh-resources (3.0.0.pre.beta.1)
+    spotlight-oaipmh-resources (3.0.0.pre.beta.4)
       mods
       oai
 
@@ -452,6 +452,9 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-healthcheck (1.4.0)
+      actionpack
+      railties
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
     railties (6.1.5)
@@ -687,6 +690,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.5)
+  rails-healthcheck
   redis
   rsolr (>= 1.0, < 3)
   rspec-rails
