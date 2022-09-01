@@ -93,7 +93,7 @@ class CatalogController < ApplicationController
   # rubocop:disable Layout/LineLength, Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity
   def index
     # If we have an empty string for "fulltext", do we need to worry about querying for full text?  There's implementation details in the view that assume if we pass the fulltext parameter
-    if params[:fulltext]
+    if params[:fulltext] && current_exhibit.set_name.present?
       # TODO: Consider parameterizing this with an ENV
       ft_solr = RSolr.connect url: ENV.fetch('FTS_COLLECTION_URL', 'https://fts.lib.harvard.edu/solr/fts-collection')
       ft_response = ft_solr.get 'select', params: fts_solr_params
