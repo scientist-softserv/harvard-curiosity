@@ -30,7 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  exhibit:
+    set_name: 'FTS set name'
   spotlight:
     search:
       fields:
