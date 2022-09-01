@@ -138,6 +138,7 @@ en:
         urn_ssi: "URN"
         manifest_url_ssm: "Manifest Url"
         facet:
+          available-to_ssim: 'Available To'
           creation-date_ssim: 'Date'
           creators-contributors_ssim: 'Creator / Contributor'
           culture_ssim: 'Culture'

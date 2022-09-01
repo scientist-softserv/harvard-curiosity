@@ -58,6 +58,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'in-collection_tesim', label: I18n.t(:'spotlight.search.fields.facet.in-collection_tesim'), limit: true
     config.add_facet_field 'digital-format_ssim', label: I18n.t(:'spotlight.search.fields.facet.digital-format_ssim'), limit: true
     config.add_facet_field 'repository_ssim', label: I18n.t(:'spotlight.search.fields.facet.repository_ssim'), limit: true
+    config.add_facet_field 'available-to_ssim', label: I18n.t(:'spotlight.search.fields.facet.available-to_ssim'), limit: true
 
     # Set which views by default only have the title displayed, e.g.,
     # config.view.gallery.title_only_by_default = true
