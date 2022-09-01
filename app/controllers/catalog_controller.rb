@@ -102,8 +102,6 @@ class CatalogController < ApplicationController
 
       ft_document_list_raw = ft_response.dig('grouped', 'objectId', 'groups') || []
       matches = ft_response.dig('grouped', 'objectId', 'ngroups')
-      matches = (matches.to_i * 0.56) + fts_solr_params[:rows].to_i if matches >= ft_document_list_raw.length
-      matches = (fts_solr_params[:start] + ft_document_list_raw.length) if ft_document_list_raw.length < fts_solr_params[:rows].to_i
       ft_document_list_raw.each do |g|
         doc = g['doclist']['docs'].first
         next unless doc
