@@ -90,7 +90,7 @@ class CatalogController < ApplicationController
     end
   end
 
-  # rubocop:disable Layout/LineLength, Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity
+  # rubocop:disable Layout/LineLength, Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def index
     # If we have an empty string for "fulltext", do we need to worry about querying for full text?  There's implementation details in the view that assume if we pass the fulltext parameter
     if params[:fulltext]
@@ -168,7 +168,7 @@ class CatalogController < ApplicationController
       document_export_formats(format)
     end
   end
-  # rubocop:enable Layout/LineLength, Metrics/MethodLength, Metrics/CyclomaticComplexity
+  # rubocop:enable Layout/LineLength, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   private
 
