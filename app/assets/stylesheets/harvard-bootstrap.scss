@@ -1,5 +1,4 @@
 // @import 'harvard-patterns';
-// @import 'gem-files';
 
 // BOOTSTRAP variables
 /*
@@ -28,7 +27,9 @@ $gray-900: #1e1e1e;
 $black: #1e1e1e;
 $border-gray: #AFAFAF; // new variable
 $background-gray: #F3F3F3; // new variable
-$primary: #2797d8;
+$primary: $blue;
+$secondary: $black;
+$info: $gray-600;
 $transparent-black: rgba(0, 0, 0, 0.5); // new variable
 
 
@@ -42,6 +43,7 @@ $link-decoration: none;
 $link-hover-color: $blue;
 $link-hover-decoration: none;
 $link-fade: border 0.28s cubic-bezier(0.28,1.08,1,0.96); // new variable
+
 
 // Grid *BASED OFF OF BREAKPOINTS.SCSS
 $grid-breakpoints: (xs: 0, sm: 620px, md: 767px, lg: 970px, xl: 1170px);
@@ -96,15 +98,27 @@ $btn-border-radius-sm: $border-radius;
 $button-fade: all 0.4s ease; // new variable
 $btn-transition: $button-fade;
 
-.btn-primary {
-  background-color: #2797d8;
-  border-color: #2797d8;
+// tabs - consider changing color to black maybe, so as not to confuse with links?
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: $blue;
+  border: none;
+  letter-spacing: 1.17px;
+}
+
+.btn.btn-secondary {
+  &:hover, &:focus {
+    background-color: $gray-600;
+    border-color: $gray-600;
+  }
 }
 
 
 // Forms
 $input-color: $gray-600;
 $input-border-color: $border-gray;
+
+$input-height: 45px;
+$form-grid-gutter-width: 20px;
 
 
 // Dropdown
@@ -158,6 +172,28 @@ $navbar-dark-toggler-border-color: transparent;
 $navbar-light-toggler-border-color: transparent;
 
 
+// Nav tabs
+.nav-tabs {
+  text-transform: uppercase;
+  border-color: $border-gray;
+
+  .nav-link {
+    letter-spacing: 1.17px;
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: $black;
+    border-color:$border-gray;
+    border-bottom-color: transparent;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    border-color: $gray-400;
+    border-bottom-color: transparent;
+  }
+}
 
 
 // Pagination
@@ -212,12 +248,67 @@ ul.pagination, ul.pagination a, .page-link {
 }
 
 
-// Cards
-$card-spacer-y: 1.25rem;
-$card-spacer-x: 1.25rem;
-$card-border-width: 1px;
-$card-border-radius: none;
-$card-border-color: $gray-400;
-$card-cap-bg: transparent;
+// want to give alert boxes with lots of content and a header better spacing above, but not when it's just a simple one-line message
+.alert-heading {
+  margin-top: 0.5rem;
+}
 
 
+// CURIOSITY BOOTSTRAP
+form, fieldset {
+  font-family: Trueno, sans-serif; 
+}
+
+form label:not(.form-check-label):not(.custom-control-label):not(.custom-file-label), fieldset label:not(.form-check-label):not(.custom-control-label):not(.custom-file-label) {
+  font-weight: 600; 
+}
+
+label, .input-group-text {
+  font-family: Trueno, sans-serif; 
+}
+
+form .form-control {
+  height: 45px;
+  padding: 0.75rem 0.75rem;
+  font-family: Trueno, sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #6c6c6c;
+  border: 1px solid #afafaf;
+  border-radius: 4px;
+
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0; 
+  }
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #6c6c6c; 
+  }
+  &:focus {
+    color: #6c6c6c;
+    background-color: #fff;
+    border-color: #43b9fa;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(5, 121, 184, 0.25); 
+  }
+  &::placeholder {
+    color: #6c6c6c;
+    opacity: 1; 
+  }
+  &:disabled, &[readonly] {
+    background-color: #dfdfdf;
+    opacity: 1; 
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none; 
+  }
+}
+
+.table {
+  th, td, thead th {
+    vertical-align: middle;
+    border-color: $border-gray;
+  }
+}
