@@ -1,4 +1,4 @@
-@import 'harvard-bootstrap';
+// @import 'harvard-bootstrap';
 
 .blacklight-catalog-index {
   #main-container #appliedParams{
@@ -186,6 +186,6 @@
   }
 }
 
-.breadcrumb {
+.breadcrumbs-container .breadcrumb {
   display: none;
 }

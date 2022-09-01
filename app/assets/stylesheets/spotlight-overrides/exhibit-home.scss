@@ -1,4 +1,4 @@
-@import 'harvard-bootstrap';
+// @import 'harvard-bootstrap';
 
 //styles the title text in the hero
 .masthead.image-masthead {
@@ -7,19 +7,23 @@
     filter: none;
     background-position: center;
   }
-  .site-title.h1, small {
-    text-shadow: 1px 1px 0 $black;
+
+  h1.site-title.h1, h1 + small {
     color: $white;
-    font-family: "Trueno", sans-serif;
-    font-style: unset;
-    font-weight: 700;
+    margin-bottom: 0;
+    padding: 0 !important;
   }
-  .site-title-container .site-title.h1 {
-    font-size: 40px;
-    line-height: 45px;
-    @media (max-width: 991px) {
-      font-size: 25px;
-      line-height: 30px;
+
+  // make background same size, with or without a subtitle
+  .site-title-container {
+    min-height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .site-title-wrapper {
+      margin-top: 0;
+      padding-bottom: 0;
     }
   }
 }
@@ -30,41 +34,58 @@
 }
 
 #exhibit-navbar {
-  padding: 0;
-  width: 97%;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
   max-width: 1450px;
   flex-flow: column nowrap;
+
   .exhibit-nav-items {
     background-color: $teal;
+    padding: 20px 0;
   }
   .navbar-nav {
-    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .nav-item {
+    padding: 5px 30px 2px;
   }
   .nav-link {
     text-transform: uppercase;
     color: $white;
-    padding: 8px 40px;
-    border-bottom: 0;
+    padding: 0;
+    border-bottom: 3px solid transparent;
+    display: inline;
+  }
+  .nav-item.active .nav-link, 
+  .nav-link:hover, 
+  .nav-link:focus {
+    border-bottom-color: $white;
   }
   .dropdown-menu {
     background-color: $teal;
     border: 0;
+    margin-top: 12px;
+    box-shadow: none;
+
+    @media(min-width: 992px) {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    }
+
     .dropdown-item {
       color: $white;
       font-weight: 600;
       text-transform: uppercase;
       font-size: 14px;
       letter-spacing: 2px;
-      &:hover {
+      padding: 10px 30px;
+      &:hover, &:focus {
         background-color: $darkteal;
       }
     }
   }
-}
-
-#exhibit-navbar {
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .exhibit-search-form-wrapper{

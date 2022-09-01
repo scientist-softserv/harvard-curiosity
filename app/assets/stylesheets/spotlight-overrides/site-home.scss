@@ -1,4 +1,4 @@
-@import 'harvard-bootstrap';
+// @import 'harvard-bootstrap';
 
 //the following 3 styles for html, and #main-container make the footer stick to the bottom & not cover content
 html {
@@ -35,7 +35,7 @@ body {
   @media (min-width: 1280px){
     #main-container, .container {
       width: 100%;
-      max-width: 1400px;
+      max-width: 1450px;
     }
   }
   h1, .h1 {
@@ -57,6 +57,7 @@ body {
     margin: 0 10px;
     margin-bottom: 10px;
     border-radius: 4px;
+
     .nav-link {
       transition: all 0.4s ease;
       font-size: 12px;
@@ -69,6 +70,7 @@ body {
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 1.17px;
+
       &:hover, &:focus, &.active  {
         border: 1px solid $gray-600;
         background-color: $gray-600;
@@ -78,51 +80,54 @@ body {
   }
 }
 
+
+// child theme header
 .topbar.navbar {
-  background: unset !important;
-  background-image: linear-gradient(247deg, #52757e, #335c67) !important;
   padding: 0;
+  line-height: 1em;
+
   #user-util-collapse {
-    min-height: 54px;
-    ul.navbar-nav, .hl__headerLogo {
-      padding: 0.5rem 1rem;
-      background-color: $black;
+    min-height: 60px;
+
+    .hl__headerLogo {
+      padding: 10px 20px;
+
+      a {
+        border-bottom: 3px solid transparent;
+      }
+    }
+
+    .hl__headerLogo + ul.navbar-nav {
+      padding: 10px 20px;
+      padding-top: 0;
+
+      @media (min-width: 768px) {
+        align-items: center;
+        padding: 0;
+        padding-right: 20px;
+      }
+
+      a {
+        margin: 0;
+        letter-spacing: normal;
+      }
     }
   }
   .harvard-mobile-logo {
-    height: 54px;
     background-color: $black;
+
     .logo-shield {
       max-height: 40px;
     }
   }
 
   .site-title-nav {
-    padding: 0.2rem 1rem;
-  }
-  .hl-top-header-title {
-    font-family: 'Trueno';
-    font-size: 24px;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.67;
-    letter-spacing: 1.1px;
-    color: $white;
-
-    &.hl-top-header-title-collections {
-      font-family: 'Lora';
-      font-weight: 300;
-      font-style: italic;
-      padding-left: 5px;
-      text-transform: none;
-      letter-spacing: normal;
-    }
+    padding: 0;
   }
   a {
     color: unset;
     border: 0;
+
     &:hover {
       border-color: transparent;
     }
@@ -136,33 +141,101 @@ body {
   }
 }
 
+
+@media (min-width: 768px) {
+  .hl__header-child__title {
+    width: 100%;
+  }
+}
+
+
+// hamburger icon
+.navbar-dark .navbar-toggler {
+  color: white !important;
+  border-color: transparent;
+}
+
+// dark navbar links
+.navbar-dark .navbar-nav .nav-link,
+.image-masthead .exhibit-navbar .navbar-nav .nav-link {
+  color: white;
+  border-bottom: 3px solid transparent;
+
+  &:hover, &:focus {
+    color: white;
+    border-color: rgba(255,255,255,0.3)
+  }
+}
+// white toggle icon
+.navbar-dark .navbar-toggler-icon,
+.image-masthead .exhibit-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%23fff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+// dropdown menu
+.show.dropdown-menu,
+.twitter-typeahead .show.tt-menu {
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+.hl__header-child .show.dropdown-menu {
+  top: 25px;
+  left: -60px;
+  right: 0;
+  padding: 10px 0;
+}
+
+// homepage hero and title
 .masthead {
   color: $gray-900;
   border-bottom: 0;
   margin-bottom: 0.4rem;
     .site-title-container {
-      max-height: unset;
-    .site-title.h1 {
-      font-family: "Trueno", sans-serif;
-      font-size: 54px;
-      letter-spacing: 3.05px;
-      line-height: 74px;
-      padding-top: 25px;
-      font-weight: 700;
-    }
-    small {
-      font-family: "Lora", serif;
-      font-size: 26px;
-      font-style: italic;
-      letter-spacing: initial;
-      line-height: 40.04px;
-      padding-top: 20px;
-      font-weight: 500;
-    }
-    .site-title-wrapper {
-      white-space: normal;
-      text-align: center;
-    }
+      max-height: unset;  
+      
+      .site-title.h1 {
+        color: $c-font-dark;
+        font-family: $f-trueno;
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.23;
+        margin-bottom: 15px;
+
+        @media ($bp-small-min) {
+          font-size: 42px;
+        }
+      
+        @media ($bp-medium-min) {
+          font-size: 50px;
+        }
+      
+        @media ($bp-large-min) {
+          font-size: 60px;
+        }
+      }
+      small {
+        color: $c-font-heading;
+        font-family: $f-lora;
+        font-size: 22px;
+        font-style: italic;
+        line-height: 1.54;
+        padding: 0;
+      
+        @media ($bp-small-min) {
+          font-size: 24px;
+        }
+      
+        @media ($bp-medium-min) {
+          font-size: 26px;
+        }
+      }
+      
+
+      .site-title-wrapper {
+        white-space: normal;
+        text-align: center;
+        margin-top: 60px;
+        padding-bottom: 30px;
+      }
   }
 }
 
@@ -180,13 +253,12 @@ body {
   .exhibit-card-title {
     font-family: "Trueno", sans-serif;
     position: absolute;
-    line-height: 36px;
-    font-size: 32px;
     color: $white;
-    line-height: 30px;
+    font-size: 26px;
+    line-height: 1.3125;
     text-transform: none;
-    letter-spacing: 1px;
-    bottom: 5%;
+    letter-spacing: normal;
+    bottom: 0;
   }
 
   .exhibit-card-overlay-description, 
@@ -218,7 +290,8 @@ body {
     font-style: italic;
     position: absolute;
     width: inherit;
-    bottom: 5%;
+    bottom: 0;
+    margin-bottom: 1.5rem;
   }
 
 
@@ -240,4 +313,153 @@ body {
       line-height: 28px;
     }
   }
+}
+
+// give main container content some space
+#main-container {
+  padding-top: 40px;
+}
+
+// login, forgot password, sign up pages
+.blacklight-sessions-new,
+.blacklight-passwords-new,
+.blacklight-registrations-new {
+  #main-container {
+    padding-top: 40px !important;
+    width: auto;
+
+    form {
+      .field {
+        margin-bottom: 1em;
+
+        // pulling these styles from bootstrap .form-control class (which isn't given to input fields here)
+        input:not(#user_remember_me) {
+          display: block;
+          width: 320px;
+          height: 45px;
+          padding: 0.75rem 0.75rem;
+          font-family: Trueno, sans-serif;
+          font-size: 1rem;
+          font-weight: 300;
+          line-height: 1.5;
+          color: #6c6c6c;
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid #afafaf;
+          border-radius: 4px;
+          transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+          &::-ms-expand {
+            background-color: transparent;
+            border: 0; 
+          }
+          &:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 #6c6c6c; 
+          }
+          &:focus {
+            color: #6c6c6c;
+            background-color: #fff;
+            border-color: #43b9fa;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(5, 121, 184, 0.25); 
+          }
+          &::placeholder {
+            color: #6c6c6c;
+            opacity: 1; 
+          }
+          &:disabled, &[readonly] {
+            background-color: #dfdfdf;
+            opacity: 1; 
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            transition: none; 
+          }
+        }
+      }
+      .actions {
+        margin-bottom: 1em;
+      }
+      #user_remember_me {
+        height: 19px;
+        + label {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// add more space below alert boxes
+.alert, .empty-page-block {
+  margin: 2em 0;
+
+  a:not(.btn) {
+    color: $black;
+
+    &:hover, &:focus {
+      border-bottom-color: $transparent-black;
+    }
+  }
+}
+.alert {
+  font-family: $f-trueno;
+}
+.empty-page-block {
+  padding: 40px;
+}
+
+// edit widget blocks - icons on right
+.st-block__ui {
+  a {
+    border: none;
+  }
+}
+
+
+
+// sidebar styles (logged in state, appears on more than just site homepage, consider moving into a different stylesheet)
+#sidebar {
+  .nav-link {
+    display: inline;
+    padding: 0;
+    letter-spacing: normal;
+    font-size: 16px;
+    line-height: 32px;
+  }
+  .nav-pills .btn {
+    margin: 1rem 0;
+  }
+
+  #admin_role_toggle .dropdown .dropdown-menu {
+    width: 200px;
+    border-color: $border-gray;
+  
+    a {
+      font-size: 16px;
+    }
+  }
+
+  .nav-heading {
+    font-size: 21px;
+    line-height: 30px;
+    padding: 0;
+    font-weight: 700;
+    letter-spacing: 1.58px;
+    border: none !important;
+   }
+   h3.nav-heading::before {
+    background-image: linear-gradient(90deg, #6c6c6c 40%, rgba(255, 255, 255, 0) 20%), linear-gradient(90deg, #6c6c6c 40%, rgba(255, 255, 255, 0) 20%);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-size: 4px 1px;
+    border: none;
+    content: "";
+    display: block;
+    height: 1px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  
 }
