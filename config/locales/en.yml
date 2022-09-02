@@ -44,6 +44,7 @@ en:
         biography_tesim: "Biography"
         statement-of-responsibility_tesim: "Statement Of Responsibility"
         citation_tesim: "Citation"
+        collection_ssim: 'Collection'
         physical-form_tesim: "Physical Form"
         language-info_tesim: "Language Info"
         publications_tesim: "Publications"
@@ -144,7 +145,7 @@ en:
           culture_ssim: 'Culture'
           digital-format_ssim: 'Digital Format'
           genre_ssim: 'Genre'
-          in-collection_tesim: 'In Collection'
+          collection_ssim: 'Collection'
           language_ssim: 'Language'
           materials-techniques_ssim: 'Material / Technique'
           place-of-origin_ssim: 'Place of Origin'

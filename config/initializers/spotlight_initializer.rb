@@ -287,6 +287,11 @@ Spotlight::Engine.config.upload_fields = [
     label: -> { I18n.t(:'spotlight.search.fields.attribution_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
+    field_name: :collection_ssim,
+    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
+    label: -> { I18n.t(:'spotlight.search.fields.collection_ssim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
     field_name: :'in-collection_tesim',
     blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.in-collection_tesim') }

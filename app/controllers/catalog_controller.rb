@@ -55,7 +55,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subjects_ssim', label: I18n.t(:'spotlight.search.fields.facet.subjects_ssim'), limit: true
     config.add_facet_field 'places_ssim', label: I18n.t(:'spotlight.search.fields.facet.places_ssim'), limit: true
     config.add_facet_field 'series_ssim', label: I18n.t(:'spotlight.search.fields.facet.series_ssim'), limit: true
-    config.add_facet_field 'in-collection_tesim', label: I18n.t(:'spotlight.search.fields.facet.in-collection_tesim'), limit: true
+    config.add_facet_field 'collection_ssim', label: I18n.t(:'spotlight.search.fields.facet.collection_ssim'), limit: true
     config.add_facet_field 'digital-format_ssim', label: I18n.t(:'spotlight.search.fields.facet.digital-format_ssim'), limit: true
     config.add_facet_field 'repository_ssim', label: I18n.t(:'spotlight.search.fields.facet.repository_ssim'), limit: true
     config.add_facet_field 'available-to_ssim', label: I18n.t(:'spotlight.search.fields.facet.available-to_ssim'), limit: true
