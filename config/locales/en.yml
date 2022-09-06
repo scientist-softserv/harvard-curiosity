@@ -30,7 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  exhibit:
+    set_name: 'FTS set name'
   spotlight:
     search:
       fields:
@@ -43,6 +44,7 @@ en:
         biography_tesim: "Biography"
         statement-of-responsibility_tesim: "Statement Of Responsibility"
         citation_tesim: "Citation"
+        collection_ssim: 'Collection'
         physical-form_tesim: "Physical Form"
         language-info_tesim: "Language Info"
         publications_tesim: "Publications"
@@ -137,12 +139,13 @@ en:
         urn_ssi: "URN"
         manifest_url_ssm: "Manifest Url"
         facet:
+          available-to_ssim: 'Available To'
           creation-date_ssim: 'Date'
           creators-contributors_ssim: 'Creator / Contributor'
           culture_ssim: 'Culture'
           digital-format_ssim: 'Digital Format'
           genre_ssim: 'Genre'
-          in-collection_tesim: 'In Collection'
+          collection_ssim: 'Collection'
           language_ssim: 'Language'
           materials-techniques_ssim: 'Material / Technique'
           place-of-origin_ssim: 'Place of Origin'

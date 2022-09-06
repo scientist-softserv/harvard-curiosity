@@ -55,9 +55,10 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subjects_ssim', label: I18n.t(:'spotlight.search.fields.facet.subjects_ssim'), limit: true
     config.add_facet_field 'places_ssim', label: I18n.t(:'spotlight.search.fields.facet.places_ssim'), limit: true
     config.add_facet_field 'series_ssim', label: I18n.t(:'spotlight.search.fields.facet.series_ssim'), limit: true
-    config.add_facet_field 'in-collection_tesim', label: I18n.t(:'spotlight.search.fields.facet.in-collection_tesim'), limit: true
+    config.add_facet_field 'collection_ssim', label: I18n.t(:'spotlight.search.fields.facet.collection_ssim'), limit: true
     config.add_facet_field 'digital-format_ssim', label: I18n.t(:'spotlight.search.fields.facet.digital-format_ssim'), limit: true
     config.add_facet_field 'repository_ssim', label: I18n.t(:'spotlight.search.fields.facet.repository_ssim'), limit: true
+    config.add_facet_field 'available-to_ssim', label: I18n.t(:'spotlight.search.fields.facet.available-to_ssim'), limit: true
 
     # Set which views by default only have the title displayed, e.g.,
     # config.view.gallery.title_only_by_default = true
@@ -89,10 +90,10 @@ class CatalogController < ApplicationController
     end
   end
 
-  # rubocop:disable Layout/LineLength, Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity
+  # rubocop:disable Layout/LineLength, Metrics/MethodLength, Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def index
     # If we have an empty string for "fulltext", do we need to worry about querying for full text?  There's implementation details in the view that assume if we pass the fulltext parameter
-    if params[:fulltext]
+    if params[:fulltext] && current_exhibit.set_name.present?
       # TODO: Consider parameterizing this with an ENV
       ft_solr = RSolr.connect url: ENV.fetch('FTS_COLLECTION_URL', 'https://fts.lib.harvard.edu/solr/fts-collection')
       ft_response = ft_solr.get 'select', params: fts_solr_params
@@ -101,8 +102,6 @@ class CatalogController < ApplicationController
 
       ft_document_list_raw = ft_response.dig('grouped', 'objectId', 'groups') || []
       matches = ft_response.dig('grouped', 'objectId', 'ngroups')
-      matches = (matches.to_i * 0.56) + fts_solr_params[:rows].to_i if matches >= ft_document_list_raw.length
-      matches = (fts_solr_params[:start] + ft_document_list_raw.length) if ft_document_list_raw.length < fts_solr_params[:rows].to_i
       ft_document_list_raw.each do |g|
         doc = g['doclist']['docs'].first
         next unless doc
@@ -169,7 +168,7 @@ class CatalogController < ApplicationController
       document_export_formats(format)
     end
   end
-  # rubocop:enable Layout/LineLength, Metrics/MethodLength, Metrics/CyclomaticComplexity
+  # rubocop:enable Layout/LineLength, Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   private
 
