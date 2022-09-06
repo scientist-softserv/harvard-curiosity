@@ -7,7 +7,7 @@
   <%= f.text_area :description %>
   <%= f.text_field :tag_list, value: f.object.tag_list.to_s %>
   <%# OVERRIDE Spotlight 3.3.0 here to add set_name to form %>
-  <%= f.text_field :set_name %>
+  <%= f.text_field :set_name, label: t('exhibit.set_name') %>
   <%= f.form_group(:contact_emails, label: { text: nil, class: nil, for: 'exhibit_contact_email_0' }, help: nil) do %>
     <%= f.fields_for :contact_emails do |contact| %>
       <%= render partial: 'contact', locals: {exhibit: @exhibit, contact: contact} %>
