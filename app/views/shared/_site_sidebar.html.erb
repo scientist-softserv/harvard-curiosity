@@ -2,7 +2,7 @@
 <% if can?(:manage, Spotlight::Site.instance) || can?(:create, Spotlight::Exhibit) %>
   <h2 class="nav-heading"><%=t(:'.header') %></h2>
   <ul class="nav sidenav flex-column">
-    <li class="nav-item"><%= link_to t('.documentation'), 'https://github.com/projectblacklight/spotlight/wiki/Configuration-settings', class: 'nav-link' %></li>
+    <li class="nav-item"><%= link_to t('.documentation'), 'https://github.com/projectblacklight/spotlight/wiki/Configuration-settings', class: 'nav-link hl__external-link', target: '_blank' %></li>
 
     <% if can? :manage, Spotlight::Site.instance %>
       <li class="nav-item"><%= link_to t(:'spotlight.sites.edit.page_title'), spotlight.edit_site_path, class: 'nav-link' %></li>
