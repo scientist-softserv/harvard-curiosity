@@ -314,7 +314,7 @@ Spotlight::Engine.config.upload_fields = [
   Spotlight::UploadFieldConfig.new(
     field_name: :rights_tesim,
     blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
-    label: -> { I18n.t(:spotlight.search.fields.rights_tesim) }
+    label: -> { I18n.t(:'spotlight.search.fields.rights_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'record-id_tesim',
