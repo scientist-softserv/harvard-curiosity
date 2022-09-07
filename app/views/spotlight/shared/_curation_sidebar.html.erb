@@ -15,4 +15,10 @@
   <% if (can? :manage, current_exhibit.translations.first_or_initialize) && current_exhibit.languages.any? %>
     <%= nav_link t(:'spotlight.curation.sidebar.translations'), spotlight.edit_exhibit_translations_path(current_exhibit), 'data-no-turbolink' => true %>
   <% end %>
+  <% if can? :tag, current_exhibit %>
+    <%= nav_link t(:'spotlight.curation.sidebar.tags'), spotlight.exhibit_tags_path(current_exhibit) %>
+  <% end %>
+  <% if can? :bulk_update, current_exhibit %>
+    <%= nav_link t(:'spotlight.curation.sidebar.bulk_updates'), spotlight.edit_exhibit_bulk_updates_path(current_exhibit), 'data-no-turbolink' => true %>
+  <% end %>
 </ul>

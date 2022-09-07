@@ -15,10 +15,4 @@
     <%= nav_link t(:'spotlight.configuration.sidebar.search_configuration'), spotlight.edit_exhibit_search_configuration_path(current_exhibit) %>
   <% end %>
   <%= nav_link t(:'spotlight.curation.sidebar.items'), spotlight.admin_exhibit_catalog_path(current_exhibit) %>
-  <% if can? :tag, current_exhibit %>
-    <%= nav_link t(:'spotlight.curation.sidebar.tags'), spotlight.exhibit_tags_path(current_exhibit) %>
-  <% end %>
-  <% if can? :bulk_update, current_exhibit %>
-    <%= nav_link t(:'spotlight.curation.sidebar.bulk_updates'), spotlight.edit_exhibit_bulk_updates_path(current_exhibit), 'data-no-turbolink' => true %>
-  <% end %>
 </ul>
