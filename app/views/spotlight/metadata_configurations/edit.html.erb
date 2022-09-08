@@ -1,10 +1,14 @@
+<% # OVERRIDE Spotlight 3.3.0 to change headings to H3 and give more spacing between page sections %>
+
 <% content_for(:sidebar) do %>
   <%= render 'spotlight/shared/exhibit_sidebar' %>
 <% end %>
 
 <%= configuration_page_title %>
+
+<div class="hl__heading">
 <%= bootstrap_form_for @blacklight_configuration, url: spotlight.exhibit_metadata_configuration_path(@exhibit), layout: :horizontal, label_col: 'col-md-3 col-sm-3', control_col: 'col-md-5 col-sm-5' do |f| %>
-    <h2><%= t(:'.order_header') %></h2>
+    <h3><%= t(:'.order_header') %></h3>
 
     <p class="instructions"><%= t :'.instructions' %></p>
 
@@ -43,30 +47,31 @@
     </div>
   </div>
 <% end %>
+</div>
 
+<div class="hl__heading">
+  <h3 class="mt-4"><%= t(:'.exhibit_specific.header') %></h3>
+  <p class="instructions"><%= t(:'.exhibit_specific.instructions') %></p>
 
-    <h2 class="mt-4"><%= t(:'.exhibit_specific.header') %></h2>
-    <p class="instructions"><%= t(:'.exhibit_specific.instructions') %></p>
+  <table class="table table-striped" id="exhibit-specific-fields">
+    <tbody>
+      <% @exhibit.custom_fields.each do |field| %>
+        <tr>
+          <td>
+            <div class="field-label"><%= field.label %></div>
+            <div class="actions">
+              <%= exhibit_edit_link field %> &middot;
+              <%= exhibit_delete_link field %>
+            </div>
+          </td>
+          <td class="field-description">
+            <%= field.short_description %>
+          </td>
+        </tr>
+      <% end %>
 
-    <table class="table table-striped" id="exhibit-specific-fields">
-      <tbody>
-        <% @exhibit.custom_fields.each do |field| %>
-          <tr>
-            <td>
-              <div class="field-label"><%= field.label %></div>
-              <div class="actions">
-                <%= exhibit_edit_link field %> &middot;
-                <%= exhibit_delete_link field %>
-              </div>
-            </td>
-            <td class="field-description">
-              <%= field.short_description %>
-            </td>
-          </tr>
-        <% end %>
+    </tbody>
+  </table>
 
-      </tbody>
-    </table>
-
-
-<%= exhibit_create_link Spotlight::CustomField.new, class: 'btn btn-primary' %>
+  <%= exhibit_create_link Spotlight::CustomField.new, class: 'btn btn-primary' %>
+</div>
