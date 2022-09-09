@@ -137,3 +137,15 @@
     display: none;
   }
 }
+
+.blacklight-catalog-show {
+  .document dl.document-metadata {
+    dd, dt {
+      white-space: normal;
+      &.blacklight-spotlight_upload_full_title_tesim {
+        margin-top: 0;
+        padding-top: 0;
+      }
+    }
+  }
+}

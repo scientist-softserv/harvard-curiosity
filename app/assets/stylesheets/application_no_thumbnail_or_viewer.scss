@@ -26,14 +26,3 @@
     display: none;
   }
 }
-
-.blacklight-catalog-show {
-  dl.document-metadata {
-    dd, dt {
-      &.blacklight-spotlight_upload_full_title_tesim {
-        margin-top: 0;
-        padding-top: 0;
-      }
-    }
-  }
-}
