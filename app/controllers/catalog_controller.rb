@@ -148,6 +148,7 @@ class CatalogController < ApplicationController
       docs = sidecars.map { |sidecar| sidecar.to_solr.stringify_keys }
       raw_response['response']['docs'] = docs
       raw_response['response']['numFound'] = matches.to_i || raw_response['response']['numFound'].to_i
+      raw_response['responseHeader']["params"]["start"] = (raw_response['responseHeader']["params"]["start"].to_i - 1).to_s
       @response = ::Blacklight::Solr::Response.new(raw_response, raw_response['responseHeader'], blacklight_config: blacklight_config)
       @document_list = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(@response.docs,
                                                                              'The @document_list instance variable is deprecated; use @response.documents instead.')
@@ -173,17 +174,17 @@ class CatalogController < ApplicationController
   private
 
   def fts_solr_params
-    fts_params = {}
-    fts_params[:q] = params[:q] || '*'
-    fts_params[:fq] = "setNames:#{current_exhibit.set_name.presence || '*'}"
-    fts_params[:group] = true
-    fts_params[:'group.field'] = 'objectId'
-    fts_params[:'group.ngroups'] = true
-    # fts_params[:hl] = true
-    fts_params[:wt] = 'ruby'
-    fts_params[:rows] = params[:per_page].presence || blacklight_config.default_per_page
-    fts_params[:start] = (((params[:page].presence || 1).to_i - 1) * fts_params[:rows].to_i) + 1
-    fts_params
+    @fts_params = {}
+    @fts_params[:q] = params[:q] || '*'
+    @fts_params[:fq] = "setNames:#{current_exhibit.set_name.presence || '*'}"
+    @fts_params[:group] = true
+    @fts_params[:'group.field'] = 'objectId'
+    @fts_params[:'group.ngroups'] = true
+    # @fts_params[:hl] = true
+    @fts_params[:wt] = 'ruby'
+    @fts_params[:rows] = params[:per_page].presence || blacklight_config.default_per_page
+    @fts_params[:start] = (((params[:page].presence || 1).to_i - 1) * @fts_params[:rows].to_i) + 1
+    @fts_params
   end
   # rubocop:enable Metrics/AbcSize
 
