@@ -98,8 +98,6 @@ en:
         note_tesim: "Note"
         additional-digital-items_tesim: "Additional Digital Items"
         record-id_tesim: "Record Id"
-        creation-date_tesim: "Creation Date"
-        creation-date_ssim: "Creation Dates"
         available-to_tesim: "Available To"
         available-to_ssim: "Available To"
         hollis-record_tesim: "Hollis Record"
@@ -140,9 +138,9 @@ en:
         manifest_url_ssm: "Manifest Url"
         facet:
           available-to_ssim: 'Available To'
-          creation-date_ssim: 'Date'
           creators-contributors_ssim: 'Creator / Contributor'
           culture_ssim: 'Culture'
+          date_ssim: 'Date'
           digital-format_ssim: 'Digital Format'
           genre_ssim: 'Genre'
           collection_ssim: 'Collection'

@@ -2,6 +2,9 @@
 
 //styles the title text in the hero
 .masthead.image-masthead {
+  .exhibit-navbar {
+    background: none;
+  }
   .background-container {
     border-right: none;
     filter: none;
@@ -188,7 +191,7 @@
               }
             }
           }
-          
+
         }
       }
     }

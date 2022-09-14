@@ -63,17 +63,6 @@ Spotlight::Engine.config.upload_fields = [
     form_field_type: :text_area
   ),
   Spotlight::UploadFieldConfig.new(
-    field_name: :spotlight_upload_attribution_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
-    label: -> { I18n.t(:'spotlight.search.fields.spotlight_upload_attribution_tesim') }
-  ),
-  Spotlight::UploadFieldConfig.new(
-    field_name: :spotlight_upload_date_tesim,
-    # TODO? Should we display this?
-    blacklight_options: { if: false },
-    label: -> { I18n.t(:'spotlight.search.fields.spotlight_upload_date_tesim') }
-  ),
-  Spotlight::UploadFieldConfig.new(
     field_name: :'unique-id_tesim',
     # TODO? Should we display this?
     blacklight_options: { if: false },
@@ -312,19 +301,14 @@ Spotlight::Engine.config.upload_fields = [
     label: -> { I18n.t(:'spotlight.search.fields.additional-digital-items_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
+    field_name: :rights_tesim,
+    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
+    label: -> { I18n.t(:'spotlight.search.fields.rights_tesim') }
+  ),
+  Spotlight::UploadFieldConfig.new(
     field_name: :'record-id_tesim',
     blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.record-id_tesim') }
-  ),
-  Spotlight::UploadFieldConfig.new(
-    field_name: :'creation-date_tesim',
-    blacklight_options: { if: false },
-    label: -> { I18n.t(:'spotlight.search.fields.creation-date_tesim') }
-  ),
-  Spotlight::UploadFieldConfig.new(
-    field_name: :'creation-date_ssim',
-    blacklight_options: { if: true },
-    label: -> { I18n.t(:'spotlight.search.fields.creation-date_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'available-to_tesim',
