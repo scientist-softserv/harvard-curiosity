@@ -1,3 +1,5 @@
+<% # OVERRIDE spotlight 3.3.0 here to remove "Masthead" tab %>
+
 <%= bootstrap_form_for [@search.exhibit, @search], layout: :horizontal, label_col: 'col-md-2 col-sm-2', control_col: 'col-md-7 col-sm-7', data: {form_observer: 'true', autocomplete_exhibit_catalog_path: spotlight.autocomplete_exhibit_search_path(@search.exhibit, @search, q: "%QUERY", format: "json")}, html: {id: 'edit-search'} do |f| %>
   <% if @search.errors.any? %>
     <div id="error_explanation">
@@ -18,10 +20,6 @@
 
       <li role="presentation" class="nav-item">
         <a href="#search-group" aria-controls="search-group" role="tab" data-toggle="tab" class="nav-link"><%= t(:'.search_group') %></a>
-      </li>
-
-      <li role="presentation" class="nav-item">
-        <a href="#search-masthead" aria-controls="search-masthead" role="tab" data-toggle="tab" class="nav-link"><%= t(:'.search_masthead') %></a>
       </li>
 
       <li role="presentation" class="nav-item">
