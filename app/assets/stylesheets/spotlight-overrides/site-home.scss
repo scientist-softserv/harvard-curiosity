@@ -6,6 +6,7 @@ html {
   position: relative;
 }
 body {
+  font-family: $f-lora;
   min-height: 100vh;
   margin: 0;
   display: flex;
@@ -480,3 +481,334 @@ body {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='15' height='15' viewBox='0 0 15 15'%3E%3Cdefs%3E%3Cpath id='fwuua' d='M999.33 1716.33v-5.83h1.67v5.83c0 .92-.75 1.67-1.67 1.67h-11.66c-.93 0-1.67-.75-1.67-1.67v-11.66c0-.92.74-1.67 1.67-1.67h5.83v1.67h-5.83v11.66zm-4.15-13.33h5.82v5.82h-1.66v-2.99l-8.17 8.17-1.17-1.17 8.17-8.17h-2.99z'%3E%3C/path%3E%3C/defs%3E%3Cg%3E%3Cg transform='translate(-986 -1703)'%3E%3Cuse fill='%230579b8' xlink:href='%23fwuua'%3E%3C/use%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 }
+
+
+// _curation.scss
+h1,h2,h3,h4,h5,h6 {
+  & + .instructions {
+    border-top: 0;
+    padding-top: 0;
+  }
+}
+
+// covers many of the view * edit * delete links in tables
+.page-links {
+  padding: 0;
+  a { 
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: normal;
+    // letter-spacing: normal;
+    // text-transform: none;
+    // background: none;
+  }
+}
+
+.card-header {
+  background-color: $gray-100;
+
+  .form-check-inline {
+    margin-top: 0;
+    vertical-align: revert;
+  }
+}
+
+[data-in-place-edit-target]:hover:after {
+  color: $gray-800;
+}
+
+.facet-metadata {
+  align-self: center;
+  font-size: 15px;
+  line-height: 19px;
+}
+// end _curation.scss edits
+
+// _nestable.scss
+.dd {
+  font-size: 19px;
+}
+.dd3 {
+  &-content {
+    border-radius: $border-radius;
+
+    .card-header[data-behavior="restore-default"] {
+      min-height: auto;
+    }
+  }
+  &-handle {
+    border: none;
+    border-radius: 4px 0 0 4px;
+    background: $gray-600;
+    &::before {
+      top: 10px;
+    }
+    &:hover, &:focus {
+      background: $gray-700;
+    }
+  }
+}
+
+// end _nestable.scss edits
+
+
+// _blacklight_configuration.scss
+.dd-item td {
+  &:first-child {
+    .edit-in-place {
+      &:hover, &:focus {
+        @include edit-in-place-highlighting;
+      }
+    }
+    &:hover {
+      background: transparent;
+    }
+    
+    .handle-wrap {
+      margin-top: 0;
+      font-size: 19px; // increases size of pencil icon
+      font-weight: 600; // makes pencil icon bolder
+      white-space: nowrap; // prevents icon from wrapping onto its own line
+
+      &:hover, &:focus {
+        &::after {
+          content: "";
+        }
+      }
+
+      a {
+        &:hover, &:focus {
+          &::after {
+            color: $gray-800;
+            content: "\270f";
+            margin-left: 6px;
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    .dd3-handle:before {
+      top: 10px;
+    }
+  }
+}
+.blacklight-sites-edit_exhibits {
+  .dd-item td:first-child .handle-wrap a {
+    &:hover, &:focus {
+      &::after {
+        content: "";
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+#nested-fields {
+  .metadata-select {
+    padding: 5px 9px;
+  }
+}
+// end _blacklight_configuration.scss edits
+
+
+// text in those moveable lists
+table.table h4 {
+	text-transform: none;
+	letter-spacing: normal;
+	line-height: 25px;
+	font-weight: 600;
+	font-size: 19px !important;
+}
+
+.dd-list {
+  .card-header {
+    padding: 0.5rem 1rem;
+  }
+  .card-title {
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 25px;
+    font-weight: 600;
+    font-size: 19px !important;
+    margin-bottom: 0;
+  }
+  .card-text, .card-text a {
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: normal;
+  }
+}
+
+// _collapse_toggle.scss
+// Rotate collapse-chevron element (has a ❯ in it)
+// with the previous siblings collapsed status
+.btn.collapse-toggle {
+  & + .collapse-chevron {
+    // display: inline-block;
+    // text-align: right;
+    transform: none;
+    width: auto;
+    height: 7px;
+
+    color: $gray-800;
+    border-left: 0.425em solid transparent;
+    border-right: 0.425em solid transparent;
+    border-bottom: 0.5em solid currentColor;
+    float: right;
+    position: relative;
+    top: 8px;
+    font-size: 14px;
+    transition: transform 0.5s ease;
+    margin-left: 9px;
+  }
+  &.collapsed + .collapse-chevron {
+    // text-align: left;
+    // transform: none;
+
+    transform: scaleY(-1);
+  }
+}
+// end _collapse-chevron.scss edits
+
+
+// curation.scss
+table#exhibit-specific-fields {
+  .field-label {
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .actions a {
+    padding: 0;
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: normal;
+  }
+}
+// Curation: Feature Pages
+.home_page {
+  .card .card-title {
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 25px;
+    font-weight: 600;
+    font-size: 19px;
+  }
+  .page-links {
+    align-self: center;
+  }
+}
+// end curation.scss edits
+
+// utilities.scss
+// "Cancel" links styled as buttons in admin editing forms *change stylistically to match .btn.btn-default styling
+.btn-sizing {
+  // @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+  padding: 0;
+  margin: 12px 23px;
+  border-radius: 0;
+}
+// end utilities.scss edits
+
+// Make "Import Data" button look connected to the "browse file" input in Exhibit Dashboard -> General -> Import Data tab
+@media($bp-x-small-min){
+  .blacklight-exhibits-edit #import {
+    input#file {
+      border-radius: 4px 0 0 4px;
+    }
+    .btn {
+      border-radius: 0 4px 4px 0;
+      border: 1px solid $blue;
+      &:hover, &:focus {
+        border-color: $indigo;
+      }
+    }
+  }
+}
+
+// Configuration: Search
+// Give more spacing below the "Add new field" button to prevent from looking like it's just misaligned with the "Save changes" button
+.blacklight-search_configurations-edit {
+  #exhibit-specific-fields + .btn {
+    margin-bottom: 50px;
+  }
+}
+
+// Configuration: Search
+.dd-list {
+  // Field-based search card header - style to match other similar checkbox cards
+  .panel-content, .panel {
+    .card-title input[type="checkbox"] {
+      margin-right: 0.75rem;
+    }
+  }
+}
+// End Configuration: Search
+
+
+// _catalog.scss
+// center checkbox toggles with its table column
+#documents.table {
+  .checkbox.toggle_visibility {
+    text-align: center;
+  }
+}
+// end _catalog.scss edits
+
+
+// Configuration: Items
+#sortAndPerPage.sort-pagination .search-widgets .per_page-dropdown#per_page-dropdown button {
+  line-height: 21px;
+  padding: 5px 9px;
+  margin-top: 6px;
+  color: $black;
+  border-color: $black;
+
+  &:hover, &:focus {
+    background: $gray-600;
+    border: 1px solid $gray-600;
+    color: $white;
+  }
+
+  &:active {
+    color: $white;
+    background-color: $black;
+    border-color: $black;
+  }
+}
+// End Configuration: Items
+
+// Curation: Feature pages
+// _pages.scss
+#nested-pages {
+  .page-links {
+    align-self: center;
+  }
+}
+// End Configuration: Feature pages
+
+
+// Curation: About pages
+.contacts_admin {
+  .contact-properties div {
+    font-size: 15px;
+
+    a {
+      font-size: 15px;
+      font-weight: normal;
+    }
+    
+    &.name {
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 25px;
+    }
+  }
+}
+// give "cancel" button spacing like buttons do
+.blacklight-contacts-edit {
+  .primary-actions a {
+    margin: 12px 23px;
+  }
+}
+// End Curation: About pages
