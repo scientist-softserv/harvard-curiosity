@@ -252,6 +252,14 @@ ul.pagination, ul.pagination a, .page-link {
 .alert-heading {
   margin-top: 0.5rem;
 }
+// alert btn-close
+.alert a.btn-close {
+  border-bottom: 0;
+
+  &:hover, &:focus {
+    opacity: 1;
+  }
+}
 
 
 // CURIOSITY BOOTSTRAP
@@ -307,8 +315,15 @@ form .form-control {
 }
 
 .table {
+  font-family: Trueno, sans-serif; ;
+
   th, td, thead th {
     vertical-align: middle;
     border-color: $border-gray;
+    line-height: 1.2;;
   }
+}
+
+label.col-form-label {
+  line-height: 1;
 }
