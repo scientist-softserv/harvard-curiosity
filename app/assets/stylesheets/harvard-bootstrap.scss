@@ -327,3 +327,8 @@ form .form-control {
 label.col-form-label {
   line-height: 1;
 }
+
+hr {
+  border-color: $border-gray !important;
+  margin: 3rem 0 !important;
+}
