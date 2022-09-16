@@ -68,5 +68,5 @@ worker:
 env:
   configmap:
     APP_HOST: staging-harvard-curiosity.notch8.cloud
-    SENTRY_DSN: $SENTRY_DSN
     AUTH_STRATEGY: login
+    SENTRY_DSN: https://91c4c4f789f84344a9e7f6952e8e05cc@o1008683.ingest.sentry.io/6745031
