@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/harvard-lts/spotlight-oaipmh-resources
-  revision: 4c1de6b56840145b5a7a889cb51259330228bfa5
-  tag: v3.0.0-beta.6
+  revision: 8b9be3f14e157c34b7f662066a31b35bdcfb58e6
+  tag: v.3.0.0-beta.8
   specs:
-    spotlight-oaipmh-resources (3.0.0.pre.beta.6)
+    spotlight-oaipmh-resources (3.0.0.pre.beta.8)
       mods
       oai
 
@@ -348,7 +348,7 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    loofah (2.16.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -421,7 +421,7 @@ GEM
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.4)
     rack-cas (0.16.1)
       addressable (~> 2.3)
       nokogiri (~> 1.5)
@@ -455,7 +455,7 @@ GEM
     rails-healthcheck (1.4.0)
       actionpack
       railties
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     railties (6.1.5)
       actionpack (= 6.1.5)

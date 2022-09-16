@@ -1,8 +1,11 @@
 <%# OVERRIDE Blacklight 7.0.0 to render the constaints in the search results in a different place and add full text search metadata %>
 
-<div id="sortAndPerPage" class="sort-pagination d-block d-sm-flex justify-content-between align-items-start pt-3">
+<div id="sortPerPage" class="d-block d-sm-flex justify-content-between align-items-start">
   <%= render 'constraints' %>
   <%= render_results_collection_tools wrapping_class: "search-widgets float-md-right align-items-center" %>
+</div>
+<div class="sort-pagination d-block d-sm-flex justify-content-between align-items-start pt-3">
+  <%= render partial: "paginate_compact", object: @response if show_pagination? %>
 </div>
 <% if params['fulltext'] %>
   <div class="alert alert-info" role="alert">
