@@ -1,0 +1,42 @@
+<%#
+  This file is used to effectively override a file from Blacklight v7.24.0 (specifically,
+  app/components/blacklight/response/facet_group_component.html.erb). This "override"
+  replaces facets with a message when doing a full text search.
+%>
+<% # main container for facets/limits menu -%>
+<%= content_tag :div, id: @id,  class: 'facets sidenav facets-toggleable-md' do %>
+  <div class="facets-header">
+    <%= content_tag :h2, @title, class: 'facets-heading' if @title %>
+    <%= content_tag :button,
+      class:'navbar-toggler navbar-toggler-right',
+      type: 'button',
+      data: {
+        toggle: 'collapse',
+        target: "##{@panel_id}",
+        'bs-toggle': 'collapse',
+        'bs-target': "##{@panel_id}"
+      },
+      aria: {
+        controls: @panel_id,
+        expanded: 'false',
+        label: t('blacklight.search.facets.group.toggle'),
+      } do %>
+      <span class="navbar-toggler-icon"></span>
+    <% end %>
+  </div>
+
+  <%= content_tag :div, id: @panel_id, class: 'facets-collapse collapse' do %>
+    <%#
+      OVERRIDE: Replace facets with a message when performing a full text search ("FTS").
+      This is because facets don't work properly when doing a FTS due to the nature of
+      the response we get back from the FTS Solr server.
+    %>
+    <% if params[:fulltext].present? %>
+      <p style="margin-top: 16px;"><%= t('full_text_search.facets.not_available') %></p>
+    <% else %>
+      <% ::Deprecation.silence(Blacklight::FacetsHelperBehavior) do %>
+        <%= helpers.render_facet_partials @fields, response: @response %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
