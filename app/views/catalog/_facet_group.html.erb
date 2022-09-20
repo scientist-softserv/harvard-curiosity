@@ -1,0 +1,6 @@
+<%# OVERRIDE FILE from Blacklight v7.24.0 to remove facets when doing a full text search %>
+<%= render Curiosity::FacetGroupComponent.new( # OVERRIDE: use custom component
+  response: @response,
+  id: groupname,
+  fields: facet_field_names(groupname),
+  title: groupname.present? ? t("blacklight.search.facets-#{groupname}.title") : t('blacklight.search.facets.title')) %>

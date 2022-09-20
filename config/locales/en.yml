@@ -32,6 +32,9 @@
 en:
   exhibit:
     set_name: 'FTS set name'
+  full_text_search:
+    facets:
+      not_available: 'Limiters not available while searching inside text of items'
   spotlight:
     search:
       fields:
