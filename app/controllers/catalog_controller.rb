@@ -101,6 +101,7 @@ class CatalogController < ApplicationController
       @ft_document_list = {}
 
       ft_document_list_raw = ft_response.dig('grouped', 'objectId', 'groups') || []
+      @last_page = ft_document_list_raw.count < @fts_params[:rows].to_i
       matches = ft_response.dig('grouped', 'objectId', 'ngroups')
       ft_document_list_raw.each do |g|
         doc = g['doclist']['docs'].first
@@ -165,6 +166,7 @@ class CatalogController < ApplicationController
         @presenter = Blacklight::JsonPresenter.new(@response,
                                                    blacklight_config)
       end
+      format.js
       additional_response_formats(format)
       document_export_formats(format)
     end

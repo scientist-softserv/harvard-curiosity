@@ -1,0 +1,17 @@
+<% # container for all documents in index list view -%>
+<% view_config = local_assigns[:view_config] || blacklight_config&.view_config(document_index_view_type) %>
+<div id="documents" class="documents-<%= view_config&.key || document_index_view_type %>">
+  <%= render documents, as: :document, view_config: view_config %>
+</div>
+<% if (@response.total_count > params[:per_page].to_i || blacklight_config.default_per_page) && full_text_search? %>
+  <div id="document_pagination" class="load-more document_pagination_button">
+    <%# If changing this button, change its "twin" in app/views/catalog/index.js.erb %>
+    <%= link_to_next_page(@response, t('search.pagination.load_more'), remote: true, class: 'btn btn-primary') %>
+  </div>
+<% end %>
+
+<script>
+  $('#document_pagination.load-more').click(function() {
+    $(this).find('a').addClass('disabled')
+  })
+</script>
