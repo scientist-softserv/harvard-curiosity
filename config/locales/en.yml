@@ -49,6 +49,8 @@ en:
       info: Searchable text from transcripts or OCR is available for some items.
       link: Search inside text of items instead.
       search_location: ALL METADATA FIELDS
+    pagination:
+      load_more: 'Load More'
   spotlight:
     search:
       fields:

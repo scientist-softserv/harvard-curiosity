@@ -2,23 +2,31 @@
 
 <div id="sortPerPage" class="d-block d-sm-flex justify-content-between align-items-start">
   <%= render 'constraints' %>
-  <%= render_results_collection_tools wrapping_class: "search-widgets float-md-right align-items-center" %>
+  <%# OVERRIDE: hide when doing a FTS %>
+  <% unless full_text_search? %>
+    <%= render_results_collection_tools wrapping_class: "search-widgets float-md-right align-items-center" %>
+  <% end %>
 </div>
 
-<div class="sort-pagination d-block d-sm-flex justify-content-between align-items-start pt-3">
-  <%= render partial: "paginate_compact", object: @response if show_pagination? %>
-</div>
+<%# OVERRIDE: hide when doing a FTS %>
+<% unless full_text_search? %>
+  <div class="sort-pagination d-block d-sm-flex justify-content-between align-items-start pt-3">
+    <%= render partial: "paginate_compact", object: @response if show_pagination? %>
+  </div>
+<% end %>
 
+<%# OVERRIDE: add hint text with search type and term %>
 <% if params[:q].present? %>
   <div class="search-term-hint d-block">
-    <%= t('search.hint', search_location: params['fulltext'].present? ? t('search.full_text.search_location') : t('search.metadata_only.search_location')) %>
+    <%= t('search.hint', search_location: full_text_search? ? t('search.full_text.search_location') : t('search.metadata_only.search_location')) %>
     <b><%= params[:q] %></b>
   </div>
 <% end %>
 
+<%# OVERRIDE: add hint banner with link to alternate search type %>
 <div class="search-banner alert alert-info" role="alert">
   <% alt_query_params = request.params.except('page', 'controller', 'action') %>
-  <% if params['fulltext'] %>
+  <% if full_text_search? %>
     <% if @ft_document_list.present? %>
       <%= t('search.full_text.results.info') %>
       <%= link_to t('search.full_text.results.link'), "#{request.path}?#{alt_query_params.except('fulltext').to_query}" %>
