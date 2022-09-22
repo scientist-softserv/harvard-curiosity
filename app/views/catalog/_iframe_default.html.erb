@@ -1,9 +1,13 @@
 <%
 iframe_url = nil
-if document.has_key?('full_image_url_ssm')
-  iframe_url_array = document.fetch('full_image_url_ssm')
-  iframe_url_array[0] += "?n=#{params[:pageOrder]}" if params[:pageOrder].present?
-  iframe_url = iframe_url_array[0]
+if document.has_key?('manifest_url_ssm') || document.has_key?('full_image_url_ssm')
+  iframe_url_array = document.fetch('manifest_url_ssm')
+  iframe_url_array ||= document.fetch('full_image_url_ssm')
+  if params[:pageOrder].present?
+    iframe_url_array[0].gsub!(/\?n=\d*/, '')
+    iframe_url_array[0] += "?n=#{params[:pageOrder]}"
+  end
+  iframe_url = iframe_url_array[0].gsub('MANIFEST', 'VIEW')
 end
 %>
 <div class="iframe-wrapper">
