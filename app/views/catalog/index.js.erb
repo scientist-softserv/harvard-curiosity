@@ -1,0 +1,11 @@
+// Append new documents
+<% view_config = local_assigns[:view_config] || blacklight_config&.view_config(document_index_view_type) %>
+$("<%=j render @response.documents, as: :document, view_config: view_config %>").appendTo($("#documents"));
+
+// Update `Load More` link
+<% if @last_page %>
+$('#document_pagination').remove();
+<% else %>
+<%# If changing this button, change its "twin" in app/views/catalog/_document_list.html.erb %>
+$('#document_pagination').html("<%=j link_to_next_page(@response, t('search.pagination.load_more'), remote: true, class: 'btn btn-primary') %>");
+<% end %>

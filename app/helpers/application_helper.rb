@@ -34,4 +34,8 @@ module ApplicationHelper
       link_to_if value.start_with?('http'), value, value
     end.join('<br />')
   end
+
+  def full_text_search?
+    @full_text_search ||= params['fulltext'].present?
+  end
 end
