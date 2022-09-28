@@ -26,7 +26,7 @@
   </div>
   <% if current_exhibit.set_name.present? %>
     <span class='fulltext-helper-text'>
-      <%= check_box_tag 'fulltext', 'yes', params.key?("fulltext") %>
+      <%= check_box_tag 'fulltext', 'yes', full_text_search? %>
       <span class= 'pl-1'>Search inside text of items</span>
     </span>
   <% end %>
