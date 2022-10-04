@@ -4,35 +4,29 @@
   #main-container #appliedParams{
     display: flex;
     .catalog_startOverLink {
-      border: 1px solid $gray-500;
-      border-radius: 4px;
-      background-color: $gray-100;
-      padding: 5px 9px;
-      font-size: 14px;
-      &:hover {
-        border: 1px solid $gray-500;
-      }
+      border-radius: 0;
     }
     .btn-group.applied-filter.constraint {
       border: 1px solid $gray-500;
       border-radius: 4px;
       padding-right: 5px;
-      background-color: $gray-100;
-      margin: 0 8px 0 0 !important;
+      background-color: $background-gray;
+      margin: 0 8px 5px 0 !important;
       .constraint-value {
-        color: $gray-600;
+        color: $gray-800;
         background: transparent;
         margin: 0;
         .filter-name::after {
           padding-left: 1px;
           padding-right: 4px;
-          color: $gray-600;
+          color: $gray-800;
         }
       }
       .btn-outline-secondary {
         display: flex;
         align-items: center;
         border: 0;
+        margin-left: 0;
         &:hover {
           border: 0;
         }
@@ -75,9 +69,15 @@
     .document-title-heading {
       text-transform: unset;
       margin-bottom: 10px;
+      // truncate title to 2 lines
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
       a {
-        letter-spacing: 1px;
+        letter-spacing: normal;
         font-size: 18px;
+        line-height: 31px;
       }
     }
   }
@@ -86,7 +86,7 @@
     font-size: 14px;
     dt {
       text-align: unset;
-      font-family: 'Trueno';
+      font-family: $f-trueno;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: $black;
@@ -200,4 +200,46 @@
 
 #document_pagination.load-more {
   text-align: center;
+}
+
+
+.search-widgets {
+  .btn-icon {
+    padding: 3.5px 9px;
+  }
+  .curator-actions {
+    button.btn {
+      margin-top: 0;
+      &#save-this-search {
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
+
+.sort-pagination {
+  margin-bottom: 0;
+  .pagination {
+    font-size: 16px;
+  }
+}
+
+.search-term-hint {
+  font-family: $f-trueno;
+  font-size: 18px;
+  line-height: 25px;
+  margin-top: 10px;
+}
+.search-banner.alert-info {
+  padding: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  a:not(.btn) {
+    font-size: 16px;
+    line-height: 20px;
+    color: $blue;
+    &:hover, &:focus {
+      border-bottom-color: rgba(5, 121, 184, 0.3);
+    }
+  }
 }

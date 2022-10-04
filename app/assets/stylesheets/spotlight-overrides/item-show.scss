@@ -4,8 +4,14 @@
   .constraints-container#appliedParams {
     margin-bottom: 0 !important;
     .btn-outline-secondary {
-      text-align: left
+      text-align: left;
+      border-radius: 0;
     }
+  }
+  .pagination-search-widgets .page-links {
+    font-family: $f-trueno;
+    font-size: 15px;
+    line-height: 19px;
   }
   .document {
     h1 {
@@ -24,7 +30,7 @@
         dl dt {
           border-top: 2px dotted $gray-500;
           color: $gray-600;
-          font-family: "Trueno", Helvetica, Arial, sans-serif;
+          font-family: $f-trueno;
           font-size: 14px;
           letter-spacing: 1.5px;
           margin: 0;

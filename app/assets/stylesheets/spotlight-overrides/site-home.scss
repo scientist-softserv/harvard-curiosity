@@ -208,10 +208,6 @@ body {
         @media ($bp-medium-min) {
           font-size: 50px;
         }
-      
-        @media ($bp-large-min) {
-          font-size: 60px;
-        }
       }
       small {
         color: $c-font-heading;
@@ -252,7 +248,7 @@ body {
   }
 
   .exhibit-card-title {
-    font-family: "Trueno", sans-serif;
+    font-family: $f-trueno;
     position: absolute;
     color: $white;
     font-size: 26px;
@@ -284,7 +280,7 @@ body {
     opacity: 1;
   }
   .description {
-    font-family: 'Lora';
+    font-family: $f-lora;
     font-weight: 400;
     color: $white;
     font-size: 17px;

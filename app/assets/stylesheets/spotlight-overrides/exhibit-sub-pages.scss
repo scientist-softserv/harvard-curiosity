@@ -33,7 +33,7 @@
         color: $white;
       }
       .category-subtitle {
-        font-family: "Lora", serif;
+        font-family: $f-lora;
         font-style: italic;
         font-size: 22px;
       }
@@ -46,9 +46,32 @@
   }
 }
 
+.browse-category {
+  border: 0;
+  border-radius: 0;
+  .category-caption {
+    bottom: 20px;
+    text-shadow: none;
+    text-align: left;
+    padding: 0 20px;
+    .category-title {
+      font-size: 22px;
+      line-height: 28px;
+      font-weight: 700;
+      padding: 0;
+    }
+    .item-count {
+      font-size: 18px;
+      line-height: 22px;
+      font-weight: normal;
+      text-transform: lowercase;
+    }
+  }
+}
+
 .blacklight-feature_pages {
   .category-subtitle {
-    font-family: "Lora", serif;
+    font-family: $f-lora;
     font-style: italic;
     font-size: 18px;
     font-weight: 700;
@@ -101,7 +124,7 @@
 
     #document .blacklight-exhibit_tags, .document .blacklight-exhibit_tags {
       a {
-        font-family: 'Trueno';
+        font-family: $f-trueno;
         transition: all 0.4s ease;
         font-size: 12px;
         line-height: 16px;
@@ -216,7 +239,7 @@
                 }
               }
               &.active {
-                font-family: 'Trueno';
+                font-family: $f-trueno;
                 text-decoration: underline;
                 text-decoration-thickness: 3px;
                 text-underline-offset: 3px;

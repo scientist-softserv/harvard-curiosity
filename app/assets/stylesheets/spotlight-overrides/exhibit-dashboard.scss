@@ -1,16 +1,9 @@
-// overrides modal width and word-breaks the title
+// word-breaks the modal title
 #blacklight-modal {
-  .modal-dialog {
-    width: 80%;
-  }
   .modal-header {
     .modal-title {
       word-break: break-word;
     }
-    // button.close span {
-    //   top: -3.5px;
-    //   right: 3px;
-    // }
   }
   .modal-body pre {
     display: none;

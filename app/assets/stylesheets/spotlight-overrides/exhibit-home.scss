@@ -19,7 +19,7 @@
 
   // make background same size, with or without a subtitle
   .site-title-container {
-    min-height: 360px;
+    min-height: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,19 +42,24 @@
   margin-right: auto;
   width: 100%;
   max-width: 1450px;
-  flex-flow: column nowrap;
 
   .exhibit-nav-items {
-    background-color: $teal;
-    padding: 20px 0;
+    background-color: rgba(0, 0, 0, .6);
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   .navbar-nav {
     padding-left: 20px;
     padding-right: 20px;
   }
   .nav-item {
-    padding: 2px 30px;
+    padding: 5px 30px;
     line-height: 1em;
+    @media (max-width: breakpoint-max("sm")) {
+      padding: 5px 0;
+    }
   }
   .nav-link {
     text-transform: uppercase;
@@ -69,13 +74,28 @@
     border-bottom-color: $white;
   }
   .dropdown-menu {
-    background-color: $teal;
+    background: transparent;
     border: 0;
-    margin-top: 20px;
+    border-radius: 0;
+    padding: 0;
     box-shadow: none;
 
-    @media(min-width: 992px) {
+    li {
+      padding-left: 20px;
+      padding-top: 10px;
+    }
+
+    @media (min-width: breakpoint-min("lg")) {
+      background-color: rgba(0, 0, 0, .6);
+      margin-top: 19px;
+      padding: 20px 30px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+      li {
+        padding: 0;
+        &:not(:last-of-type) {
+          margin-bottom: 20px;
+        }
+      } 
     }
 
     .dropdown-item {
@@ -84,130 +104,81 @@
       text-transform: uppercase;
       font-size: 14px;
       letter-spacing: 2px;
-      padding: 10px 30px;
+      padding: 0;
+      border-bottom: 3px solid transparent;
+      border-radius: 0;
       &:hover, &:focus {
-        background-color: $darkteal;
+        background-color: transparent;
+        border-color: $white;
       }
     }
   }
 }
 
 .exhibit-search-form-wrapper{
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  .exhibit-search-form {
-    position: relative;
-    button#search {
-      padding: 6px 12px;
+  @media (max-width: breakpoint-max("sm")) {
+    align-self: start;
+    .exhibit-search-form {
+      padding-top: 10px;
     }
-    .search-query-form {
-      width: 100%;
+  }
+  .exhibit-search-form {
+    input {
+      padding: 10px 12px;
+      height: 38px;
+      border-color: $white;
+      border-top-left-radius: 4px !important;
+      border-bottom-left-radius: 4px !important;
+    }
+
+    button#search {
+      padding: 6px 12px 6px 0;
+      background: $white;
+      border: none;
+      &::before {
+        content: "";
+        padding-left: 12px;
+        border-left: 1px solid $black;
+      }
+      &::after {
+        border-bottom: 0.425em solid transparent;
+        border-left: 0.5em solid currentColor;
+        border-top: 0.425em solid transparent;
+        content: "";
+        display: inline-block;
+        height: 0;
+        width: 0;
+        margin-left: 0.3em;
+        background-image: none;
+        padding-right: 0;
+      }
+      &:hover, &:focus {
+        color: $gray-600;
+      }
     }
     .fulltext-helper-text {
       color: $white;
-      font-family: "Trueno", sans-serif;
+      font-family: $f-trueno;
       font-size: smaller;
-    }
-  }
-  @media (min-width: 991px) {
-    width: 25%;
-  }
-}
+      position: absolute;
+      padding: 10px 20px;
+      right: 20px;
+      width: 359px;
 
-.page-sidebar {
-  .facets {
-    background-color: $gray-100;
-    padding-bottom: 10px;
-    .facets-header {
-      background-color: $white;
-      padding-top: 1rem;
-      .facets-heading {
-        font-weight: 700;
-        font-size: 17px;
-        padding: 0px 10px;
+      @media (min-width: breakpoint-min("lg")) {
+        background: rgba(0,0,0,.6);
+        margin-top: 16px;
       }
-    }
-    #facet-panel-collapse {
-      padding: 0 20px;
-      margin: 0;
-    }
-  }
-  @media (max-width: 991px) {
-    .facets {
-      background-color: transparent;
-    }
-  }
-  .card {
-    &.facet-limit-active {
-      .card-header {
-        background-color: transparent !important;
+      @media (max-width: breakpoint-max("sm")) {
+        background: rgba(0,0,0,.6);
+        margin-top: 16px;
+        left: 20px;
+        width: auto;
+        max-width: 359px;
       }
-    }
-    &.facet-limit {
-      background-color: transparent;
-      border: 0;
-      .card-header {
-        background-color: transparent;
-        border-bottom: 0;
-        border-top: 1px solid $gray-500;
-        &:first-child {
-          border-radius: 0;
-        }
-        .btn {
-          padding: 20px 0 !important;
-          font-size: 14px;
-        }
-        .btn::after {
-          color: $red;
-        }
 
-      }
-      .card-body {
-        padding: 1rem 0;
-        a {
-          color: $black;
-          font-weight: 400;
-        }
-        .facet-values.list-unstyled {
-          .facet-count {
-            font-family: 'Trueno';
-          }
-          .facet-select {
-            font-size: 14px;
-          }
-          li {
-            .selected {
-              color: $black !important;
-              font-family: 'Trueno';
-              font-weight: 600;
-            }
-            .remove {
-              line-height: 0;
-              .remove-icon {
-                transform: scale(.7);
-                &:hover, &:focus {
-                  background: $gray-400;
-                  border-color: $gray-400;
-                }
-              }
-            }
-          }
-
-        }
-      }
-    }
-    .btn {
-    background: transparent;
-    color: $black;
-      &:hover, &:focus {
-        background: transparent;
-      }
-    }
-  }
-  .facets-collapse {
-    .facet-limit:first-child {
-      .card-header:first-child {
-        border-top: 0;
+      input {
+        height: auto;
       }
     }
   }

@@ -5,16 +5,16 @@
 <dl class="document-metadata dl-invert row">
 
   <% doc_presenter.fields_to_render.each do |field_name, field| -%>
-    <dt class="blacklight-<%= field_name.parameterize %> col-md-3 pr-0 search-results-col mb-2"><%= (render_index_field_label document, field: field_name).chop %></dt>
-    <dd class="blacklight-<%= field_name.parameterize %> col-md-9 search-results-col mb-2"><%= doc_presenter.field_value field %></dd>
+    <dt class="blacklight-<%= field_name.parameterize %> col-md-4 pr-0 search-results-col mb-2"><%= (render_index_field_label document, field: field_name).chop %></dt>
+    <dd class="blacklight-<%= field_name.parameterize %> col-md-8 search-results-col mb-2"><%= doc_presenter.field_value field %></dd>
   <% end -%>
   <% if full_text_search? && urn_doc = @ft_document_list[document[:urn_ssi]] %>
-    <dt class='col-md-3 pr-0 search-results-col mb-2'>
+    <dt class='col-md-4 pr-0 search-results-col mb-2'>
       <a href=<%= urn_doc['fts_link'] %> class='fts-dt'>
         Matches in Full Text (1 of <%= urn_doc['numFound'] %>):
       </a>
     </dt>
-    <dl class='col-md-9 search-results-col mb-2'>
+    <dl class='col-md-8 search-results-col mb-2'>
       <%= highlight(urn_doc['context'], params[:q]) %>
     </dl>
   <% end %>

@@ -2,3 +2,8 @@ en:
   blacklight:
     application_name: "Harvard Curiosity"
     back_to_search: "« Back to Search"
+
+    search:
+      facets:
+        more_html: 'More <span class="sr-only visually-hidden">%{field_name}</span>'
+      start_over: 'Clear all'
