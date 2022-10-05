@@ -82,4 +82,4 @@ RUN mkdir -p /app/spotlight/tmp/cache/downloads && \
   mkdir /app/certs && \
   openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -subj "/C=US/ST=Massachusetts/L=Cambridge/O=Library Technology Services/CN=*.lib.harvard.edu" -extensions SAN -reqexts SAN -config /etc/ssl1.1/openssl.cnf -keyout /app/certs/server.key -nodes -out /app/certs/server.pem
 
-CMD ["passenger", "start", "--port", "4000", "--log-file", "/dev/stdout", "--no-install-runtime", "--no-compile-runtime","--ssl","--ssl-certificate","/app/certs/server.pem","--ssl-certificate-key","/app/certs/server.key","--nginx-config-template","ops/nginx.conf.erb"]
+CMD ["passenger", "start", "--port", "4000", "--log-file", "/dev/stdout", "--no-install-runtime", "--no-compile-runtime","--ssl","--ssl-certificate","/app/certs/server.pem","--ssl-certificate-key","/app/certs/server.key","--max-pool-size", "15", "--min-instances", "15", "--nginx-config-template","ops/nginx.conf.erb"]
