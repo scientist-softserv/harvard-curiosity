@@ -2,16 +2,20 @@
 
 .blacklight-catalog-show {
   .constraints-container#appliedParams {
+    display: block;
     margin-bottom: 0 !important;
     .btn-outline-secondary {
       text-align: left;
       border-radius: 0;
     }
   }
-  .pagination-search-widgets .page-links {
-    font-family: $f-trueno;
-    font-size: 15px;
-    line-height: 19px;
+  .pagination-search-widgets {
+    padding-top: 0;
+    .page-links {
+      font-family: $f-trueno;
+      font-size: 15px;
+      line-height: 19px;
+    }
   }
   .document {
     h1 {
@@ -108,6 +112,10 @@
 
     .btn.btn-primary.float-right {
       margin: 1rem 0 0 auto;
+    }
+
+    .iframe-wrapper {
+      margin-top: 1em;
     }
 
     .osd-toolbar .pagination {

@@ -53,15 +53,19 @@
     display: none;
   }
 
-  &.documents-list .document .document-thumbnail {
-    padding-left: 0;
-    float: none;
-    margin-bottom: 1rem;
-    img {
-      max-width: unset;
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
+  &.documents-list .document {
+    border-bottom: 0;
+    
+    .document-thumbnail {
+      padding-left: 0;
+      float: none;
+      margin-bottom: 1rem;
+      img {
+        max-width: unset;
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+      }
     }
   }
 
@@ -218,7 +222,7 @@
 }
 
 .sort-pagination {
-  margin-bottom: 0;
+  border-bottom: 1px solid $border-gray;
   .pagination {
     font-size: 16px;
   }
