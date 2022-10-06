@@ -1,3 +1,4 @@
+<%# OVERRIDE Spotlight 3.3.0 to change subheading to an h3 and give spacing between sections %>
 <% default_field = @blacklight_configuration.blacklight_config.default_search_field %>
 <div class="checkbox">
   <label for="enable_feature">
@@ -42,28 +43,30 @@
 <% end %>
 
 <% if can? :manage, Spotlight::CustomSearchField.new(exhibit: current_exhibit) %>
-  <h2><%= t(:'.exhibit_specific.header') %></h2>
-  <p class="instructions"><%= t(:'.exhibit_specific.instructions') %></p>
+  <div class="hl__heading">
+    <h3><%= t(:'.exhibit_specific.header') %></h3>
+    <p class="instructions"><%= t(:'.exhibit_specific.instructions') %></p>
 
-  <table class="table table-striped" id="exhibit-specific-fields">
-    <tbody>
-      <% @exhibit.custom_search_fields.each do |field| %>
-        <tr>
-          <td>
-            <div class="field-label"><%= field.label %></div>
-            <div class="actions">
-              <%= exhibit_edit_link field %> &middot;
-              <%= exhibit_delete_link field %>
-            </div>
-          </td>
-          <td class="field-description">
-            <%= field.field %>
-          </td>
-        </tr>
-      <% end %>
+    <table class="table table-striped" id="exhibit-specific-fields">
+      <tbody>
+        <% @exhibit.custom_search_fields.each do |field| %>
+          <tr>
+            <td>
+              <div class="field-label"><%= field.label %></div>
+              <div class="actions">
+                <%= exhibit_edit_link field %> &middot;
+                <%= exhibit_delete_link field %>
+              </div>
+            </td>
+            <td class="field-description">
+              <%= field.field %>
+            </td>
+          </tr>
+        <% end %>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
 
-  <%= exhibit_create_link Spotlight::CustomSearchField.new, class: 'btn btn-primary' %>
+    <%= exhibit_create_link Spotlight::CustomSearchField.new, class: 'btn btn-primary' %>
+  </div>
 <% end %>
