@@ -107,6 +107,7 @@
       padding: 0;
       border-bottom: 3px solid transparent;
       border-radius: 0;
+      display: inline;
       &:hover, &:focus {
         background-color: transparent;
         border-color: $white;
