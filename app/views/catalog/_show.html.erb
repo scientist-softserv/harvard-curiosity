@@ -13,7 +13,7 @@
           </button>
         </dt>
         <dd id='field-full_title_tesim' class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-9 collapse mobile-fields">
-          <%= @document._source[:full_title_tesim].first %>
+          <%= doc_presenter.heading %>
         </dd>
       <% end %>
       <% doc_presenter.fields_to_render.each do |field_name, field| -%>
@@ -32,7 +32,7 @@
           title:
         </dt>
         <dd class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-8">
-          <%= @document._source[:full_title_tesim].first %>
+          <%= doc_presenter.heading %>
         </dd>
       <% end %>
       <% doc_presenter.fields_to_render.each do |field_name, field| -%>
