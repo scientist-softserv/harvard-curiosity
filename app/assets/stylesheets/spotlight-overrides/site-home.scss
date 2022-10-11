@@ -1,5 +1,3 @@
-// @import 'harvard-bootstrap';
-
 //the following 3 styles for html, and #main-container make the footer stick to the bottom & not cover content
 html {
   min-height: 100%;
@@ -312,7 +310,7 @@ body {
   }
 }
 
-// give main container content some space
+// give main container content some space above
 #main-container {
   padding-top: 40px;
 }
@@ -414,9 +412,7 @@ body {
   }
 }
 
-
-
-// sidebar styles (logged in state, appears on more than just site homepage, consider moving into a different stylesheet)
+// sidebar styles (logged in state, admin pages)
 #sidebar {
   .nav-link {
     display: inline;
@@ -478,7 +474,6 @@ body {
   }
 }
 
-
 // _curation.scss
 h1,h2,h3,h4,h5,h6 {
   & + .instructions {
@@ -494,9 +489,6 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 15px;
     line-height: 19px;
     font-weight: normal;
-    // letter-spacing: normal;
-    // text-transform: none;
-    // background: none;
   }
 }
 
@@ -641,12 +633,9 @@ table.table h4 {
 // with the previous siblings collapsed status
 .btn.collapse-toggle {
   & + .collapse-chevron {
-    // display: inline-block;
-    // text-align: right;
     transform: none;
     width: auto;
     height: 7px;
-
     color: $gray-800;
     border-left: 0.425em solid transparent;
     border-right: 0.425em solid transparent;
@@ -659,9 +648,6 @@ table.table h4 {
     margin-left: 9px;
   }
   &.collapsed + .collapse-chevron {
-    // text-align: left;
-    // transform: none;
-
     transform: scaleY(-1);
   }
 }
@@ -707,7 +693,6 @@ table#exhibit-specific-fields {
 // utilities.scss
 // "Cancel" links styled as buttons in admin editing forms *change stylistically to match .btn.btn-default styling
 .btn-sizing {
-  // @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
   padding: 0;
   margin: 12px 23px;
   border-radius: 0;

@@ -1,8 +1,7 @@
-// @import 'harvard-bootstrap';
-
 #documents.documents-gallery {
   justify-content: space-between;
   margin: 0;
+  grid-gap: 0 20px;
   .document {
     .document-thumbnail {
       padding: 0;

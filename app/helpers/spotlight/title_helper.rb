@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# OVERRIDE spotlight 3.3.0 to make header an h2 (previously h1)
 
 module Spotlight
   ##
