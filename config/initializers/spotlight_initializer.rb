@@ -58,12 +58,10 @@ end
 Spotlight::Engine.config.upload_fields = [
   Spotlight::UploadFieldConfig.new(
     field_name: :'additional-digital-items_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.additional-digital-items_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'creator-contributor_tesim',
-    blacklight_options: { if: true },
     label: -> { I18n.t(:'spotlight.search.fields.creator-contributor_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -73,7 +71,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :attribution_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.attribution_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -83,7 +80,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :date_ssim,
-    blacklight_options: { if: true },
     label: -> { I18n.t(:'spotlight.search.fields.date_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -93,7 +89,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'place-of-origin_ssim',
-    blacklight_options: { if: true },
     label: -> { I18n.t(:'spotlight.search.fields.place-of-origin_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -103,28 +98,23 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :publisher_ssim,
-    blacklight_options: { if: true },
     label: -> { I18n.t(:'spotlight.search.fields.publisher_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :spotlight_upload_description_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.description_tesim') },
     form_field_type: :text_area
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :edition_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.edition_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :extent_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.extent_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :language_ssim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.language_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -139,7 +129,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :genre_ssim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.genre_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -149,17 +138,14 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'digital-format_ssim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.digital-format_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :contents_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.contents_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :subjects_ssim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.subjects_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -174,7 +160,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :culture_ssim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.culture_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -184,7 +169,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'style-period_ssim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.style-period_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -194,7 +178,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'materials-techniques_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.materials-techniques_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -204,27 +187,22 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :places_ssim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.places_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :note_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.note_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'cite-as_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.cite-as_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'in-collection_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.in-collection_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :container_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.container_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -234,17 +212,14 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :series_ssim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.series_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :classification_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.classification_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :repository_ssim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.repository_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -254,17 +229,14 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :rights_tesim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.rights_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'record-id_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.record-id_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'finding-aid-component_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.finding-aid-component_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -278,7 +250,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'permalink-ham_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.permalink-ham_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -288,7 +259,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'permalink-dcp_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.permalink-dcp_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
@@ -310,28 +280,26 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'available-to_ssim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.available-to_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :collection_ssim,
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
+    blacklight_options: { if: false },
     label: -> { I18n.t(:'spotlight.search.fields.collection_ssim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'finding-aid_tesim',
-    blacklight_options: { if: Curiosity.render_field_for_actions(show: true, index: false) },
     label: -> { I18n.t(:'spotlight.search.fields.finding-aid_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :thumbnail_url_ssm,
-    label: -> { I18n.t(:'spotlight.search.fields.thumbnail_url_ssm') },
-    blacklight_options: { if: false }
+    blacklight_options: { if: false },
+    label: -> { I18n.t(:'spotlight.search.fields.thumbnail_url_ssm') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :full_image_url_ssm,
-    label: -> { I18n.t(:'spotlight.search.fields.full_image_url_ssm') },
-    blacklight_options: { if: false }
+    blacklight_options: { if: false },
+    label: -> { I18n.t(:'spotlight.search.fields.full_image_url_ssm') }
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :urn_ssi,
@@ -339,8 +307,8 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :manifest_url_ssm,
-    label: -> { I18n.t(:'spotlight.search.fields.manifest_url_ssm') },
-    blacklight_options: { if: false }
+    blacklight_options: { if: false },
+    label: -> { I18n.t(:'spotlight.search.fields.manifest_url_ssm') }
   )
 ]
 # Spotlight::Engine.config.upload_title_field = nil # UploadFieldConfig.new(...)
