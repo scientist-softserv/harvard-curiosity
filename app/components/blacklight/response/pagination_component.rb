@@ -32,7 +32,7 @@ module Blacklight
           if collection.total_count > 0
             t('helpers.page_entries_info.one_page.top_display_entries', entry_name: entry_name, count: collection.total_count)
           else
-            t('helpers.page_entries_info.no_results.top_display_entries', entry_name: entry_name, count: collection.total_count)
+            t('helpers.page_entries_info.no_results.top_display_entries', entry_name: entry_name)
           end
         else
           from = collection.offset_value + 1
