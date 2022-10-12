@@ -390,11 +390,13 @@ body {
 .alert, .empty-page-block {
   margin: 2em 0;
 
-  a:not(.btn) {
-    color: $black;
-
-    &:hover, &:focus {
-      border-bottom-color: $transparent-black;
+  &.alert-danger {
+    a:not(.btn) {
+      color: $black;
+  
+      &:hover, &:focus {
+        border-bottom-color: $transparent-black;
+      }
     }
   }
 }
