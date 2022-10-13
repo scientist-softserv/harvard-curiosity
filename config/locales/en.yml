@@ -139,3 +139,5 @@ en:
         top_display_entries: "Showing&nbsp;<strong>%{first}</strong>&nbsp;to&nbsp;<strong>%{last}</strong>&nbsp;of&nbsp;<strong>%{total}</strong>&nbsp;results"
       one_page:
         top_display_entries: "Showing&nbsp;<strong>1</strong>&nbsp;to&nbsp;<strong>%{count}</strong>&nbsp;results"
+      no_results:
+        top_display_entries: "No entries found"

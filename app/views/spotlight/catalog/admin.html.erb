@@ -1,0 +1,18 @@
+<% # OVERRIDE from spotlight 3.3.0 to change to "Configuration" header %>
+
+<% content_for(:sidebar) do %>
+  <%= render 'spotlight/shared/exhibit_sidebar' %>
+<% end %>
+
+<%= configuration_page_title %>
+
+<%= render 'admin_header' %>
+<%= render 'search_header' %>
+
+<%- if @response.empty? %>
+  <%= render "zero_results" %>
+<%- else %>
+  <%= render_document_index(@response.documents) %>
+<%- end %>
+
+<%= render 'results_pagination' %>

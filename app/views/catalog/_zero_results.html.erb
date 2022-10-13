@@ -1,0 +1,19 @@
+<%# OVERRIDE from Blacklight update options presented to user when get zero results %>
+<h2><%= t 'blacklight.search.zero_results.title' %></h2>
+<div id="documents" class="noresults">
+  <h3><%= t 'blacklight.search.zero_results.modify_search' %></h3>
+  <ul>
+    <li>entering your term into a 
+    <%=link_to t('blacklight.search.zero_results.new_search'), start_over_path %> - hyperlinked fields may yield incomplete results.</li>
+    <li>removing search terms - adding more words limits your results.</li>
+    <li>searching <a href="https://hollis.harvard.edu">HOLLIS</a> catalog - Harvard affiliates may have access to more items.</li>
+    <li>removing filters - some filters don't apply to all items.</li>
+
+    <%- if params[:q] and params[:search_field] and params[:search_field] != blacklight_config.default_search_field&.key -%>
+      <li>
+      <%= link_to t('blacklight.search.zero_results.search_everything', field: blacklight_config.default_search_field.label), url_for(search_state.params_for_search(search_field: blacklight_config.default_search_field.key)) %> - <%= t 'blacklight.search.zero_results.search_fields', :search_fields => search_field_label(params) %>.
+      </li>
+    <%- end %>
+
+  </ul>
+</div>
