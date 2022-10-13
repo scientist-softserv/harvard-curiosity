@@ -29,7 +29,11 @@ module Blacklight
                      end
 
         if collection.total_pages < 2
-          t('helpers.page_entries_info.one_page.top_display_entries', entry_name: entry_name, count: collection.total_count)
+          if collection.total_count.positive?
+            t('helpers.page_entries_info.one_page.top_display_entries', entry_name: entry_name, count: collection.total_count)
+          else
+            t('helpers.page_entries_info.no_results.top_display_entries', entry_name: entry_name)
+          end
         else
           from = collection.offset_value + 1
           to   = collection.offset_value + (collection.respond_to?(:documents) ? collection.documents : collection.to_a).size

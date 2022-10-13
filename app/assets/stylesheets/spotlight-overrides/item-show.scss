@@ -1,10 +1,18 @@
-@import 'harvard-bootstrap';
-
 .blacklight-catalog-show {
   .constraints-container#appliedParams {
+    display: block;
     margin-bottom: 0 !important;
     .btn-outline-secondary {
-      text-align: left
+      text-align: left;
+      border-radius: 0;
+    }
+  }
+  .pagination-search-widgets {
+    padding-top: 0;
+    .page-links {
+      font-family: "Trueno", sans-serif;
+      font-size: 15px;
+      line-height: 19px;
     }
   }
   .document {
@@ -24,7 +32,7 @@
         dl dt {
           border-top: 2px dotted $gray-500;
           color: $gray-600;
-          font-family: "Trueno", Helvetica, Arial, sans-serif;
+          font-family: "Trueno", sans-serif;
           font-size: 14px;
           letter-spacing: 1.5px;
           margin: 0;
@@ -102,6 +110,10 @@
 
     .btn.btn-primary.float-right {
       margin: 1rem 0 0 auto;
+    }
+
+    .iframe-wrapper {
+      margin-top: 1em;
     }
 
     .osd-toolbar .pagination {

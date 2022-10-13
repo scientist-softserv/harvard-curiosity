@@ -1,4 +1,7 @@
 // this is the Harvard exhibits NO THUMBNAIL & NO VIEWER theme
+ 
+ @import 'harvard-bootstrap';
+ @import 'harvard-patterns';
 
  @import 'blacklight_gallery.css.scss';
  @import 'blacklight_oembed.css.scss';
@@ -6,22 +9,27 @@
  @import 'openseadragon.css';
  @import 'spotlight.scss';
 
+
+// hides view type toggles - only need list view displayed
+.view-type {
+  display: none;
+} 
+
+//  hides thumbnail image space and counter on list view
  #documents {
-  .document-thumbnail {
+  .gallery-masonry-column,
+  .document-counter {
     display: none;
   }
-  .documentHeader .document-title-heading {
-    a, .document-counter {
-      font-size: 16px
-    }
-    .document-counter {
-      display: inline;
-      font-weight: 600;
-    }
+
+  .gallery-masonry-column {
+    margin: 0 !important;
   }
 }
 
+// hides image containers on item detail pages
 #document {
+  .iframe-wrapper,
   .openseadragon-container {
     display: none;
   }

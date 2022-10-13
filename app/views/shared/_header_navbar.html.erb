@@ -1,9 +1,11 @@
-<%# OVERRIDE Spotlight 3.3.0 to bring in Harvard theming for top navbar %>
-<nav class="navbar navbar-expand-md navbar-dark topbar" role="navigation" aria-label="<%= t('spotlight.topbar.label') %>">
+<% # OVERRIDE Spotlight 3.3.0 to bring in Harvard theming for top navbar %>
+<nav class="navbar navbar-expand-md navbar-dark topbar hl__header-child" role="navigation" aria-label="<%= t('spotlight.topbar.label') %>">
   <div class="<%= container_classes %>">
-    <%= link_to(main_app.root_path, class: 'mb-0 navbar-brand site-title-nav') do %>
-      <span class='hl-top-header-title'>CURIOSITY</span><span class='hl-top-header-title hl-top-header-title-collections'> Collections</span>
-    <% end %>
+    <div class="hl__header-child__title hl__header-child__title--teal">
+      <%= link_to(main_app.root_path, class: 'mb-0 navbar-brand site-title-nav') do %>
+        <span>Curiosity</span> Collections
+      <% end %>
+    </div>
     <% if current_user %>
       <button class="navbar-toggler navbar-toggler-right px-2 mx-2" type="button" data-toggle="collapse" data-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="<%= t :toggle_nav %>">
         <span class="navbar-toggler-icon"></span>
