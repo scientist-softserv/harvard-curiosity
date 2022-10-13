@@ -1,0 +1,164 @@
+// pulling in file from spotlight to override spacing and aspect ratios of browse cards on pages that are not the browse landing page
+
+// Compatible with Harvard Pattern breakpoints
+$container-sm: 620px;
+$container-md: 767px;
+$container-lg: 970px;
+$container-xl: 1170px;
+$container-xl-sidebar: 1045px; // ("xl" main content area when sidebar present)
+
+// The aspect ratio factor determines the height of the tile.
+// New aspect ratio created to be closer aligned with Harvard Pattern card styling
+$aspect-ratio-factor-3x2: 300/450; // 3:2 width:height
+
+// Limits size of tile in cases where calculations create unreasonably large tile
+$maximum-tile-width: 450px;
+
+.browse-category {
+  border: 0;
+  border-radius: 0;
+
+  .category-caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    top: 0;
+    bottom: 0;
+    padding: 20px;
+    text-align: left;
+    text-shadow: none;
+    background: linear-gradient(180deg, rgba(64, 64, 64, 0) 0%, #1E1E1E 100%);
+  }
+
+  .category-title {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 700;
+    padding: 0;
+  }
+
+  .item-count {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: normal;
+    text-transform: lowercase;
+  }
+
+  &:hover, &:focus {
+    .category-caption {
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.3) 100%);
+    }
+  }
+}
+
+// Most tile sizing works regardless of sidebar or not, because
+// only "lg" and "xl" have a sidebar, and "lg" with a sidebar
+// is the same width as "md" without a sidebar.
+[data-sidebar="false"],
+[data-sidebar="true"] {
+  &.categories-1, &.categories-2, &.categories-3,
+  &.categories-4, &.categories-5 {
+    .browse-category {
+      max-width: $maximum-tile-width;
+      max-height: $maximum-tile-width * $aspect-ratio-factor-3x2;
+      width: $xs-one-tile-width;
+      height: $xs-one-tile-width * $aspect-ratio-factor-3x2;
+    }
+  }
+  // rows with 1-3 cards will have the same size
+  &.categories-1,
+  &.categories-2,
+  &.categories-3 {
+    display: grid;
+    grid-template-columns: repeat(3, calc(100%/3 - 1rem));
+    grid-gap: 0 1rem;
+
+    // stack cards on small screen
+    @media (max-width: 620px) {
+      grid-template-columns: 100%;
+    }
+    .browse-category {
+      width: 100%;
+      height: 300px;
+      margin: 0 auto;
+      
+      @media (max-width: breakpoint-max("lg")) {
+         height: 210px;
+      }
+    }
+  }
+  &.categories-4 {
+    .browse-category {
+      @media (min-width: breakpoint-min("sm")) {
+        height: $sm-two-tile-width * $aspect-ratio-factor-3x2;
+      }
+
+      @media (min-width: breakpoint-min("md")) {
+        height: $md-two-tile-width * $aspect-ratio-factor-3x2;
+      }
+
+      @media (min-width: breakpoint-min("lg")) {
+        height: $lg-four-tile-width * $aspect-ratio-factor-3x2;
+      }
+
+      @media (min-width: breakpoint-min("xl")) {
+        height: $xl-four-tile-width * $aspect-ratio-factor-3x2;
+      }
+    }
+  }
+  &.categories-5 {
+    .browse-category {
+      @media (min-width: breakpoint-min("sm")) {
+        height: $sm-three-tile-width * $aspect-ratio-factor-3x2;
+      }
+
+      @media (min-width: breakpoint-min("md")) {
+        height: $md-three-tile-width * $aspect-ratio-factor-3x2;
+      }
+
+      @media (min-width: breakpoint-min("lg")) {
+        height: $lg-five-tile-width * $aspect-ratio-factor-3x2;
+      }
+
+      @media (min-width: breakpoint-min("xl")) {
+        width: $xl-five-tile-width;
+        height: $xl-five-tile-width * $aspect-ratio-factor-3x2;
+      }
+    }
+  }
+}
+
+// Special cases where the sizing above doesn't work when there is a sidebar.
+// Note that "lg" with a sidebar has the same available width as "md"
+// without a sidebar.
+[data-sidebar="true"] {
+  &.categories-1,
+  &.categories-2,
+  &.categories-3 {
+    .browse-category {
+      height: 210px;
+    }
+  }
+  &.categories-4 {
+    .browse-category {
+      @media (min-width: breakpoint-min("lg")) {
+        height: $md-two-tile-width * $aspect-ratio-factor-3x2;
+      }
+
+      @media (min-width: breakpoint-min("xl")) {
+        height: $xl-sidebar-four-tile-width * $aspect-ratio-factor-3x2;
+      }
+    }
+  }
+  &.categories-5 {
+    .browse-category {
+      @media (min-width: breakpoint-min("lg")) {
+        height: $md-three-tile-width * $aspect-ratio-factor-3x2;
+      }
+
+      @media (min-width: breakpoint-min("xl")) {
+        height: $xl-sidebar-five-tile-width * $aspect-ratio-factor-3x2;
+      }
+    }
+  }
+}
