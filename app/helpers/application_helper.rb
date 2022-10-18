@@ -23,18 +23,6 @@ module ApplicationHelper
     mail_to address, sanitize(address).gsub(/([@.])/, '\1<wbr />').html_safe
   end
 
-  # @param doc_presenter [Blacklight::ShowPresenter]
-  # @param field [Blacklight::Configuration::IndexField]
-  #
-  # @return [String] the string representation of the values; any values that are URLs are converted to links.
-  #
-  # @see https://github.com/projectblacklight/blacklight/wiki/Configuration---Results-View#helper-method
-  def render_presented_show_field_value(doc_presenter:, field:)
-    doc_presenter.field_value(field, except_operations: [Blacklight::Rendering::Join]).map do |value|
-      link_to_if value.start_with?('http'), value, value
-    end.join('<br />')
-  end
-
   def full_text_search?
     @full_text_search ||= params['fulltext'].present?
   end

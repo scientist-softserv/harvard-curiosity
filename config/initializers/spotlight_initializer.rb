@@ -9,6 +9,18 @@
 # Spotlight::Engine.config.catalog_controller_class = '::CatalogController'
 # Spotlight::Engine.config.default_blacklight_config = nil
 
+# Override Blacklight's default rendering pipeline to change how multiple values
+# are joined and displayed in the UI.
+# @see Curiosity::Rendering::BlacklightJoinOverride
+Spotlight::Engine.config.to_prepare do
+  Blacklight::Rendering::Pipeline.operations = [
+    Blacklight::Rendering::HelperMethod,
+    Blacklight::Rendering::LinkToFacet,
+    Blacklight::Rendering::Microdata,
+    Curiosity::Rendering::BlacklightJoinOverride # replaces Blacklight::Rendering::Join
+  ]
+end
+
 # ==> Appearance configuration
 # Spotlight::Engine.config.exhibit_main_navigation = [:curated_features, :browse, :about]
 # Spotlight::Engine.config.resource_partials = [
