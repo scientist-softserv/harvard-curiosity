@@ -42,7 +42,7 @@ en:
         info: Your search returned no results in full text.
         link: Show metadata results instead.
       results:
-        info: Showing results in full text.
+        info: Your search includes results from inside text of items.
         link: Show metadata results only.
       search_location: INSIDE TEXT OF ITEMS
     metadata_only:

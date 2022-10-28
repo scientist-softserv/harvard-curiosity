@@ -1,11 +1,13 @@
 <%# OVERRIDE from Blacklight 7.0.0 to remove placeholder text, switch search icon for text, and add full text search cability %>
   <%= form_tag search_action_url, method: :get, class: 'search-query-form', role: 'search' do %>
   <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8, :fulltext)) %>
-  <% if search_fields.length > 1 %>
-    <label for="search_field" class="sr-only"><%= t('blacklight.search.form.search_field.label') %></label>
-  <% end %>
+
   <div class="input-group">
+    <label for="q" class="sr-only"><%= t('blacklight.search.form.search.label') %></label>
+    <%= text_field_tag :q, params[:q], class: "search-q q form-control", id: "q", autofocus: presenter.autofocus?, data: { autocomplete_enabled: presenter.autocomplete_enabled?, autocomplete_path: search_action_path(action: :suggest) }  %>
+
     <% if search_fields.length > 1 %>
+        <label for="search_field" class="sr-only"><%= t('blacklight.search.form.search_field.label') %></label>
         <%= select_tag(:search_field,
                        options_for_select(search_fields, h(params[:search_field])),
                        title: t('blacklight.search.form.search_field.title'),
@@ -14,17 +16,19 @@
     <% elsif search_fields.length == 1 %>
       <%= hidden_field_tag :search_field, search_fields.first.last %>
     <% end %>
-    <label for="q" class="sr-only"><%= t('blacklight.search.form.search.label') %></label>
-    <%= text_field_tag :q, params[:q], class: "search-q q form-control", id: "q", autofocus: presenter.autofocus?, data: { autocomplete_enabled: presenter.autocomplete_enabled?, autocomplete_path: search_action_path(action: :suggest) }  %>
 
-    <span class="input-group-append">
+    <% if search_fields.length == 1 %><span class="input-group-append"><% end %>
       <button type="submit" class="btn btn-outline-secondary search-btn" id="search">
         Search
       </button>
-    </span>
+    <% if search_fields.length == 1 %></span><% end %>
   </div>
   <% if current_exhibit.set_name.present? %>
-    <span class='fulltext-helper-text'>
+    <% if search_fields.length > 1 %>
+      <span class='fulltext-helper-text fielded-search'>
+    <% else %>
+      <span class='fulltext-helper-text'>
+    <% end %>
       <%= check_box_tag 'fulltext', 'yes', full_text_search? %>
       <span class= 'pl-1'>Search inside text of items</span>
     </span>
