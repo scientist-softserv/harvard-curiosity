@@ -17,12 +17,12 @@ module Curiosity
 
       private
 
-        def sanitize_and_linkify(value)
-          sanitized_value = html_escape(value)
-          return sanitized_value unless sanitized_value.start_with?('http')
+      def sanitize_and_linkify(value)
+        sanitized_value = html_escape(value)
+        return sanitized_value unless sanitized_value.start_with?('http')
 
-          "<a href='#{sanitized_value}'>#{sanitized_value}</a>"
-        end
+        "<a href='#{sanitized_value}'>#{sanitized_value}</a>"
+      end
     end
   end
 end
