@@ -7,6 +7,9 @@
 class CatalogController < ApplicationController
   include Blacklight::Catalog
 
+  FTS_PER_PAGE = 12
+  FTS_VIEW = 'list'
+
   configure_blacklight do |config| # rubocop:disable Metrics/BlockLength
     config.show.oembed_field = :oembed_url_ssm
     config.show.partials.insert(1, :oembed)
@@ -159,7 +162,7 @@ class CatalogController < ApplicationController
                                                                              'The @document_list instance variable is deprecated; use @response.documents instead.')
     end
     respond_to do |format|
-      format.html { store_preferred_view }
+      format.html { params[:fulltext].present? ? params[:view] = FTS_VIEW : store_preferred_view }
       format.rss  { render layout: false }
       format.atom { render layout: false }
       format.json do
@@ -184,7 +187,7 @@ class CatalogController < ApplicationController
     @fts_params[:'group.ngroups'] = true
     # @fts_params[:hl] = true
     @fts_params[:wt] = 'ruby'
-    @fts_params[:rows] = params[:per_page].presence || blacklight_config.default_per_page
+    @fts_params[:rows] = FTS_PER_PAGE
     @fts_params[:start] = (((params[:page].presence || 1).to_i - 1) * @fts_params[:rows].to_i) + 1
     @fts_params
   end

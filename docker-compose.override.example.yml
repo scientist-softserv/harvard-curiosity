@@ -42,7 +42,7 @@ services:
       internal:
 
   postgres:
-    image: postgres:latest
+    image: postgres:14
     restart: on-failure
     environment:
       - POSTGRES_USER=spotlight_user

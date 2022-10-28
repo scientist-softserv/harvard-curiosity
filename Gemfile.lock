@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/harvard-lts/spotlight-oaipmh-resources
-  revision: 39075bc55cd39d45f85f3b46e8021eda82a90fe2
-  tag: v3.0.0-beta.11
+  revision: c01ca6df8b061d0d512f1104b68afd6b531debba
+  tag: v3.0.0-beta.12
   specs:
-    spotlight-oaipmh-resources (3.0.0.pre.beta.11)
+    spotlight-oaipmh-resources (3.0.0.pre.beta.12)
       mods
       oai
 
@@ -244,7 +244,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.10.1)
+    faraday (1.10.2)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -375,7 +375,7 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
-    nokogiri (1.13.8)
+    nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     nom-xml (1.2.0)
@@ -655,7 +655,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   ruby

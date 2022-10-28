@@ -47,7 +47,7 @@
     padding: 16px 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
   }
   .navbar-nav {
     padding-left: 20px;
@@ -85,8 +85,8 @@
     }
 
     @media (min-width: breakpoint-min("lg")) {
-      background-color: rgba(0, 0, 0, .6);
-      margin-top: 19px;
+      background-color: rgba(0, 0, 0, .8);
+      top: 50px;
       padding: 20px 30px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
       li {
@@ -131,6 +131,30 @@
       border-top-left-radius: 4px !important;
       border-bottom-left-radius: 4px !important;
     }
+    select#search_field {
+      padding: 10px 0 10px 12px;
+      height: 38px;
+      color: $black;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.17px;
+      line-height: 19px;
+      text-transform: uppercase;
+      width: auto;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      background-position-x: right 12px;
+      width: 100px;
+
+      + button#search {
+        padding-left: 12px;
+        margin-left: 10px;
+        &::before {
+          content: none;
+        }
+      }
+
+    }
     button#search {
       padding: 6px 12px 6px 0;
       background: $white;
@@ -165,17 +189,24 @@
       padding: 10px 20px;
       right: 20px;
       width: 359px;
+      &.fielded-search {
+        width: 470px;
+      }
 
       @media (min-width: breakpoint-min("lg")) {
-        background: rgba(0,0,0,.6);
+        background: rgba(0,0,0,.8);
         margin-top: 16px;
       }
       @media (max-width: breakpoint-max("sm")) {
-        background: rgba(0,0,0,.6);
+        background: rgba(0,0,0,.8);
         margin-top: 16px;
         left: 20px;
         width: auto;
         max-width: 359px;
+        &.fielded-search {
+          width: auto;
+          max-width: 470px;
+        }
       }
 
       input {
