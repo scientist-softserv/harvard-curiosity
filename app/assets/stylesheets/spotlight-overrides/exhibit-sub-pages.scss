@@ -100,37 +100,6 @@ form.browse-search-form {
       margin-bottom: 20px;
     }
 
-    h2 {
-      .item-count {
-        font-family: Lora, Georgia, serif;
-        font-style: italic;
-        font-size: 26px;
-        font-weight: 400;
-        line-height: 1.54;
-        letter-spacing: normal;
-        text-transform: none;
-      }
-      .subtitle {
-        font-family: Lora, Georgia, serif;
-        font-style: italic;
-        font-size: 26px;
-        font-weight: 400;
-        line-height: 1.54;
-        letter-spacing: normal;
-        text-transform: none;
-        &::before {
-          content: "";
-          padding-right: 0;
-        }
-        .item-count::before {
-          content: " \000B7 ";
-          color: #6c757d;
-          padding-right: 0.5rem;
-          font-weight: 800;
-        }
-      }
-    }
-
     #document .blacklight-exhibit_tags, .document .blacklight-exhibit_tags {
       a {
         font-family: "Trueno", sans-serif;
@@ -171,7 +140,7 @@ form.browse-search-form {
     }
 
     .spotlight-flexbox.browse-categories {
-      justify-content: space-between;
+      justify-content: space-evenly;
     }
 
     // sidebar with light gray background
@@ -260,6 +229,91 @@ form.browse-search-form {
       a.btn {
         padding: 3.5px 9px;
       }
+    }
+  }
+  // carousel widget
+  &.carousel-block {
+    .slide {
+      .carousel-caption {
+        color: $black;
+        background: rgba(255, 255, 255, 0.8);
+        h3 {
+          text-transform: none;
+          font-weight: normal;
+          letter-spacing: normal;
+          margin-bottom: 0;
+        }
+      }
+      .carousel-indicators {
+        li {
+          background-color: $black;
+        }
+      }
+    }
+  }
+}
+
+// make h1's look like h2's
+.blacklight-catalog-edit #document h1,
+.blacklight-dashboards #main-container #content h1,
+.blacklight-about_pages #main-container #content h1,
+.blacklight-feature_pages #main-container #content h1,
+.blacklight-browse #main-container #content h1,
+.blacklight-home_pages #main-container #content h1 {
+  font-family: "Trueno", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2.4px;
+  color: $black;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+    line-height: 31px;
+    margin-bottom: 20px;
+  }
+}
+// make h2's look like h3's
+.blacklight-dashboards #main-container #content h2 {
+  font-family: "Trueno", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: $black;
+}
+
+.blacklight-browse #main-container #content h1 {
+  .item-count {
+    font-family: Lora, Georgia, serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.54;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .subtitle {
+    font-family: Lora, Georgia, serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.54;
+    letter-spacing: normal;
+    text-transform: none;
+    &::before {
+      content: "";
+      padding-right: 0;
+    }
+    .item-count::before {
+      content: " \000B7 ";
+      color: #6c757d;
+      padding-right: 0.5rem;
+      font-weight: 800;
     }
   }
 }
