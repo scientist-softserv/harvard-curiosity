@@ -17,6 +17,8 @@ module Spotlight
     # Set up after_create callback on Spotlight::Exhibit
     def self.prepended(base)
       base.class_eval do
+        has_many :harvesters, dependent: :destroy, class_name: '::Spotlight::Harvester'
+
         after_create :load_default_field_config
       end
     end
