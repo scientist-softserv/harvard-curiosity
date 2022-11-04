@@ -1,0 +1,19 @@
+<% # OVERRIDE from spotlight 3.3.0 to remove "Curation" from header and add more spacing between sections %>
+
+<% content_for(:sidebar) do %>
+  <%= render 'spotlight/shared/exhibit_sidebar' %>
+<% end %>
+
+<h1 class="page-header">Dashboard</h1>
+
+<div class="reindexingHistory clearfix hl__heading">
+  <%= render 'reindexing_activity' %>
+</div>
+
+<div class="pageHistory clearfix hl__heading">
+  <%= render 'page_activity' %>
+</div>
+
+<div class="updatedItems clearfix hl__heading">
+  <%= render 'solr_document_activity' %>
+</div>

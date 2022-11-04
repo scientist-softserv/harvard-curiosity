@@ -1,4 +1,14 @@
 en:
   blacklight:
     application_name: "Harvard Curiosity"
-    back_to_search: "« Back to Search"
+    back_to_search: "« Back to Search Results"
+
+    search:
+      facets:
+        more_html: 'More <span class="sr-only visually-hidden">%{field_name}</span>'
+      start_over: 'Clear all'
+      zero_results:
+        modify_search: "Try..."
+        new_search: "new search"
+        search_fields: 'you searched by "%{search_fields}"'
+        search_everything: "searching everything"

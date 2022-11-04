@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/harvard-lts/spotlight-oaipmh-resources
-  revision: 7ceec0f74d0f459e135ba11f5798c8d9d0acbbdc
-  branch: main
+  revision: af405a458cc3dd18d69312d14ee85dc0cc140bd8
+  tag: v3.0.0-beta.13
   specs:
-    spotlight-oaipmh-resources (3.0.0.pre.beta.1)
+    spotlight-oaipmh-resources (3.0.0.pre.beta.13)
       mods
       oai
 
@@ -244,7 +244,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.10.0)
+    faraday (1.10.2)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -348,7 +348,7 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    loofah (2.16.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -362,7 +362,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.2)
+    minitest (5.16.3)
     mods (3.0.3)
       edtf (~> 3.0)
       iso-639
@@ -375,7 +375,7 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.5.8)
-    nokogiri (1.13.8)
+    nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     nom-xml (1.2.0)
@@ -421,7 +421,7 @@ GEM
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.4)
     rack-cas (0.16.1)
       addressable (~> 2.3)
       nokogiri (~> 1.5)
@@ -452,7 +452,10 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
+    rails-healthcheck (1.4.0)
+      actionpack
+      railties
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     railties (6.1.5)
       actionpack (= 6.1.5)
@@ -652,7 +655,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   ruby
@@ -687,6 +690,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.5)
+  rails-healthcheck
   redis
   rsolr (>= 1.0, < 3)
   rspec-rails

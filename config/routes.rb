@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  Healthcheck.routes(self)
   mount Spotlight::Oaipmh::Resources::Engine, at: 'spotlight_oaipmh_resources'
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
   root to: 'spotlight/exhibits#index'
-  mount Spotlight::Engine, at: 'spotlight'
+  mount Spotlight::Engine, at: '/'
   mount Blacklight::Engine => '/'
   #  root to: "catalog#index" # replaced by spotlight root path
   concern :searchable, Blacklight::Routes::Searchable.new

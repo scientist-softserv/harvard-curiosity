@@ -1,0 +1,76 @@
+.st__content-block--quote .quote blockquote {
+  margin-top: 45px;
+
+  margin-bottom: 0;
+
+  .quote__content {
+    border-bottom: 1px solid $black;
+    border-top: 5px solid $black;
+    padding: 45px;
+    padding-left: 25px;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 620px) {
+      padding: 25px;
+      padding-right: 35px;
+    }
+
+    p {
+      color: $black;
+      font-size: 39px;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 52px;
+      
+      margin-bottom: 0;
+  
+      @media (max-width: 780px) {
+        font-size: 32px;
+        line-height: 46px;
+      }
+  
+      @media (max-width: 620px) {
+        font-size: 25px;
+        line-height: 38px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        right: 35px;
+        top: 0;
+        bottom: 30px;
+        width: 116px;
+        background: url("data:image/svg+xml,%3Csvg width='108px' height='70px' viewBox='0 0 108 70' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg transform='translate(-903.000000, -2202.000000)' fill='%23f8c21c'%3E%3Cg transform='translate(277.000000, 1983.000000)'%3E%3Cg transform='translate(0.000000, 61.000000)'%3E%3Cpath d='M653.671746,182.993968 C656.248077,173.301193 663.075356,169.448936 670.933168,167.212142 C671.706067,166.963609 671.577251,166.218011 671.577251,166.218011 L670.417902,158.513497 C670.417902,158.513497 670.289085,157.892166 669.258552,158.016432 C641.691804,160.874558 623.142216,181.129973 626.36263,205.734711 C629.711861,222.883467 643.624052,229.469583 656.248077,227.729855 C669.000919,225.741593 677.760447,214.309089 675.699381,202.00672 C674.024766,191.071281 664.621155,183.366767 653.671746,182.993968 M733.733041,202.006634 C732.059093,191.195483 722.530468,183.490984 711.71419,182.99392 C714.418259,173.301163 720.985285,169.448914 728.968728,167.212124 C729.741319,166.963592 729.612554,166.217995 729.612554,166.217995 L728.324902,158.513496 C728.324902,158.513496 728.196137,157.892166 727.166015,158.016432 C699.610261,160.998818 680.939306,181.254194 684.415966,205.858884 C687.635096,222.883341 701.412974,229.469444 714.160729,227.729719 C726.908485,225.741461 735.664519,214.308979 733.733041,202.006634'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E") bottom / contain no-repeat;
+        z-index: -1;
+
+        @media (max-width: 620px) {
+          width: 58px;
+        }
+      }
+    }
+  }
+
+  .quote__cite {
+    color: $gray-600;
+    font-family: "Trueno", sans-serif;
+    font-size: 17px;
+    line-height: 22px;
+    padding-top: 25px;
+    text-align: right;
+
+    &::before {
+      content: none;
+    }
+
+    &-text {
+      font-style: normal;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 15px;
+      padding-top: 15px;
+    }
+  }
+}

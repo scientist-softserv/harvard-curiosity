@@ -1,15 +1,17 @@
-@import 'harvard-bootstrap';
-
+// browse cards and layout on browse landing page
+// card styling on other pages in _featured_browse_categories_block.scss file
 .browse-landing  {
   .image-overlay {
     border: 0;
     border-radius: 0;
-    background: linear-gradient(#00000014, #000000b6);
   }
   .text-overlay {
     display: flex;
     align-items: flex-end;
-    background: linear-gradient(#00000014, #000000b6);
+    background-image: linear-gradient(180deg, rgba(64, 64, 64, 0) 0%, #1E1E1E 100%);
+    &:hover {
+      background: none;
+    }
     .browse-category-title {
       text-align: start;
       line-height: 32px;
@@ -18,7 +20,6 @@
       margin-bottom: 0;
       top: unset;
       transform: unset;
-      text-shadow: 1px 1px 0 #1e1e1e;
       .title {
         font-size: 32px;
         color: $white;
@@ -26,29 +27,55 @@
       }
       .item-count, .category-subtitle {
         text-transform: none;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         margin-top: 0;
         letter-spacing: 0;
+        line-height: 22px;
         color: $white;
       }
       .category-subtitle {
-        font-family: "Lora", serif;
+        font-family: Lora, Georgia, serif;
         font-style: italic;
         font-size: 22px;
+        margin-bottom: 8px;
       }
+    }
+  }
+  a:hover, a:focus {
+    .text-overlay {
+      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.3) 100%);
     }
   }
 
   .long-description-text {
-    margin: ($spacer * 2) 0;
+    margin: 40px 0;
     width: 40em;
   }
 }
 
+// searchbox layout on browse page
+form.browse-search-form {
+  .form-group {
+    align-items: center;
+    justify-content: center;
+    #browse-search {
+      left: 0;
+      max-height: 45px;
+      background: $gray-600;
+      border-color: $gray-600;
+      &:hover, &:focus {
+        background: $gray-700;
+        border-color: $gray-700;
+      }
+    }
+  }
+}
+
+// styling of exhibit subpages
 .blacklight-feature_pages {
   .category-subtitle {
-    font-family: "Lora", serif;
+    font-family: Lora, Georgia, serif;
     font-style: italic;
     font-size: 18px;
     font-weight: 700;
@@ -56,7 +83,9 @@
 }
 
 .blacklight-feature_pages-show,
-.blacklight-about_pages-show, .blacklight-browse-show, .blacklight-catalog-show {
+.blacklight-about_pages-show, 
+.blacklight-browse-show, 
+.blacklight-catalog-show {
   #main-container {
     margin-top: 1rem;
     .st__content-block--text {
@@ -71,37 +100,9 @@
       margin-bottom: 20px;
     }
 
-    h1 {
-      line-height: 40px;
-      .title {
-        font-weight: 700;
-        font-size: 32px;
-        text-transform: uppercase;
-        letter-spacing: 2.4px;
-      }
-      .item-count {
-        font-size: 1.8rem;
-        font-weight: 300;
-        &::before {
-          content: " \000B7 ";
-          color: #6c757d;
-          padding-right: 0.5rem;
-          font-weight: 800;
-        }
-      }
-      .subtitle {
-        font-size: 1.8rem;
-        font-weight: 500;
-        &::before {
-          content: "";
-          padding-right: 0;
-        }
-      }
-    }
-
     #document .blacklight-exhibit_tags, .document .blacklight-exhibit_tags {
       a {
-        font-family: 'Trueno';
+        font-family: "Trueno", sans-serif;
         transition: all 0.4s ease;
         font-size: 12px;
         line-height: 16px;
@@ -117,6 +118,9 @@
           border: 1px solid $gray-600;
           background-color: $gray-600;
           color: $white;
+        }
+        &:not(:last-child) {
+          margin-bottom: 5px;
         }
       }
     }
@@ -136,96 +140,180 @@
     }
 
     .spotlight-flexbox.browse-categories {
-      justify-content: space-between;
+      justify-content: space-evenly;
     }
 
+    // sidebar with light gray background
     .page-sidebar {
       .nav-heading.h4 {
         background-color: $gray-100;
         margin: 0;
-        padding: 1.5rem 1.5rem 0;
+        padding: 1.5rem 25px 0;
         border-bottom: 0 !important;
+        + .sidenav {
+          padding-top: 10px;
+          padding-bottom: 20px;
+        }
       }
       .sidenav {
         background-color: $gray-100;
-        padding: .5rem 1.5rem 2rem;
+        padding: 30px 25px 0;
         &.contacts {
-          padding: .5rem 1.5rem;
           .contact-properties a {
             text-transform: none;
           }
         }
         li, li.nav-item {
-          margin-top: 1.5rem;
           a, a.nav-link {
             color: $black;
-            line-height: 32px;
-            letter-spacing: 1px;
-            text-transform: capitalize;
-            font-size: 14px;
-            border-bottom-width: 0;
-            &:hover {
-              border: none;
-              text-decoration: underline;
-              text-decoration-thickness: 3px;
-              text-underline-offset: 3px;
-              text-decoration-color: rgba(5, 121, 184, 0.3);
-              }            
-            }
+            font-size: 16px;
+            line-height: 28.5px;
+            font-weight: 400;          
+          }
           h2.h6 {
             font-size: 14px;
+            letter-spacing: 1.17px;
+            line-height: 19px;
+            margin-bottom: 10px;
             a {
-              letter-spacing: 2.4px;
+              font-size: 14px;
+              letter-spacing: 1.17px;
+              line-height: 19px;
+              font-weight: 700;
               text-transform: uppercase;
             }
           }
           &.active {
-            color: $black;
-            font-size: 14px;
-            text-transform: capitalize;
-            text-decoration: underline;
-            text-decoration-thickness: 3px;
-            text-underline-offset: 3px;
-            text-decoration-color: rgba(5, 121, 184, 0.3);
-            a, a.nav-link {
-              color: $black;
-              letter-spacing: 1px;
-              text-decoration-color: rgba(5, 121, 184, 0.3);
+            a.nav-link {
+              border-color: rgba(30, 30, 30, 0.5);
             }
             h2.h6 {
-              font-weight: 600;
-              line-height: 1.6;
+              text-decoration: underline;
+              text-decoration-thickness: 3px;
+              text-decoration-color: rgba(30, 30, 30, 0.5);
             }
           }
           .subsection {
-            margin-bottom: 0;
+            margin-bottom: 40px;
             li {
-              margin-top: .5rem;
               list-style: none;
               margin-left: 0;
-              letter-spacing: 1px;
-              a {
-                color: $black;
-                font-weight: 400;
-                text-decoration-color: transparent;
-                &:hover {
-                  text-decoration: underline;
-                  text-decoration-thickness: 3px;
-                  text-underline-offset: 3px;
-                  text-decoration-color: rgba(5, 121, 184, 0.3);
-                }
-              }
               &.active {
-                font-family: 'Trueno';
+                font-family: "Trueno", sans-serif;
+                font-size: 16px;
+                line-height: 28.5px;
                 text-decoration: underline;
                 text-decoration-thickness: 3px;
-                text-underline-offset: 3px;
-                text-decoration-color: rgba(5, 121, 184, 0.3);
+                text-decoration-color: rgba(30, 30, 30, 0.5);
               }
             }
           }
         }
       }
+    }
+  }
+}
+
+// exhibit widgets
+.content-block {
+  // item grid widget
+  &.item-grid-block {
+    img.img-thumbnail {
+      border: none;
+    }
+  }
+  // search results widget
+  #sortAndPerPage {
+    padding-bottom: 20px;
+    .view-type {
+      a.btn {
+        padding: 3.5px 9px;
+      }
+    }
+  }
+  // carousel widget
+  &.carousel-block {
+    .slide {
+      .carousel-caption {
+        color: $black;
+        background: rgba(255, 255, 255, 0.8);
+        h3 {
+          text-transform: none;
+          font-weight: normal;
+          letter-spacing: normal;
+          margin-bottom: 0;
+        }
+      }
+      .carousel-indicators {
+        li {
+          background-color: $black;
+        }
+      }
+    }
+  }
+}
+
+// make h1's look like h2's
+.blacklight-catalog-edit #document h1,
+.blacklight-dashboards #main-container #content h1,
+.blacklight-about_pages #main-container #content h1,
+.blacklight-feature_pages #main-container #content h1,
+.blacklight-browse #main-container #content h1,
+.blacklight-home_pages #main-container #content h1 {
+  font-family: "Trueno", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2.4px;
+  color: $black;
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+    line-height: 31px;
+    margin-bottom: 20px;
+  }
+}
+// make h2's look like h3's
+.blacklight-dashboards #main-container #content h2 {
+  font-family: "Trueno", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: $black;
+}
+
+.blacklight-browse #main-container #content h1 {
+  .item-count {
+    font-family: Lora, Georgia, serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.54;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+  .subtitle {
+    font-family: Lora, Georgia, serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.54;
+    letter-spacing: normal;
+    text-transform: none;
+    &::before {
+      content: "";
+      padding-right: 0;
+    }
+    .item-count::before {
+      content: " \000B7 ";
+      color: #6c757d;
+      padding-right: 0.5rem;
+      font-weight: 800;
     }
   }
 }

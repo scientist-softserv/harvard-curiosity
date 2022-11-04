@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_02_224427) do
+ActiveRecord::Schema.define(version: 2022_10_18_232843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(version: 2022_08_02_224427) do
     t.integer "weight", default: 50
     t.integer "site_id"
     t.string "theme"
+    t.string "set_name"
     t.index ["masthead_id"], name: "index_spotlight_exhibits_on_masthead_id"
     t.index ["site_id"], name: "index_spotlight_exhibits_on_site_id"
     t.index ["slug"], name: "index_spotlight_exhibits_on_slug", unique: true
@@ -237,6 +238,21 @@ ActiveRecord::Schema.define(version: 2022_08_02_224427) do
     t.index ["member_type", "member_id"], name: "index_spotlight_groups_members_on_member"
   end
 
+  create_table "spotlight_harvesters", force: :cascade do |t|
+    t.bigint "exhibit_id"
+    t.string "base_url"
+    t.string "set"
+    t.string "mods_mapping_file"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.string "metadata_type"
+    t.string "type", null: false
+    t.string "solr_mapping_file"
+    t.index ["exhibit_id"], name: "index_spotlight_harvesters_on_exhibit_id"
+    t.index ["user_id"], name: "index_spotlight_harvesters_on_user_id"
+  end
+
   create_table "spotlight_job_trackers", force: :cascade do |t|
     t.string "on_type", null: false
     t.bigint "on_id", null: false
@@ -287,19 +303,6 @@ ActiveRecord::Schema.define(version: 2022_08_02_224427) do
     t.datetime "updated_at"
     t.boolean "display", default: true
     t.index ["exhibit_id"], name: "index_spotlight_main_navigations_on_exhibit_id"
-  end
-
-  create_table "spotlight_oaipmh_harvesters", force: :cascade do |t|
-    t.bigint "exhibit_id"
-    t.string "base_url"
-    t.string "set"
-    t.string "mapping_file"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.string "metadata_type"
-    t.index ["exhibit_id"], name: "index_spotlight_oaipmh_harvesters_on_exhibit_id"
-    t.index ["user_id"], name: "index_spotlight_oaipmh_harvesters_on_user_id"
   end
 
   create_table "spotlight_pages", id: :serial, force: :cascade do |t|
@@ -408,6 +411,7 @@ ActiveRecord::Schema.define(version: 2022_08_02_224427) do
     t.integer "resource_id"
     t.string "resource_type"
     t.binary "index_status"
+    t.string "urn"
     t.index ["document_type", "document_id"], name: "spotlight_solr_document_sidecars_solr_document"
     t.index ["exhibit_id", "document_type", "document_id"], name: "by_exhibit_and_doc", unique: true
     t.index ["exhibit_id", "document_type", "document_id"], name: "spotlight_solr_document_sidecars_exhibit_document"

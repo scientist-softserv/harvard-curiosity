@@ -188,7 +188,11 @@ module Spotlight
         deserialize_featured_image(ar, :avatar, avatar) if avatar
       end
 
+      # OVERRIDE: skip importing duplicate fields that cause issues
+      default_fields = Spotlight::Engine.config.upload_fields.map(&:field_name).map(&:to_s)
       hash[:custom_fields].each do |attr|
+        next if default_fields.include?(attr[:field])
+
         ar = exhibit.custom_fields.find_or_initialize_by(slug: attr[:slug])
         ar.update(attr)
       end
@@ -199,16 +203,20 @@ module Spotlight
       end
 
       hash[:resources].each do |attr|
-        if attr[:type] == "Spotlight::Resources::Harvester"
+        # OVERRIDE: convert old Harvesters into new OaipmhHarvesters
+        if attr[:type] == 'Spotlight::Resources::Harvester'
+          attr[:mapping_file] = if File.file?("public/uploads/modsmapping/#{attr&.[](:data)&.[](:mapping_file)}")
+                                  attr&.[](:data)&.[](:mapping_file)
+                                else
+                                  'Default Mapping File'
+                                end
           attr[:base_url] = attr&.[](:data)&.[](:base_url)
           attr[:type] = attr&.[](:data)&.[](:type)
           attr[:set] =  attr&.[](:data)&.[](:set)
-          attr[:mapping_file] = attr&.[](:data)&.[](:mapping_file)
           attr[:metadata_type] = attr&.[](:data)&.[](:type)
           attr[:user_id] = attr&.[](:data)&.[](:user)&.[](:id)
 
           Spotlight::OaipmhHarvester.create(exhibit: exhibit, **attr.except(:type, :data, :url))
-
         else
           upload = attr.delete(:upload)
 
@@ -243,6 +251,33 @@ module Spotlight
         tag = ActsAsTaggableOn::Tag.find_or_create_by(name: attr[:tag][:name])
         exhibit.owned_taggings.build(attr.except(:tag).merge(tag_id: tag.id))
       end
+    end
+
+    # OVERRIDE: replace incoming, hard-coded base url with dynamic env variable
+    def deserialize_featured_image(obj, method, data)
+      file = data.delete(:image)
+      image = obj.public_send("build_#{method}")
+      # OVERRIDE BEGIN
+      data[:iiif_tilesource] = transform_featured_image_base_url(data.fetch(:iiif_tilesource))
+      # OVERRIDE END
+      image.update(data)
+      if file
+        image.image = CarrierWave::SanitizedFile.new tempfile: StringIO.new(Base64.decode64(file[:content])),
+                                                     filename: file[:filename],
+                                                     content_type: file[:content_type]
+        # Unset the iiif_tilesource field as the new image should be different, because
+        # the source has been reloaded
+        image.iiif_tilesource = nil
+      end
+      image.save!
+      obj.update(method => image)
+    end
+
+    # OVERRIDE: add new method to replace an image's base url if APP_HOST is configured
+    def transform_featured_image_base_url(base_url)
+      return base_url if ENV.fetch('APP_HOST', nil).blank?
+
+      base_url.gsub('https://curiosity.lib.harvard.edu/images', "https://#{ENV.fetch('APP_HOST')}/images")
     end
   end
 end

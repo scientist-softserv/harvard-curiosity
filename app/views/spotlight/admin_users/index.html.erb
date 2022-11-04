@@ -1,7 +1,7 @@
-<%# OVERRIDE Spotlight 3.3.0 to remove invite section %>
+<%# OVERRIDE Spotlight 3.3.0 to remove invite section and add more spacing between sections %>
 <%= page_title(t('.page_title')) %>
 <%= bootstrap_form_for Spotlight::Engine.user_class.new, html: { class: 'admin-users' }, url: spotlight.admin_users_path do |f| %>
-  <div class="mb-4">
+  <div class="hl__heading">
     <h3 class="instructions"><%= t :'.instructions' %></h3>
     <table class="table table-striped">
       <thead>
@@ -28,7 +28,7 @@
     </table>
   </div>
 
-  <div class="mb-4">
+  <div class="hl__heading">
     <h3 class="instructions"><%= t :'.admins_curators' %></h3>
     <div id="admins_curators" class="card card-body bg-light">
       <div class='btn-toolbar float-right'>
@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <div class="mb-4">
+  <div class="hl__heading">
     <h3 class="instructions"><%= t :'.all_users' %></h3>
     <table class="table table-striped ">
       <thead>

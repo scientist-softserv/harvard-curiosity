@@ -1,6 +1,43 @@
-<%# OVERRIDE Blacklight 7.0.0 to render the constaints in the search results in a different place %>
+<%# OVERRIDE Blacklight 7.0.0 to render the constaints in the search results in a different place and add full text search metadata %>
 
-<div id="sortAndPerPage" class="sort-pagination d-block d-sm-flex justify-content-between align-items-start pt-3">
+<div id="sortPerPage" class="d-block d-sm-flex justify-content-between align-items-start">
   <%= render 'constraints' %>
-  <%= render_results_collection_tools wrapping_class: "search-widgets float-md-right align-items-center" %>
+  <%# OVERRIDE: hide when doing a FTS %>
+  <% unless full_text_search? %>
+    <%= render_results_collection_tools wrapping_class: "search-widgets float-md-right align-items-center" %>
+  <% end %>
 </div>
+
+<%# OVERRIDE: hide when doing a FTS %>
+<% unless full_text_search? %>
+  <div class="sort-pagination d-block d-sm-flex justify-content-between align-items-start pt-3">
+    <%= render partial: "paginate_compact", object: @response if show_pagination? %>
+  </div>
+<% end %>
+
+<%# OVERRIDE: add hint text with search type and term %>
+<% if params[:q].present? %>
+  <div class="search-term-hint d-block">
+    <%= t('search.hint', search_location: full_text_search? ? t('search.full_text.search_location') : t('search.metadata_only.search_location')) %>
+    <b><%= params[:q] %></b>
+  </div>
+<% end %>
+
+<%# OVERRIDE: add hint banner with link to alternate search type %>
+<% alt_query_params = request.params.except('page', 'controller', 'action') %>
+<% if full_text_search? %>
+  <div class="search-banner alert alert-info" role="alert">
+    <% if @ft_document_list.present? %>
+      <%= t('search.full_text.results.info') %>
+      <%= link_to t('search.full_text.results.link'), "#{request.path}?#{alt_query_params.except('fulltext').to_query}" %>
+    <% else %>
+      <%= t('search.full_text.no_results.info') %>
+      <%= link_to t('search.full_text.no_results.link'), "#{request.path}?#{alt_query_params.except('fulltext').to_query}" %>
+    <% end %>
+  </div>
+<% elsif current_exhibit.set_name.present? %>
+  <div class="search-banner alert alert-info" role="alert">
+    <%= t('search.metadata_only.info') %>
+    <%= link_to t('search.metadata_only.link'), "#{request.path}?#{alt_query_params.merge(fulltext: 'true').to_query}" %>
+  </div>
+<% end %>

@@ -22,4 +22,8 @@ module ApplicationHelper
   def render_contact_email_address(address)
     mail_to address, sanitize(address).gsub(/([@.])/, '\1<wbr />').html_safe
   end
+
+  def full_text_search?
+    @full_text_search ||= params['fulltext'].present?
+  end
 end

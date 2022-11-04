@@ -1,0 +1,248 @@
+{
+    "additional-digital-items_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "creator-contributor_tesim": {
+      "list": true,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "attribution_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "date_ssim": {
+      "list": true,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "publisher_ssim": {
+      "list": true,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "place-of-origin_ssim": {
+      "list": true,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "spotlight_upload_description_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "edition_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "extent_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "language_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "genre_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "digital-format_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "contents_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "subjects_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "exhibit_tags": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "culture_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "style-period_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "materials-techniques_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "places_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "note_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "cite-as_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "in-collection_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "container_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "series_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "classification_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "repository_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "rights_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "record-id_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "finding-aid-component_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "hollis-record_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "permalink-ham_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "permalink-dcp_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },
+    "available-to_ssim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": false
+    },
+    "finding-aid_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": false
+    },
+    "urn_ssi": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": false
+    }
+  }
+  

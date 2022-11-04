@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <%= content_tag :html, class: 'no-js', **(try(:html_tag_attributes) || {}) do %>
   <head>
+    <%= render partial: 'shared/tagmanager' %>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,6 +25,7 @@
     <%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
   </head>
   <body class="<%= render_body_class %>">
+    <%= render partial: 'shared/tagmanager_noscript' %>
     <%= render partial: 'shared/body_preamble' %>
     <div id="skip-link">
       <% if should_render_spotlight_search_bar? %>
