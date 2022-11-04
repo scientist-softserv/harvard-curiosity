@@ -18,6 +18,7 @@ jobs:
   build:
     uses: scientist-softserv/actions/.github/workflows/build.yaml@v0.0.1
     with:
+      platforms: "linux/amd64"
       worker: false
       # tag: deca90d9
   test:
