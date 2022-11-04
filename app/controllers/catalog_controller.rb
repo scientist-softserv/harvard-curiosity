@@ -85,6 +85,11 @@ class CatalogController < ApplicationController
     @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response,
                                                                       'The @response instance variable is deprecated; use @document.response instead.')
     @manifest_url = @document['manifest_url_ssm']&.first
+    @ham_tesim = @document['permalink-ham_tesim']&.first
+    @hollis_record = @document['hollis-record_tesim']&.first
+    @finding_aid = @document['finding-aid_tesim']&.first
+    @finding_aid_component = @document['finding-aid-component_tesim']&.first
+    # @permalink = JSON.parse(@document.to_json).select { |e| e.start_with? "exhibit_#{current_exhibit.slug.to_s}_permalink" }.values.first.first
 
     respond_to do |format|
       format.html { @search_context = setup_next_and_previous_documents }

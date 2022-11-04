@@ -10,6 +10,9 @@
       padding-right: 5px;
       background-color: #F3F3F3;
       margin: 0 8px 5px 0 !important;
+      &.query .constraint-value::before {
+        content: "Search term:\00a0";
+      }
       .constraint-value {
         color: $gray-800;
         background: transparent;

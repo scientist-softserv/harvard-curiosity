@@ -1,41 +1,65 @@
 <div id="tools" class="sidebar-container p-4 mb-4">
-      <h2 class="clearfix h5">Tools & Related Links</h2>
-<%# TODO: Need to figure out how to generate these links from actual harvard metadata. %>
-<%#
-      <div class="permalink"><span class="fa fa-link"></span> &nbsp;<a href="#">Permalink</a></div>
-        <dl class="dl-more-details clearfix">
-        <dt class="blacklight-title_extended clearfix">More item details</dt>
-        <dd class="blacklight-title_extended">
-          <a href="#">HOLLIS Record</a>
-        </dd>
-      </dl> 
-%>
-        <dl class="dl-iiif dl-more-details clearfix">
-          <dt class="blacklight-title_extended clearfix">
-            <%= embedded_svg('IIIFLogoBlack') %>
-          </dt>
-          <% if @manifest_url.present? %>
-            <script>
-              function copyManifestToClipBoard(manifest_url) {
-                const el = document.createElement('textarea');
-                el.value = manifest_url;
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                alert("Copied the text: '" + el.value + "' to clipboard");
-                document.body.removeChild(el);
-              }
-            </script>
-            <dd class="blacklight-title_extended">
-              <a href="javascript:void(0);" onclick="copyManifestToClipBoard('<%= @manifest_url %>')">
-                Copy Manifest Link
-              </a>
-            </dd>
-          <% end %>
-          <dd>
-            <a href="https://iiif.io/community/faq/" target="_blank">What is IIIF?</a>
-          </dd>
-        </dl>
+  <h2 class="clearfix h5">Tools & Related Links</h2>
+
+  <% if @permalink.present? %>
+    <div class="permalink">
+      <%= embedded_svg('web-link-icon') %> &nbsp;
+      <%= link_to "Permalink", @permalink %>
     </div>
+  <% end %>     
+  
+  <% if @ham_tesim.present? || @hollis_record.present? || @finding_aid.present? || @finding_aid_component.present? %>
+  <dl class="dl-more-details clearfix">
+    <dt class="blacklight-title_extended clearfix">More item details</dt>
+    <% if @ham_tesim.present? %>
+      <dd class="blacklight-title_extended">
+        <%= link_to "Harvard Art Museums", @ham_tesim %>
+      </dd>
+    <% end %>
+    <% if @hollis_record.present? %>
+      <dd class="blacklight-title_extended">
+        <%= link_to "HOLLIS Record", @hollis_record %>
+      </dd>
+    <% end %>
+    <% if @finding_aid.present? %>
+      <dd class="blacklight-title_extended">
+        <%= link_to "Finding Aid", @finding_aid %>
+      </dd>
+    <% end %>
+    <% if @finding_aid_component.present? %>
+      <dd class="blacklight-title_extended">
+        <%= link_to "Finding Aid Component", @finding_aid_component %>
+      </dd>
+    <% end %>
+  </dl>
+  <% end %>
+
+  <dl class="dl-iiif dl-more-details clearfix">
+    <dt class="blacklight-title_extended clearfix">
+      <%= embedded_svg('IIIFLogoBlack') %>
+    </dt>
+    <% if @manifest_url.present? %>
+      <script>
+        function copyManifestToClipBoard(manifest_url) {
+          const el = document.createElement('textarea');
+          el.value = manifest_url;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          alert("Copied the text: '" + el.value + "' to clipboard");
+          document.body.removeChild(el);
+        }
+      </script>
+      <dd class="blacklight-title_extended">
+        <a href="javascript:void(0);" onclick="copyManifestToClipBoard('<%= @manifest_url %>')">
+          Copy Manifest Link
+        </a>
+      </dd>
+    <% end %>
+    <dd>
+      <a href="https://iiif.io/community/faq/" target="_blank">What is IIIF?</a>
+    </dd>
+  </dl>
+</div>
 
 
