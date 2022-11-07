@@ -89,7 +89,10 @@ class CatalogController < ApplicationController
     @hollis_record = @document['hollis-record_tesim']&.first
     @finding_aid = @document['finding-aid_tesim']&.first
     @finding_aid_component = @document['finding-aid-component_tesim']&.first
-    # @permalink = JSON.parse(@document.to_json).select { |e| e.start_with? "exhibit_#{current_exhibit.slug.to_s}_permalink" }.values.first.first
+    
+    if JSON.parse(@document.to_json).select { |e| e.start_with? "exhibit_#{current_exhibit.slug.to_s}_permalink" }.values.present?
+      @permalink = JSON.parse(@document.to_json).select { |e| e.start_with? "exhibit_#{current_exhibit.slug.to_s}_permalink" }.values.first.first
+    end
 
     respond_to do |format|
       format.html { @search_context = setup_next_and_previous_documents }
