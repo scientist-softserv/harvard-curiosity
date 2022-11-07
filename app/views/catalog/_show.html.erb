@@ -15,27 +15,43 @@
         </dd>
       <% end %>
       <% doc_presenter.fields_to_render.each do |field_name, field| -%>
-        <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-3 mobile-fields">
-          <button class="field-button dropdown-toggle" type="button" data-toggle="collapse" data-target="#field-<%= field_name.parameterize %>">
-            <%= (render_document_show_field_label document, field: field_name).chop %>
-          </button>
-        </dt>
-        <dd id='field-<%= field_name.parameterize %>' class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-9 collapse mobile-fields"><%= doc_presenter.field_value field %></dd>
+        <% if 
+          field_name.parameterize != "permalink-ham_tesim" and 
+          field_name.parameterize != "hollis-record_tesim" and 
+          field_name.parameterize != "finding-aid_tesim" and
+          field_name.parameterize != "finding-aid-component_tesim" 
+        %>
+          <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-3 mobile-fields">
+            <button class="field-button dropdown-toggle" type="button" data-toggle="collapse" data-target="#field-<%= field_name.parameterize %>">
+              <%= (render_document_show_field_label document, field: field_name).chop %>
+            </button>
+          </dt>
+          <dd id='field-<%= field_name.parameterize %>' class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-9 collapse mobile-fields"><%= doc_presenter.field_value field %></dd>
+        <% end %>
       <% end -%>
     </dl>
     <%# Tablet/desktop view of metadata %>
     <dl class="row dl-invert document-metadata d-none d-md-flex">
       <% if @document._source[:full_title_tesim].present? %>
         <dt class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-4">
-          Title:
+          Title
         </dt>
         <dd class="blacklight-spotlight_upload_full_title_tesim col-md-6 col-lg-8">
           <%= doc_presenter.heading %>
         </dd>
       <% end %>
       <% doc_presenter.fields_to_render.each do |field_name, field| -%>
-        <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-4"><%= render_document_show_field_label document, field: field_name %></dt>
-        <dd class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-8"><%= doc_presenter.field_value(field) %></dd>
+        <% if 
+          field_name.parameterize != "permalink-ham_tesim" and 
+          field_name.parameterize != "hollis-record_tesim" and 
+          field_name.parameterize != "finding-aid_tesim" and
+          field_name.parameterize != "finding-aid-component_tesim" 
+        %>
+          <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-4">
+          <%= (render_document_show_field_label document, field: field_name).chop %>
+          </dt>
+          <dd class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-8"><%= doc_presenter.field_value(field) %></dd>
+        <% end %>
       <% end -%>
     </dl>
     <%# end metadata %>
