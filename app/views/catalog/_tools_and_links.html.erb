@@ -1,7 +1,7 @@
 <div id="tools" class="sidebar-container p-4 mb-4">
   <h2 class="clearfix h5">Tools & Related Links</h2>
-
-  <% if @permalink.present? %>
+  <% fields_to_render_array  = doc_presenter.fields_to_render.to_a %>
+  <% if @permalink.present? && fields_to_render_array.flatten.include?("permalink_tesim") %>
     <div class="permalink">
       <%= embedded_svg('web-link-icon') %> &nbsp;
       <%= link_to "Permalink", @permalink %>
@@ -11,22 +11,22 @@
   <% if @ham_tesim.present? || @hollis_record.present? || @finding_aid.present? || @finding_aid_component.present? %>
   <dl class="dl-more-details clearfix">
     <dt class="blacklight-title_extended clearfix">More item details</dt>
-    <% if @ham_tesim.present? %>
+    <% if @ham_tesim.present? && fields_to_render_array.flatten.include?("ham_tesim") %>
       <dd class="blacklight-title_extended">
         <%= link_to "Harvard Art Museums", @ham_tesim %>
       </dd>
     <% end %>
-    <% if @hollis_record.present? %>
+    <% if @hollis_record.present? && fields_to_render_array.flatten.include?("hollis-record_tesim") %>
       <dd class="blacklight-title_extended">
         <%= link_to "HOLLIS Record", @hollis_record %>
       </dd>
     <% end %>
-    <% if @finding_aid.present? %>
+    <% if @finding_aid.present? && fields_to_render_array.flatten.include?("finding-aid_tesim") %>
       <dd class="blacklight-title_extended">
         <%= link_to "Finding Aid", @finding_aid %>
       </dd>
     <% end %>
-    <% if @finding_aid_component.present? %>
+    <% if @finding_aid_component.present? && fields_to_render_array.flatten.include?("finding-aid-component_tesim") %>
       <dd class="blacklight-title_extended">
         <%= link_to "Finding Aid Component", @finding_aid_component %>
       </dd>
