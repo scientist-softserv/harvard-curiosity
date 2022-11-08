@@ -43,7 +43,7 @@ en:
         link: Show metadata results instead.
       results:
         info: Your search includes results from inside text of items.
-        link: Show metadata results only.
+        link: Search metadata instead.
       search_location: INSIDE TEXT OF ITEMS
     metadata_only:
       info: Searchable text from transcripts or OCR is available for some items.
