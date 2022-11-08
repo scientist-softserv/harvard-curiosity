@@ -8,10 +8,10 @@
     </div>
   <% end %>     
   
-  <% if @ham_tesim.present? || @hollis_record.present? || @finding_aid.present? || @finding_aid_component.present? %>
+  <% if @ham_tesim.present? && fields_to_render_array.flatten.include?("permalink-ham_tesim") || @hollis_record.present? && fields_to_render_array.flatten.include?("hollis-record_tesim") || @finding_aid.present? && fields_to_render_array.flatten.include?("finding-aid_tesim") || @finding_aid_component.present? && fields_to_render_array.flatten.include?("finding-aid-component_tesim") %>
   <dl class="dl-more-details clearfix">
     <dt class="blacklight-title_extended clearfix">More item details</dt>
-    <% if @ham_tesim.present? && fields_to_render_array.flatten.include?("ham_tesim") %>
+    <% if @ham_tesim.present? && fields_to_render_array.flatten.include?("permalink-ham_tesim") %>
       <dd class="blacklight-title_extended">
         <%= link_to "Harvard Art Museums", @ham_tesim %>
       </dd>

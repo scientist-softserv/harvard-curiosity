@@ -19,7 +19,8 @@
           field_name.parameterize != "permalink-ham_tesim" and 
           field_name.parameterize != "hollis-record_tesim" and 
           field_name.parameterize != "finding-aid_tesim" and
-          field_name.parameterize != "finding-aid-component_tesim" 
+          field_name.parameterize != "finding-aid-component_tesim" and
+          field_name != "permalink_#{current_exhibit.slug.to_s}_tesim"
         %>
           <dt class="blacklight-<%= field_name.parameterize %> col-md-6 col-lg-3 mobile-fields">
             <button class="field-button dropdown-toggle" type="button" data-toggle="collapse" data-target="#field-<%= field_name.parameterize %>">
