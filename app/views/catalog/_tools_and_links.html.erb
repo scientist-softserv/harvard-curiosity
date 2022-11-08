@@ -1,12 +1,18 @@
 <div id="tools" class="sidebar-container p-4 mb-4">
   <h2 class="clearfix h5">Tools & Related Links</h2>
-  <% fields_to_render_array  = doc_presenter.fields_to_render.to_a %>
-  <% if @permalink.present? && fields_to_render_array.flatten.include?("permalink_tesim") %>
+  <% fields_to_render_array  = doc_presenter.fields_to_render.to_a -%>
+  <% include_permalink = false -%>
+  <% doc_presenter.fields_to_render.each do |field_name, field| -%>
+    <% if field_name =~ /^permalink.*_tesim$/
+      include_permalink = true
+    end 
+  end -%>
+  <% if @permalink.present? && include_permalink -%>
     <div class="permalink">
       <%= embedded_svg('web-link-icon') %> &nbsp;
       <%= link_to "Permalink", @permalink %>
     </div>
-  <% end %>     
+  <% end -%>     
   
   <% if @ham_tesim.present? || @hollis_record.present? || @finding_aid.present? || @finding_aid_component.present? %>
   <dl class="dl-more-details clearfix">
