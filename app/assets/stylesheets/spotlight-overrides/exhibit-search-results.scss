@@ -102,6 +102,11 @@
   .document-metadata {
     .search-results-col {
       overflow-wrap: break-word;
+      a {
+        font-family: Lora, Georgia, serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
       .fts-dt {
         font-size: 14px;
         line-height: 1.2;

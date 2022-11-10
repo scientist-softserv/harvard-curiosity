@@ -6,7 +6,7 @@
     if delivery_service.length > 1
       if delivery_service[0] == 'ids' or delivery_service[0] == 'drs' %>
         <div class="btn-group" id='dl-dropdown'>
-          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Download This Item <span class="caret"></span>
             </button>
             <%if delivery_service[0] == 'ids'%>
@@ -143,7 +143,10 @@
                   clearValuesHideText(maxPage);
                 }
               </script>
-              <button type="button" onclick="testRangeBoundariesAndLinkToPrintPDF()"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
+              <button type="button" onclick="testRangeBoundariesAndLinkToPrintPDF()">
+                <%= embedded_svg('download-icon') %>
+                Download
+              </button>
             </div>
             <%end%>
         </div>
