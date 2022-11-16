@@ -17,6 +17,7 @@ on:
 jobs:
   build:
     uses: scientist-softserv/actions/.github/workflows/build.yaml@main
+    if: ${{ secrets.RUN_SOFTSERV_CI }}
     with:
       platforms: "linux/amd64"
       worker: false
@@ -24,17 +25,14 @@ jobs:
   test:
     needs: build
     uses: scientist-softserv/actions/.github/workflows/test.yaml@main
+    if: ${{ secrets.RUN_SOFTSERV_CI }}
     with:
       worker: false
       # tag: deca90d9
   lint:
     needs: build
     uses: scientist-softserv/actions/.github/workflows/lint.yaml@main
+    if: ${{ secrets.RUN_SOFTSERV_CI }}
     with:
       worker: false
       # tag: deca90d9
-  retag:
-    needs: build
-    uses: scientist-softserv/actions/.github/workflows/retag.yaml@main
-    with:
-      worker: false
