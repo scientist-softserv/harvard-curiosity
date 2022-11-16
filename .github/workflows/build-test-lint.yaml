@@ -17,7 +17,7 @@ on:
 jobs:
   build:
     uses: scientist-softserv/actions/.github/workflows/build.yaml@main
-    if: ${{ secrets.RUN_SOFTSERV_CI }}
+    if: github.repository == 'scientist-softserv/harvard-curiosity'
     with:
       platforms: "linux/amd64"
       worker: false
@@ -25,14 +25,14 @@ jobs:
   test:
     needs: build
     uses: scientist-softserv/actions/.github/workflows/test.yaml@main
-    if: ${{ secrets.RUN_SOFTSERV_CI }}
+    if: github.repository == 'scientist-softserv/harvard-curiosity'
     with:
       worker: false
       # tag: deca90d9
   lint:
     needs: build
     uses: scientist-softserv/actions/.github/workflows/lint.yaml@main
-    if: ${{ secrets.RUN_SOFTSERV_CI }}
+    if: github.repository == 'scientist-softserv/harvard-curiosity'
     with:
       worker: false
       # tag: deca90d9
