@@ -4,7 +4,7 @@ services:
   web: &app
     build:
       context: .
-    image: spotlight
+    image: ${REGISTRY}/${REPO_LOWER}:${TAG:-latest}
     stdin_open: true
     tty: true
     env_file:
