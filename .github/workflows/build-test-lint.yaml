@@ -21,18 +21,15 @@ jobs:
     with:
       platforms: "linux/amd64"
       worker: false
-      # tag: deca90d9
   test:
     needs: build
     uses: scientist-softserv/actions/.github/workflows/test.yaml@main
     if: github.repository == 'scientist-softserv/harvard-curiosity'
     with:
       worker: false
-      # tag: deca90d9
   lint:
     needs: build
     uses: scientist-softserv/actions/.github/workflows/lint.yaml@main
     if: github.repository == 'scientist-softserv/harvard-curiosity'
     with:
       worker: false
-      # tag: deca90d9
