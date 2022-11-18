@@ -116,7 +116,7 @@
 }
 
 // search box
-.exhibit-search-form-wrapper{
+.exhibit-search-form-wrapper {
   @media (max-width: breakpoint-max("sm")) {
     align-self: start;
     .exhibit-search-form {
@@ -140,11 +140,17 @@
       letter-spacing: 1.17px;
       line-height: 19px;
       text-transform: uppercase;
-      width: auto;
       border: none;
       border-radius: 0 4px 4px 0;
-      background-position-x: right 12px;
+      background-position: top 50% right 12px;
       width: 100px;
+
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover, &:focus {
+        color: #6c6c6c;
+      }
 
       + button#search {
         padding-left: 12px;
@@ -179,6 +185,12 @@
       &:hover, &:focus {
         color: $gray-600;
       }
+    }
+    /* search button override for Safari 11+ */
+    @media not all and (min-resolution:.001dpcm) { 
+        button#search { 
+        min-width: 112px; 
+        }
     }
     // full text helper box
     .fulltext-helper-text {
@@ -219,6 +231,9 @@
 #content {
   li {
     padding-left: 20px;
+    &.dd-item {
+      padding-left: 0;
+    }
     &::marker {
       color: $red;
       font-size: 1.2em;
