@@ -278,9 +278,9 @@ form.browse-search-form {
 }
 // make h2's look like h3's
 .blacklight-dashboards #main-container #content h2,
-.blacklight-about_pages #main-container #content h2,
-.blacklight-feature_pages #main-container #content h2,
-.blacklight-home_pages #main-container #content h2 {
+.blacklight-about_pages #main-container #content h2:not(.st-text-block--heading),
+.blacklight-feature_pages #main-container #content h2:not(.st-text-block--heading),
+.blacklight-home_pages #main-container #content h2:not(.st-text-block--heading) {
   font-family: "Trueno", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -341,12 +341,3 @@ form.browse-search-form {
   }
 }
 
-// Edit pages: style title inputs to look like how appear on page
-input[id$="_title"] {
-  font-weight: 700;
-  font-size: 24px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: $black;
-  height: 60px;
-}
