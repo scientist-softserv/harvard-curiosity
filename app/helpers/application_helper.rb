@@ -1,6 +1,21 @@
 module ApplicationHelper
   include SpotlightHelper
 
+  def retrieve_delivery_service url
+  	response = Net::HTTP.get_response(URI.parse(url))
+    response_arr = response.body.split('/')
+    if response_arr.length > 1
+      delivery_service = response_arr[-1].split(':')
+    end
+  end
+
+  def retrieve_still_image_json_metadata url
+  	response = Net::HTTP.get_response(URI.parse(url))
+  	if response.is_a? Net::HTTPOK
+  		JSON.parse response.body
+  	end
+  end
+
   def embedded_svg(filename, options = {})
     assets = Rails.application.assets
     asset = assets&.find_asset(filename)
