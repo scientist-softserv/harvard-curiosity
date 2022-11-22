@@ -26,7 +26,7 @@ jobs:
       - name: Bundle installer
         run: bundle install
       - name: Test Connection 3
-        run: psql -h 127.0.0.1 -p 5432 -U spotlight_user -w -e 'CREATE DATABASE IF NOT EXISTS spotlight;'
+        run: psql -h 127.0.0.1 -p 5432 -U spotlight_user -d spotlight -w 
       - name: create db
         run: rails db:create
         env:
