@@ -38,6 +38,35 @@ h2.page-header small {
   font-weight: 600;
 }
 
+// columns widths
+.reindexingHistory {
+  .col {
+    &-date {
+      flex: 0 0 22%;
+      max-width: 22%;
+    }
+    &-user {
+      flex: 0 0 27%;
+      max-width: 27%;
+    }
+    &-setspec, &-status {
+      flex: 0 0 12%;
+      max-width: 12%;
+    }
+    &-items {
+      flex: 0 0 10%;
+      max-width: 10%;
+    }
+    &-time {
+      flex: 0 0 17%;
+      max-width: 17%;
+    }
+  }
+  a {
+    font-size: 16px;
+  }
+}
+
 // spacing between sections 
 // add class="hl__heading" to create space
 .hl__heading {
