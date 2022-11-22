@@ -38,7 +38,7 @@ jobs:
         env:
           DB_PORT: ${{ job.services.postgres.ports[5432] }}
           POSTGRES_USER: spotlight_user
-         RAILS_ENV: test
+          RAILS_ENV: test
       - name: Run tests
         run: bundle exec rspec
         env:
