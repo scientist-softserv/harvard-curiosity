@@ -5,6 +5,7 @@ jobs:
   rspec-test:
     name: RSpec
     runs-on: ubuntu-latest
+    if: github.repository == 'harvard-lts/CURIOSity'
     services:
       postgres:
         image: postgres:14
