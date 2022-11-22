@@ -10,6 +10,9 @@
       padding-right: 5px;
       background-color: #F3F3F3;
       margin: 0 8px 5px 0 !important;
+      &.query .constraint-value::before {
+        content: "Search term:\00a0";
+      }
       .constraint-value {
         color: $gray-800;
         background: transparent;
@@ -99,6 +102,11 @@
   .document-metadata {
     .search-results-col {
       overflow-wrap: break-word;
+      a {
+        font-family: Lora, Georgia, serif;
+        font-size: 14px;
+        font-weight: 400;
+      }
       .fts-dt {
         font-size: 14px;
         line-height: 1.2;

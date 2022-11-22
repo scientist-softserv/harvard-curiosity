@@ -15,3 +15,6 @@ SMTP_ENABLED='true'
 SMTP_FROM_EMAIL=
 
 RAILS_LOG_TO_STDOUT=""
+
+REGISTRY=ghcr.io
+REPO_LOWER=scientist-softserv/harvard-curiosity
