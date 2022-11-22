@@ -32,16 +32,22 @@ jobs:
         env:
           DB_PORT: ${{ job.services.postgres.ports[5432] }}
           POSTGRES_USER: spotlight_user
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_PORT: 5432
           RAILS_ENV: test
       - name: migrate db
         run: rails db:migrate
         env:
           DB_PORT: ${{ job.services.postgres.ports[5432] }}
           POSTGRES_USER: spotlight_user
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_PORT: 5432          
           RAILS_ENV: test
       - name: Run tests
         run: bundle exec rspec
         env:
           DB_PORT: ${{ job.services.postgres.ports[5432] }}
           POSTGRES_USER: spotlight_user
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_PORT: 5432          
           RAILS_ENV: test
