@@ -42,3 +42,4 @@ docker-compose.override.yml
 # don't commit the spotlight harvesting gem
 vendor/spotlight-oaipmh-resources
 *~undo-tree~
+ops/staging-deploy.yaml
