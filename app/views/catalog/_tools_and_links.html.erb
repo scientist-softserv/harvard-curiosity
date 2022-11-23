@@ -1,41 +1,225 @@
 <div id="tools" class="sidebar-container p-4 mb-4">
-      <h2 class="clearfix h5">Tools & Related Links</h2>
-<%# TODO: Need to figure out how to generate these links from actual harvard metadata. %>
-<%#
-      <div class="permalink"><span class="fa fa-link"></span> &nbsp;<a href="#">Permalink</a></div>
-        <dl class="dl-more-details clearfix">
-        <dt class="blacklight-title_extended clearfix">More item details</dt>
-        <dd class="blacklight-title_extended">
-          <a href="#">HOLLIS Record</a>
-        </dd>
-      </dl> 
-%>
-        <dl class="dl-iiif dl-more-details clearfix">
-          <dt class="blacklight-title_extended clearfix">
-            <%= embedded_svg('IIIFLogoBlack') %>
-          </dt>
-          <% if @manifest_url.present? %>
-            <script>
-              function copyManifestToClipBoard(manifest_url) {
-                const el = document.createElement('textarea');
-                el.value = manifest_url;
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                alert("Copied the text: '" + el.value + "' to clipboard");
-                document.body.removeChild(el);
-              }
-            </script>
-            <dd class="blacklight-title_extended">
-              <a href="javascript:void(0);" onclick="copyManifestToClipBoard('<%= @manifest_url %>')">
-                Copy Manifest Link
-              </a>
-            </dd>
-          <% end %>
-          <dd>
-            <a href="https://iiif.io/community/faq/" target="_blank">What is IIIF?</a>
-          </dd>
-        </dl>
+  <h2 class="clearfix h5">Tools & Related Links</h2>
+  <% 
+  if @manifest_url.present?
+    delivery_service = retrieve_delivery_service @manifest_url
+    if delivery_service.length > 1
+      if delivery_service[0] == 'ids' or delivery_service[0] == 'drs' %>
+        <div class="btn-group" id='dl-dropdown'>
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Download This Item <span class="caret"></span>
+            </button>
+            <%if delivery_service[0] == 'ids'%>
+            <ul class="dropdown-menu">
+              <%image_base_url = 'https://ids.lib.harvard.edu/ids/iiif/' + delivery_service[1]
+              json_answer = retrieve_still_image_json_metadata(image_base_url+ '/info.json')
+              if json_answer
+                size_and_labels = [[300, "Small: %d x %d px"],[800, "Medium: %d x %d px"],
+                                    [1200, "Large: %d x %d px"],[2400, "X-Large: %d x %d px"]]
+                max_width = json_answer['maxWidth'].to_i
+                max_height = json_answer['maxHeight'].to_i
+                ratio = json_answer['height']/json_answer['width'].to_f
+                download_url = image_base_url + '/full/%d,/0/default.jpg?download&caption'
+                for i in 0..size_and_labels.length-1 do
+                  size_elem = size_and_labels[i]
+                  if size_elem[0] <= max_width
+                  %>
+                    <li>
+                      <a href="<%= download_url % size_elem[0] %>"><%= size_elem[1] % [size_elem[0], (ratio*(size_elem[0].to_f)).floor] %>
+                      </a>
+                    </li>
+                  <%elsif i != size_and_labels.length-1 and max_width < size_and_labels[i+1][0]%>
+                    <li>
+                      <a href="<%= download_url % size_elem[0] %>"><%= size_elem[1] % [max_width, (ratio*(max_width.to_f)).floor] %>
+                      </a>
+                    </li>
+                    <%break 'break'
+                  end
+                end
+              end%>
+            </ul>
+            <%
+            else
+              #in the case of a pds content, we need a different behavior for the download button.
+              manifest_url = 'https://iiif.lib.harvard.edu/manifests/drs:'+delivery_service[1]
+              manifest_json = retrieve_still_image_json_metadata manifest_url
+              if manifest_json
+          number_of_pages = manifest_json['sequences'][0]['canvases'].length
+              else#below is an easy way to "remove" the download button if there is no manifest retrieved.%>
+                <style type="text/css">
+                  #dl-dropdown{
+                    display:none;
+                  }
+                  #no-dl-button{
+                    display:block;
+                  }
+                </style>
+              <%
+              end
+            %>
+            <div class="dropdown-menu sequence-options">
+              <div id="incorrect_page_range" style = "display:none" value='<%=number_of_pages%>'>
+                Please select a page sequence range between 1-<%=number_of_pages%> pages.
+              </div>
+              From seq <%= text_field :range, :start, size: "5" ,:value => 1 %> to seq <%= text_field :range, :end, size: "5", :value => number_of_pages%>
+              <div id='email_text_form' style = "display:none">
+                Please enter your email, we will send you a download link once your pages are ready to download:
+                <%= text_field :email, :field%>
+              </div>
+              <div id='invalid_email_text' style="display:none">
+                The email you entered was not valid.
+              </div>
+              <script>
+                // this prevents the dropdown menu for pds content from closing when clicking something within it.
+                $('#dl-dropdown .dropdown-menu').on({
+                  "click":function(e){
+                      e.stopPropagation();
+                    }
+                });
+                function clearValuesHideText(maximum_page){
+                  document.getElementById('email_field').value = '';
+                  document.getElementById("range_start").value = '1';
+                  document.getElementById("range_end").value = maximum_page;
+                  document.getElementById("incorrect_page_range").style.display = "none";
+                  document.getElementById('email_text_form').style.display = "none";
+                }
+                function extractMessageFromEmailDLR(text){
+                  let parser = new DOMParser();
+                  let xmlDoc = parser.parseFromString(text,"text/xml");
+                  let msg = null;
+                  if(xmlDoc.getElementsByTagName("response").length > 0){
+                    msg = xmlDoc.getElementsByTagName("response")[0].firstChild;
+                  }else if(xmlDoc.getElementsByTagName("message").length > 0){
+                    msg = xmlDoc.getElementsByTagName("message")[0].firstChild;
+                  }
+                  // .firstChild returns an object whose string content can be accessed by .data attribute.
+                  return msg?msg.data:"";
+                }
+                //TODO: make it so the dropdown menu stays open if the click did not result
+                function testRangeBoundariesAndLinkToPrintPDF(){
+                  const maxPage = <%=number_of_pages%>;
+                  let documentId = <%= delivery_service[1]%>;
+                  let validateEmail = function(email) {
+                    var re = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    return re.test(email);
+                    }
+                  let startRange = parseInt(document.getElementById("range_start").value);
+                  let endRange = parseInt(document.getElementById("range_end").value);
+                  if (isNaN(startRange) || isNaN(endRange) || (startRange < 1) ||(startRange > endRange) || (endRange > maxPage)){
+                    document.getElementById("incorrect_page_range").style.display = "block";
+                    return;
+                  }
+
+                  let printUrl = 'https://iiif.lib.harvard.edu/proxy/printpdf/'+documentId;
+                  let emailValue = document.getElementById('email_field').value;
+
+                  printUrl += '?printOpt=range&start='+startRange+'&end='+endRange;
+                  if((endRange - startRange >= 10)){
+                    if (!emailValue){
+                      document.getElementById('email_text_form').style.display = "block";
+                      return;
+                    }else if (!validateEmail(emailValue)){
+                      document.getElementById('invalid_email_text').style.display = "block";
+                      return;
+                    }else{
+                      let xmlhttp = null;
+                      if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                        xmlhttp=new XMLHttpRequest();
+                      }
+                      else {// code for IE6, IE5
+                        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+                      xmlhttp.onreadystatechange = function() {
+                          if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                              alert(extractMessageFromEmailDLR(xmlhttp.responseText));
+                          }
+                      }
+                      xmlhttp.open('GET',(printUrl+'&email='+emailValue),true);
+                      xmlhttp.send();
+                    }
+                  }else{
+                    window.open(printUrl, '_blank');
+                  }
+                  clearValuesHideText(maxPage);
+                }
+              </script>
+              <button type="button" onclick="testRangeBoundariesAndLinkToPrintPDF()">
+                <%= embedded_svg('download-icon') %>
+                Download
+              </button>
+            </div>
+            <%end%>
+        </div>
+      <%end
+    end
+  end %>
+
+  <% fields_to_render_array  = doc_presenter.fields_to_render.to_a -%>
+  <% include_permalink = false -%>
+  <% doc_presenter.fields_to_render.each do |field_name, field| -%>
+    <% if field_name =~ /^permalink.*_tesim$/
+      include_permalink = true
+    end 
+  end -%>
+  <% if @permalink.present? && include_permalink -%>
+    <div class="permalink">
+      <%= embedded_svg('web-link-icon') %> &nbsp;
+      <%= link_to "Permalink", @permalink %>
     </div>
+  <% end -%>     
+  
+  <% if @ham_tesim.present? && fields_to_render_array.flatten.include?("permalink-ham_tesim") || @hollis_record.present? && fields_to_render_array.flatten.include?("hollis-record_tesim") || @finding_aid.present? && fields_to_render_array.flatten.include?("finding-aid_tesim") || @finding_aid_component.present? && fields_to_render_array.flatten.include?("finding-aid-component_tesim") %>
+  <dl class="dl-more-details clearfix">
+    <dt class="blacklight-title_extended clearfix">More item details</dt>
+    <% if @ham_tesim.present? && fields_to_render_array.flatten.include?("permalink-ham_tesim") %>
+      <dd class="blacklight-title_extended">
+        <%= link_to "Harvard Art Museums", @ham_tesim %>
+      </dd>
+    <% end %>
+    <% if @hollis_record.present? && fields_to_render_array.flatten.include?("hollis-record_tesim") %>
+      <dd class="blacklight-title_extended">
+        <%= link_to "HOLLIS Record", @hollis_record %>
+      </dd>
+    <% end %>
+    <% if @finding_aid.present? && fields_to_render_array.flatten.include?("finding-aid_tesim") %>
+      <dd class="blacklight-title_extended">
+        <%= link_to "Finding Aid", @finding_aid %>
+      </dd>
+    <% end %>
+    <% if @finding_aid_component.present? && fields_to_render_array.flatten.include?("finding-aid-component_tesim") %>
+      <dd class="blacklight-title_extended">
+        <%= link_to "Finding Aid Component", @finding_aid_component %>
+      </dd>
+    <% end %>
+  </dl>
+  <% end %>
+
+  <dl class="dl-iiif dl-more-details clearfix">
+    <dt class="blacklight-title_extended clearfix">
+      <%= embedded_svg('IIIFLogoBlack') %>
+    </dt>
+    <% if @manifest_url.present? %>
+      <script>
+        function copyManifestToClipBoard(manifest_url) {
+          const el = document.createElement('textarea');
+          el.value = manifest_url;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          alert("Copied the text: '" + el.value + "' to clipboard");
+          document.body.removeChild(el);
+        }
+      </script>
+      <dd class="blacklight-title_extended">
+        <a href="javascript:void(0);" onclick="copyManifestToClipBoard('<%= @manifest_url %>')">
+          Copy Manifest Link
+        </a>
+      </dd>
+    <% end %>
+    <dd>
+      <a href="https://iiif.io/community/faq/" target="_blank">What is IIIF?</a>
+    </dd>
+  </dl>
+</div>
 
 
