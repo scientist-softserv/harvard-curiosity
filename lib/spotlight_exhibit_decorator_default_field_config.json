@@ -221,7 +221,7 @@
       "gallery": false,
       "masonry": false,
       "slideshow": false,
-      "show": true
+      "show": false
     },
     "available-to_ssim": {
       "list": false,
