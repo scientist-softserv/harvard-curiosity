@@ -584,11 +584,14 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 .blacklight-sites-edit_exhibits {
-  .dd-item td:first-child .handle-wrap a {
-    &:hover, &:focus {
-      &::after {
-        content: "";
-        margin-left: 0;
+  .dd-item td:first-child .handle-wrap {
+    white-space: normal;
+    a {
+      &:hover, &:focus {
+        &::after {
+          content: "";
+          margin-left: 0;
+        }
       }
     }
   }
