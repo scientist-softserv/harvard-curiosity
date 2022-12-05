@@ -46,9 +46,6 @@
       <div class="row">
         <%= content_for?(:content) ? yield(:content) : yield %>
       </div>
-      <% if search_parameters? %>
-        <%= render 'results_pagination' %>
-      <% end %>
     </main>
 
     <%= render partial: 'shared/footer' %>
