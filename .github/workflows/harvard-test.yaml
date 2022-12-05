@@ -1,0 +1,57 @@
+
+name: Rails tests
+on: [push]
+jobs:
+  rspec-test:
+    name: RSpec
+    runs-on: ubuntu-latest
+    if: github.repository == 'harvard-lts/CURIOSity'
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: spotlight_user
+          POSTGRES_PASSWORD: spotlight_password
+          POSTGRES_DB: spotlight_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - '5432:5432'
+        options: --health-cmd="pg_isready" --health-interval=10s --health-timeout=5s --health-retries=5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.5
+      - name: fix bundler
+        run: gem install bundler:2.1.4
+      - name: Bundle installer
+        run: bundle install
+      - name: Test Connection 3
+        run: psql -h 127.0.0.1 -p 5432 -U spotlight_user -d spotlight_test -w 
+      - name: create db
+        run: rails db:create
+        env:
+          DB_PORT: ${{ job.services.postgres.ports[5432] }}
+          POSTGRES_USER: spotlight_user
+          POSTGRES_DB: spotlight_test
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_PORT: 5432
+          RAILS_ENV: test
+      - name: migrate db
+        run: rails db:migrate
+        env:
+          DB_PORT: ${{ job.services.postgres.ports[5432] }}
+          POSTGRES_USER: spotlight_user
+          POSTGRES_DB: spotlight_test
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_PORT: 5432
+          RAILS_ENV: test
+      - name: Run tests
+        run: bundle exec rspec
+        env:
+          DB_PORT: ${{ job.services.postgres.ports[5432] }}
+          POSTGRES_USER: spotlight_user
+          POSTGRES_DB: spotlight_test
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_PORT: 5432          
+          RAILS_ENV: test
