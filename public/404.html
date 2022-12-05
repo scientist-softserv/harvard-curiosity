@@ -3,65 +3,154 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://bootstrapbuildspace.sfo2.cdn.digitaloceanspaces.com//WCXlTrwTUnMt/ACnrgCvRXvVr/bootstrap.min.css">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+  /* LORA FONT */
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+  
+  /* HL logo */
+  .hl__linked-image a {
+    display: block;
+    font-size: 0;
+    border-block: 0;
+  }
+  .hl__image {
+    height: auto;
+    max-width: 100%;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  /* subtext message */
+  .hl__sub-text {
+  color:#1e1e1e;
+  font-size:22px;
+  font-style:italic;
+  line-height:1.54;
+  padding-top: 40px;
+  }
+  @media (min-width:621px) {
+  .hl__sub-text {
+    font-size:24px;
+  }
+  }
+  @media (min-width:781px) {
+  .hl__sub-text {
+    font-size:26px;
+  }
+  }
+  .hl__sub-text a {
+    font-style: normal;
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  /* page not found css */
+  @media (min-width:621px) {
+  .hl__page-not-found {
+    background-color:#fafafa;
+    min-height:100vh;
+    padding:30px 20px;
   }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
   }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  @media (min-width:971px) {
+  .hl__page-not-found {
+    padding:50px 60px;
+  }
+  }
+  .hl__page-not-found__container {
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:20px;
+  padding-right:20px;
+  max-width:1450px;
+  }
+  .hl__page-not-found__container::after {
+  -ms-flex-item-align:start;
+  align-self:flex-start;
+  content:"";
+  padding-top:56%;
+  width:1px;
+  }
+  @media (min-width:621px) {
+  .hl__page-not-found__container {
+    background-color:white;
+    -webkit-box-shadow:0 0 30px rgba(30,30,30,0.7);
+    box-shadow:0 0 30px rgba(30,30,30,0.7);
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+  }
+  }
+  .hl__page-not-found__image {
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  -webkit-box-flex:0;
+  -ms-flex:none;
+  flex:none;
+  position:relative;
+  left:-20px;
+  width:40%;
+  }
+  @media (max-width:780px) {
+  .hl__page-not-found__image {
+    display:none;
+  }
+  }
+  .hl__page-not-found__content {
+  padding:30px 0;
+  }
+  @media (min-width:621px) {
+  .hl__page-not-found__content {
+    padding:40px;
+    padding-left:20px;
+    width:auto;
+  }
+  }
+  @media (min-width:971px) {
+  .hl__page-not-found__content {
+    padding:60px;
+    padding-left:40px;
+  }
+  }
+  .hl__page-not-found__logo {
+  margin:0 auto 30px;
+  width:150px;
+  }
+  @media (min-width:621px) {
+  .hl__page-not-found__logo {
+    margin-bottom:45px;
+  }
+  }
+  @media (min-width:971px) {
+  .hl__page-not-found__logo {
+    margin-bottom:60px;
+  }
   }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <section class="hl__page-not-found">
+    <div class="hl__page-not-found__container">
+      <div class="hl__page-not-found__image" style="background-image: url('error-page.jpg')">
+      </div>
+      <div class="hl__page-not-found__content">
+        <div class="hl__page-not-found__logo">
+          <section class="hl__linked-image">
+            <a href="https://library.harvard.edu/" title="Harvard Library Home page">
+              <img class="hl__image" alt="" src="logo-plain.svg" width="" height="">
+            </a>
+          </section>
+        </div>
+        <div class="hl__page-not-found__title">
+          <h1 class="hl__page-title">Oh dear.<br>We can't find this page.</h1>
+        </div>
+        <div class="hl__page-not-found__message">
+          <section class="hl__sub-text">
+            <p>Try searching <a href="/">Curiosity</a> again.</p>
+          </section>
+        </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  </section>
 </body>
 </html>
