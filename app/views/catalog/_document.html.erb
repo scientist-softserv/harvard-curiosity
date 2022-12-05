@@ -5,9 +5,9 @@
     document_counter: document_counter %>
   <div class='col-md-3 gallery-masonry-column'>
     <%= render 'thumbnail', {document: document, document_counter: document_counter} %>
-  </div>
-  <div class="d-flex flex-column gallery-masonry-column masonry-title col-md-8 ml-md-3">
-    <%= render 'index_header', {document: document, document_counter: document_counter} %>
-    <%= render 'index', {document: document, document_counter: document_counter} %>
-  </div>
+    <div class="d-flex flex-column gallery-masonry-column masonry-title col-md-8 ml-md-3">
+      <%= render 'index_header', {document: document, document_counter: document_counter} %>
+      <%= render 'index', {document: document, document_counter: document_counter} %>
+    </div>
+  </div> 
 </article>
