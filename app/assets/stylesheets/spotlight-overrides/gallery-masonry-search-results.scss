@@ -47,8 +47,6 @@
 #documents.documents-masonry {
   article.document.d-flex.flex-column.flex-md-row {
     margin: 0 0 8px 0;
-    min-width: 255px;
-    min-height: 70px;
     .document-metadata {
       display: none;
     }
@@ -66,13 +64,6 @@
           padding: 4px 10px;
           margin: 0;
         }
-      }
-    }
-    .gallery-masonry-column > div:first-child:not(.document-thumbnail) {
-      top: 0;
-      .documentHeader {
-        opacity: 100%;
-        background: #F3F3F3;
       }
     }
   }
