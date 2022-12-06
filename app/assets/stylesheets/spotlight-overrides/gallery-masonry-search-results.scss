@@ -68,6 +68,17 @@
         }
       }
     }
+    // show titles when no thumbnail image
+    div.thumbnail-container:empty {
+      + div {
+        top: 0;
+        .documentHeader {
+          opacity: 1;
+          background: #F3F3F3;
+        }
+      }
+    }
+
   }
   article.document.d-flex.flex-column.flex-md-row:hover {
     .documentHeader {
