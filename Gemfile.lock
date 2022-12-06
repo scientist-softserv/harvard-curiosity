@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/harvard-lts/spotlight-oaipmh-resources
-  revision: af405a458cc3dd18d69312d14ee85dc0cc140bd8
-  tag: v3.0.0-beta.13
+  revision: 2d66ac81674593907ac0e9611a4f47fe2a9a00b0
+  tag: v3.0.0-beta.14
   specs:
-    spotlight-oaipmh-resources (3.0.0.pre.beta.13)
+    spotlight-oaipmh-resources (3.0.0.pre.beta.14)
       mods
       oai
 
@@ -316,7 +316,7 @@ GEM
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
-    iso-639 (0.3.5)
+    iso-639 (0.3.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
