@@ -47,6 +47,8 @@
 #documents.documents-masonry {
   article.document.d-flex.flex-column.flex-md-row {
     margin: 0 0 8px 0;
+    min-width: 255px;
+    min-height: 70px;
     .document-metadata {
       display: none;
     }
