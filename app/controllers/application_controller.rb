@@ -8,8 +8,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :search_parameters?
 
+  # Use custom error pages
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  rescue_from Blacklight::Exceptions::RecordNotFound, with: :not_found
+
   def not_found
-    send_file 'public/404.html', disposition: 'inline', type: 'text/html; charset=utf-8', status: 404
+    render :status => 404, :layout => false
   end
 
   # Check if any search parameters have been set
