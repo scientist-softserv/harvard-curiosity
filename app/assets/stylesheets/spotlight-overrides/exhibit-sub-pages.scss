@@ -216,6 +216,7 @@ form.browse-search-form {
 
 // exhibit widgets
 .content-block {
+  margin-top: 0;
   // item grid widget
   &.item-grid-block {
     img.img-thumbnail {
@@ -276,7 +277,10 @@ form.browse-search-form {
   }
 }
 // make h2's look like h3's
-.blacklight-dashboards #main-container #content h2 {
+.blacklight-dashboards #main-container #content h2,
+.blacklight-about_pages #main-container #content h2:not(.st-text-block--heading),
+.blacklight-feature_pages #main-container #content h2:not(.st-text-block--heading),
+.blacklight-home_pages #main-container #content h2:not(.st-text-block--heading) {
   font-family: "Trueno", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -286,7 +290,27 @@ form.browse-search-form {
   letter-spacing: 1.5px;
   color: $black;
 }
+// remove bottom margin from edit page views
+.blacklight-feature_pages.blacklight-feature_pages-edit #main-container #content h2 {
+  margin-bottom: 0;
+}
 
+// make h3's look like h4's
+.content-block.item-text h3,
+.content-block.items-block h3,
+.content-block.item-grid-block h3 {
+  font-family: "Trueno", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2.14px;
+  color: $black;
+  border-bottom: none;
+}
+
+// browse page subtitle and item count
 .blacklight-browse #main-container #content h1 {
   .item-count {
     font-family: Lora, Georgia, serif;
