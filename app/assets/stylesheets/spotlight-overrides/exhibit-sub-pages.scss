@@ -342,3 +342,8 @@ form.browse-search-form {
   }
 }
 
+// visually hide "item embed" button from exhibit item widgets options
+// remove this once have working
+.st-block-controls__button[data-type="solr_documents_embed"] {
+  display: none;
+}
