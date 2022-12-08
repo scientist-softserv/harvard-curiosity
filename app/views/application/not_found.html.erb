@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The page you were looking for doesn't exist (404)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://bootstrapbuildspace.sfo2.cdn.digitaloceanspaces.com//WCXlTrwTUnMt/ACnrgCvRXvVr/bootstrap.min.css">
+  <%= stylesheet_link_tag "additional-fonts" %>
+  <%= stylesheet_link_tag "not-found" %>
+  
+</head>
+
+<body class="rails-default-error-page">
+
+  <!-- This file lives in public/404.html -->
+  <section class="hl__page-not-found">
+    <div class="hl__page-not-found__container">
+      <div class="hl__page-not-found__image" style="background-image: url(<%= asset_path 'error-page.jpg' %>)">
+      </div>
+      <div class="hl__page-not-found__content">
+        <div class="hl__page-not-found__logo">
+          <section class="hl__linked-image">
+            <a href="https://library.harvard.edu/" title="Harvard Library Home page">
+              <%= image_tag 'logo-plain.svg' %>
+            </a>
+          </section>
+        </div>
+        <div class="hl__page-not-found__title">
+          <h1 class="hl__page-title">Oh dear.<br>We can't find this page.</h1>
+        </div>
+        <div class="hl__page-not-found__message">
+          <section class="hl__sub-text">
+            <p>Try searching <a href="/">Curiosity</a> again.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

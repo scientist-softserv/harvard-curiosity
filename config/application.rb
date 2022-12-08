@@ -11,7 +11,8 @@ module CURIOSity
     config.action_mailer.default_url_options = { host: ENV.fetch('APP_HOST', nil), from: 'curiosity-noreply@harvard.edu', protocol: 'https' }
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
-
+    config.exceptions_app = self.routes
+    
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

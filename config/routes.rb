@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   mount Blacklight::Oembed::Engine, at: 'oembed'
   mount Riiif::Engine => '/images', as: 'riiif'
   root to: 'spotlight/exhibits#index'
+  match '/404', to: 'application#not_found', via: :all
+  match '/500', to: 'application#not_found', via: :all
   mount Spotlight::Engine, at: '/'
   mount Blacklight::Engine => '/'
   #  root to: "catalog#index" # replaced by spotlight root path
