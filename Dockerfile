@@ -28,6 +28,7 @@ RUN apk --no-cache upgrade && \
     openssl \
     pcre-dev \
     postgresql-dev \
+    postgresql-client \
     shared-mime-info \
     sqlite-dev \
     tzdata \
