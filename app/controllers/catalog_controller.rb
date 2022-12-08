@@ -77,7 +77,7 @@ class CatalogController < ApplicationController
   end
 
   # OVERRIDE from Blacklight 7.24.0: make the show page path accept uppercase and lowercase urns in the browser to be compatible with previous spotlight urls.
-  def show
+  def show # rubocop:disable Metrics/AbcSize,Metrics/CyclomaticComplexity,Metrics/MethodLength
     uppercase_id = params[:id].upcase
     redirect_to({ action: :show, id: uppercase_id }, status: :moved_permanently) if (params[:id] =~ /[a-z]/).present?
 
@@ -89,9 +89,9 @@ class CatalogController < ApplicationController
     @hollis_record = @document['hollis-record_tesim']&.first
     @finding_aid = @document['finding-aid_tesim']&.first
     @finding_aid_component = @document['finding-aid-component_tesim']&.first
-    
-    if JSON.parse(@document.to_json).select { |e| e.start_with? "exhibit_#{current_exhibit.slug.to_s}_permalink" }.values.present?
-      @permalink = JSON.parse(@document.to_json).select { |e| e.start_with? "exhibit_#{current_exhibit.slug.to_s}_permalink" }.values.first.first
+
+    if JSON.parse(@document.to_json).select { |e| e.start_with? "exhibit_#{current_exhibit.slug}_permalink" }.values.present?
+      @permalink = JSON.parse(@document.to_json).select { |e| e.start_with? "exhibit_#{current_exhibit.slug}_permalink" }.values.first.first
     end
 
     respond_to do |format|
