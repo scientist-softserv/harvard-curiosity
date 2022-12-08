@@ -72,3 +72,9 @@ h2.page-header small {
 .hl__heading {
   margin: 30px 0 45px;
 }
+
+// Hide ability to select image source from an exhibit, but not from vanilla these
+// Remove this once it is working
+.select-image-from-exhibit {
+  display: none;
+}

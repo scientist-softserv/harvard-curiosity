@@ -584,11 +584,14 @@ h1,h2,h3,h4,h5,h6 {
   }
 }
 .blacklight-sites-edit_exhibits {
-  .dd-item td:first-child .handle-wrap a {
-    &:hover, &:focus {
-      &::after {
-        content: "";
-        margin-left: 0;
+  .dd-item td:first-child .handle-wrap {
+    white-space: normal;
+    a {
+      &:hover, &:focus {
+        &::after {
+          content: "";
+          margin-left: 0;
+        }
       }
     }
   }
@@ -611,7 +614,7 @@ table.table h4 {
 	font-size: 19px !important;
 }
 
-.dd-list {
+.dd-list, .dd-item {
   .card-header {
     padding: 0.5rem 1rem;
   }
@@ -623,7 +626,7 @@ table.table h4 {
     font-size: 19px !important;
     margin-bottom: 0;
   }
-  .card-text, .card-text a {
+  .card-text, .card-text a:not(.btn) {
     font-size: 15px;
     line-height: 19px;
     font-weight: normal;
@@ -967,4 +970,9 @@ table#exhibit-specific-fields {
       }
     }
   }
+}
+
+// hide terms-of-use exhibit card from homepage
+.exhibit-card-container a[href="/terms-of-use"] {
+  display: none;
 }

@@ -100,27 +100,21 @@ form.browse-search-form {
       margin-bottom: 20px;
     }
 
-    #document .blacklight-exhibit_tags, .document .blacklight-exhibit_tags {
+    #document .blacklight-exhibit_tags, 
+    .document .blacklight-exhibit_tags {
       a {
-        font-family: "Trueno", sans-serif;
-        transition: all 0.4s ease;
-        font-size: 12px;
-        line-height: 16px;
-        padding: 5px 9px;
-        border: 1px solid $black;
-        color: $black;
         background-color: transparent;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 1.17px;
-        &:hover, &:focus, &.active  {
-          border: 1px solid $gray-600;
-          background-color: $gray-600;
-          color: $white;
-        }
-        &:not(:last-child) {
-          margin-bottom: 5px;
+        padding: 0;
+        color: $blue;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 24px;
+        border-radius: 0;
+        border-bottom: 3px solid transparent;
+        transition: border 0.28s cubic-bezier(0.28, 1.08, 1, 0.96);
+        &:hover, &:focus {
+          border-color: rgba(5, 121, 184, 0.3);
+          box-shadow: none;
         }
       }
     }
@@ -216,6 +210,7 @@ form.browse-search-form {
 
 // exhibit widgets
 .content-block {
+  margin-top: 0;
   // item grid widget
   &.item-grid-block {
     img.img-thumbnail {
@@ -276,7 +271,10 @@ form.browse-search-form {
   }
 }
 // make h2's look like h3's
-.blacklight-dashboards #main-container #content h2 {
+.blacklight-dashboards #main-container #content h2,
+.blacklight-about_pages #main-container #content h2:not(.st-text-block--heading),
+.blacklight-feature_pages #main-container #content h2:not(.st-text-block--heading),
+.blacklight-home_pages #main-container #content h2:not(.st-text-block--heading) {
   font-family: "Trueno", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -286,7 +284,27 @@ form.browse-search-form {
   letter-spacing: 1.5px;
   color: $black;
 }
+// remove bottom margin from edit page views
+.blacklight-feature_pages.blacklight-feature_pages-edit #main-container #content h2 {
+  margin-bottom: 0;
+}
 
+// make h3's look like h4's
+.content-block.item-text h3,
+.content-block.items-block h3,
+.content-block.item-grid-block h3 {
+  font-family: "Trueno", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2.14px;
+  color: $black;
+  border-bottom: none;
+}
+
+// browse page subtitle and item count
 .blacklight-browse #main-container #content h1 {
   .item-count {
     font-family: Lora, Georgia, serif;
@@ -316,4 +334,10 @@ form.browse-search-form {
       font-weight: 800;
     }
   }
+}
+
+// visually hide "item embed" button from exhibit item widgets options
+// remove this once have working
+.st-block-controls__button[data-type="solr_documents_embed"] {
+  display: none;
 }

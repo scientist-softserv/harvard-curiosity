@@ -5,7 +5,7 @@ jobs:
   rspec-test:
     name: RSpec
     runs-on: ubuntu-latest
-    if: github.repository == 'harvard-lts/CURIOSity'
+    if: github.repository == 'harvard-lts/CURIOSity' || github.repository == 'scientist-softserv/harvard-curiosity'
     services:
       postgres:
         image: postgres:14
@@ -27,7 +27,7 @@ jobs:
       - name: Bundle installer
         run: bundle install
       - name: Test Connection 3
-        run: psql -h 127.0.0.1 -p 5432 -U spotlight_user -d spotlight_test -w 
+        run: psql -h 127.0.0.1 -p 5432 -U spotlight_user -d spotlight_test -w
       - name: create db
         run: rails db:create
         env:
@@ -53,5 +53,5 @@ jobs:
           POSTGRES_USER: spotlight_user
           POSTGRES_DB: spotlight_test
           POSTGRES_HOST: 127.0.0.1
-          POSTGRES_PORT: 5432          
+          POSTGRES_PORT: 5432
           RAILS_ENV: test

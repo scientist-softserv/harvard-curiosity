@@ -46,7 +46,17 @@
 #documents {
   .blacklight-exhibit_tags {
     a {
-      border-bottom: 0;
+      background-color: transparent;
+      padding: 0;
+      color: $blue;
+      line-height: 21px;
+      border-radius: 0;
+      border-bottom: 3px solid transparent;
+      transition: border 0.28s cubic-bezier(0.28, 1.08, 1, 0.96);
+      &:hover, &:focus {
+        border-color: rgba(5, 121, 184, 0.3);
+        box-shadow: none;
+      }
     }
   }
 
@@ -249,4 +259,9 @@
       border-bottom-color: rgba(5, 121, 184, 0.3);
     }
   }
+}
+
+// pagination padding
+#content .pagination li.page-item {
+  padding: 0;
 }
