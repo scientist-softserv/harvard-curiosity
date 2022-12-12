@@ -32,6 +32,8 @@
 en:
   exhibit:
     set_name: 'FTS set name'
+    hide_homepage: 'Hide on Homepage?'
+    hide_homepage_helper: 'Check this box to hide the exhibit on the CURIOSity homepage. The exhibit can still be viewed via URL.'
   full_text_search:
     facets:
       not_available: 'Limiters not available while searching inside text of items'
