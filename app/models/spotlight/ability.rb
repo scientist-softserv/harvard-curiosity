@@ -58,7 +58,7 @@ module Spotlight
 
       if (user.is_masked?)
         can :read, Spotlight::Language
-        can [:read, :curate], Spotlight::Exhibit
+        can [:read, :curate, :tag, :bulk_update], Spotlight::Exhibit
         can :read, Spotlight::JobTracker
       else
         can :read, Spotlight::Language, exhibit_id: user.exhibit_roles.pluck(:resource_id)
