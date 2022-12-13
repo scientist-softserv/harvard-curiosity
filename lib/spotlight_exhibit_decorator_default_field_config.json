@@ -28,11 +28,11 @@
       "show": true
     },
     "normalized-date_ssim": {
-      "list": true,
+      "list": false,
       "gallery": false,
       "masonry": false,
       "slideshow": false,
-      "show": true
+      "show": false
     },    
     "publisher_ssim": {
       "list": true,
