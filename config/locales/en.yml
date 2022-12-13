@@ -127,6 +127,7 @@ en:
           collection_ssim: 'Collection'
           language_ssim: 'Language'
           materials-techniques_ssim: 'Material / Technique'
+          normalized-date_ssim: 'Normalized Date'
           place-of-origin_ssim: 'Place of Origin'
           places_ssim: 'Place'
           publisher_ssim: 'Publisher'
