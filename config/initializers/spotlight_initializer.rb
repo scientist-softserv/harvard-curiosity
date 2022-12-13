@@ -91,6 +91,10 @@ Spotlight::Engine.config.upload_fields = [
     label: -> { I18n.t(:'spotlight.search.fields.date_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
+    field_name: :'normalized-date_ssim',
+    label: -> { I18n.t(:'spotlight.search.fields.normalized-date_ssim') }
+  ),  
+  Spotlight::UploadFieldConfig.new(
     field_name: :date_ssim,
     label: -> { I18n.t(:'spotlight.search.fields.date_ssim') }
   ),
@@ -206,6 +210,10 @@ Spotlight::Engine.config.upload_fields = [
     label: -> { I18n.t(:'spotlight.search.fields.note_tesim') }
   ),
   Spotlight::UploadFieldConfig.new(
+    field_name: :'biographical-historical-note_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.biographical-historical-note_tesim') }
+  ),  
+  Spotlight::UploadFieldConfig.new(
     field_name: :'cite-as_tesim',
     label: -> { I18n.t(:'spotlight.search.fields.cite-as_tesim') }
   ),
@@ -217,6 +225,10 @@ Spotlight::Engine.config.upload_fields = [
     field_name: :container_tesim,
     label: -> { I18n.t(:'spotlight.search.fields.container_tesim') }
   ),
+  Spotlight::UploadFieldConfig.new(
+    field_name: :'unit-id_tesim',
+    label: -> { I18n.t(:'spotlight.search.fields.unit-id_tesim') }
+  ),  
   Spotlight::UploadFieldConfig.new(
     field_name: :series_tesim,
     blacklight_options: { if: false },
