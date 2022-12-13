@@ -211,7 +211,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'biographical-historical-note_tesim',
-    blacklight_options: { if: false },
     label: -> { I18n.t(:'spotlight.search.fields.biographical-historical-note_tesim') }
   ),  
   Spotlight::UploadFieldConfig.new(
@@ -228,7 +227,6 @@ Spotlight::Engine.config.upload_fields = [
   ),
   Spotlight::UploadFieldConfig.new(
     field_name: :'unit-id_tesim',
-    blacklight_options: { if: false },
     label: -> { I18n.t(:'spotlight.search.fields.unit-id_tesim') }
   ),  
   Spotlight::UploadFieldConfig.new(
