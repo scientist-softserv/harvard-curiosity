@@ -58,6 +58,7 @@ en:
         attribution_tesim: 'Attribution'
         available-to_ssim: 'Available To'
         available-to_tesim: 'Available To'
+        biographical-historical-note_tesim: 'Biographical / Historical Note'
         cite-as_tesim: 'Cite As'
         classification_tesim: 'Classification'
         collection_ssim: 'Collection'
@@ -87,6 +88,7 @@ en:
         manifest_url_ssm: 'Manifest Url'
         materials-techniques_ssim: 'Materials / Techniques'
         materials-techniques_tesim: 'Materials / Techniques'
+        normalized-date_ssim: 'Normalized Date'
         note_tesim: 'Notes'
         permalink-dcp_ssim: 'Harvard Digital Collections'
         permalink-dcp_tesim: 'Harvard Digital Collections'
@@ -112,6 +114,7 @@ en:
         subjects_tesim: 'Subject'
         thumbnail_url_ssm: 'Thumbnail Url'
         unique-id_tesim: 'Unique Id'
+        unit-id_tesim: 'Identifier'
         urn_ssi: 'URN'
         exhibit_tags: 'Curator Tags'
         facet:

@@ -27,6 +27,13 @@
       "slideshow": false,
       "show": true
     },
+    "normalized-date_ssim": {
+      "list": true,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },    
     "publisher_ssim": {
       "list": true,
       "gallery": false,
@@ -139,6 +146,13 @@
       "slideshow": false,
       "show": true
     },
+    "biographical-historical-note_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },    
     "cite-as_tesim": {
       "list": false,
       "gallery": false,
@@ -160,6 +174,13 @@
       "slideshow": false,
       "show": true
     },
+    "unit-id_tesim": {
+      "list": false,
+      "gallery": false,
+      "masonry": false,
+      "slideshow": false,
+      "show": true
+    },     
     "series_ssim": {
       "list": false,
       "gallery": false,
