@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/harvard-lts/spotlight-oaipmh-resources
-  revision: 2d66ac81674593907ac0e9611a4f47fe2a9a00b0
-  tag: v3.0.0-beta.14
+  revision: 534ed9f8ba63405aecfbd6677d3db635ef7c993f
+  tag: v3.0.0
   specs:
-    spotlight-oaipmh-resources (3.0.0.pre.beta.14)
+    spotlight-oaipmh-resources (3.0.0)
       mods
       oai
 
