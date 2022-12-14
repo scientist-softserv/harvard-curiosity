@@ -165,6 +165,7 @@
       padding: 6px 12px 6px 0;
       background: $white;
       border: none;
+      min-width: 120px; 
       &::before {
         content: "";
         padding-left: 12px;
@@ -186,13 +187,8 @@
         color: $gray-600;
       }
     }
-    /* search button override for Safari 11+ */
-    @media not all and (min-resolution:.001dpcm) { 
-        button#search { 
-        min-width: 120px; 
-        }
-    }
-    // full text helper box
+
+     // full text helper box
     .fulltext-helper-text {
       color: $white;
       font-family: "Trueno", sans-serif;
