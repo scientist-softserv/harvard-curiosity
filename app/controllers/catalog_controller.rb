@@ -50,6 +50,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'place-of-origin_ssim', label: I18n.t(:'spotlight.search.fields.facet.place-of-origin_ssim'), limit: true
     config.add_facet_field 'publisher_ssim', label: I18n.t(:'spotlight.search.fields.facet.publisher_ssim'), limit: true
     config.add_facet_field 'date_ssim', label: I18n.t(:'spotlight.search.fields.facet.date_ssim'), limit: true
+    config.add_facet_field 'normalized-date_ssim', label: I18n.t(:'spotlight.search.fields.facet.normalized-date_ssim'), limit: true
     config.add_facet_field 'language_ssim', label: I18n.t(:'spotlight.search.fields.facet.language_ssim'), limit: true
     config.add_facet_field 'genre_ssim', label: I18n.t(:'spotlight.search.fields.facet.genre_ssim'), limit: true
     config.add_facet_field 'culture_ssim', label: I18n.t(:'spotlight.search.fields.facet.culture_ssim'), limit: true

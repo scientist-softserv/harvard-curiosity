@@ -32,6 +32,8 @@
 en:
   exhibit:
     set_name: 'FTS set name'
+    hide_homepage: 'Hide on Homepage?'
+    hide_homepage_helper: 'Check this box to hide the exhibit on the CURIOSity homepage. The exhibit can still be viewed via URL.'
   full_text_search:
     facets:
       not_available: 'Limiters not available while searching inside text of items'
@@ -58,6 +60,7 @@ en:
         attribution_tesim: 'Attribution'
         available-to_ssim: 'Available To'
         available-to_tesim: 'Available To'
+        biographical-historical-note_tesim: 'Biographical / Historical Note'
         cite-as_tesim: 'Cite As'
         classification_tesim: 'Classification'
         collection_ssim: 'Collection'
@@ -87,6 +90,7 @@ en:
         manifest_url_ssm: 'Manifest Url'
         materials-techniques_ssim: 'Materials / Techniques'
         materials-techniques_tesim: 'Materials / Techniques'
+        normalized-date_ssim: 'Normalized Date'
         note_tesim: 'Notes'
         permalink-dcp_ssim: 'Harvard Digital Collections'
         permalink-dcp_tesim: 'Harvard Digital Collections'
@@ -112,6 +116,7 @@ en:
         subjects_tesim: 'Subject'
         thumbnail_url_ssm: 'Thumbnail Url'
         unique-id_tesim: 'Unique Id'
+        unit-id_tesim: 'Identifier'
         urn_ssi: 'URN'
         exhibit_tags: 'Curator Tags'
         facet:
@@ -124,6 +129,7 @@ en:
           collection_ssim: 'Collection'
           language_ssim: 'Language'
           materials-techniques_ssim: 'Material / Technique'
+          normalized-date_ssim: 'Normalized Date'
           place-of-origin_ssim: 'Place of Origin'
           places_ssim: 'Place'
           publisher_ssim: 'Publisher'

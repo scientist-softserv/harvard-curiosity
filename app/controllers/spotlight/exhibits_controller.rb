@@ -12,7 +12,7 @@ module Spotlight
     load_and_authorize_resource
 
     def index
-      @published_exhibits = @exhibits.includes(:thumbnail).published.ordered_by_weight.page(params[:page])
+      @published_exhibits = @exhibits.includes(:thumbnail).published.show_homepage.ordered_by_weight.page(params[:page])
       @published_exhibits = @published_exhibits.tagged_with(params[:tag]) if params[:tag]
       if @exhibits.one?
         redirect_to @exhibits.first, flash: flash.to_h
@@ -97,6 +97,7 @@ module Spotlight
         :published,
         :tag_list,
         :set_name,
+        :hide_homepage,
         contact_emails_attributes: %i[id email],
         languages_attributes: %i[id public]
       )

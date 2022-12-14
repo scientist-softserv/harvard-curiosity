@@ -20,6 +20,11 @@
     <%= f.check_box :published, label: "" %>
     <small class="form-text text-muted"><%= t(:'.fields.published.help_block') %></small>
   <% end %>
+  <%= f.form_group :hide_homepage, label: { text: t('exhibit.hide_homepage'), class: 'pt-0' }, help: nil do %>
+    <%= f.check_box :hide_homepage, label: t('exhibit.hide_homepage') %>
+    <small class="form-text text-muted"><%= t('exhibit.hide_homepage_helper') %></small>
+  <% end %>
+
 
   <div class="form-actions">
 
