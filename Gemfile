@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.5'
+gem 'rails',  '~>6.1.6'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -49,8 +49,9 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+#gem 'blacklight', '~> 7.18', '< 7.25'
 gem 'blacklight', ' ~> 7.0'
-gem 'blacklight-spotlight', github: 'projectblacklight/spotlight'
+gem 'blacklight-spotlight', '~> 3.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
@@ -92,7 +93,7 @@ gem 'delayed_job_web'
 
 # bring in the Harvard Harvesting gem, commented out version is used for development.
 # do not build with the second version uncommented.
-gem 'spotlight-oaipmh-resources', git: 'https://github.com/harvard-lts/spotlight-oaipmh-resources', tag: 'v3.0.0'
+gem 'spotlight-oaipmh-resources', git: 'https://github.com/harvard-lts/spotlight-oaipmh-resources', tag: 'v3.0.1'
 # gem 'spotlight-oaipmh-resources', path: 'vendor/spotlight-oaipmh-resources'
 
 gem 'rails-healthcheck'
