@@ -21,7 +21,6 @@ module CURIOSity
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.active_job.queue_adapter = :delayed_job
-    config.active_record.yaml_column_permitted_classes = [Symbol, Date, Time, Hash, HashWithIndifferentAccess]
 
     config.rack_cas.server_url = 'https://www.pin1.harvard.edu/cas' # replace with your server URL
     config.rack_cas.service = '/users/service' # If your user model isn't called User, change this
