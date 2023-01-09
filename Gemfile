@@ -96,5 +96,5 @@ gem 'spotlight-oaipmh-resources', git: 'https://github.com/harvard-lts/spotlight
 # gem 'spotlight-oaipmh-resources', path: 'vendor/spotlight-oaipmh-resources'
 
 gem 'rails-healthcheck'
-gem 'uri', '0.10.1'
+gem 'uri', '0.10.0'
 gem 'net-http'
