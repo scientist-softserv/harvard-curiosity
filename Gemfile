@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.5'
+gem 'rails', '~> 6.1.7'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -96,3 +96,5 @@ gem 'spotlight-oaipmh-resources', git: 'https://github.com/harvard-lts/spotlight
 # gem 'spotlight-oaipmh-resources', path: 'vendor/spotlight-oaipmh-resources'
 
 gem 'rails-healthcheck'
+gem 'uri', '0.10.0'
+gem 'net-http'
