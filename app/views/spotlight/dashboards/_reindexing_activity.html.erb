@@ -17,7 +17,7 @@
   <tbody>
     <% @recent_reindexing.each do |tracker| %>
       <tr class="d-flex">
-        <td class="col-date"><%= l tracker.created_at, format: :long %></td>
+        <td class="col-date"><%= l tracker.created_at.localtime, format: :long %></td>
         <td class="col-user"><%= tracker.user.email if tracker.user %></td>
         <td class="col-setspec"><%= tracker.resource.try(:set) %></td>
         <td class="col-items"><%= tracker.progress %></td>
