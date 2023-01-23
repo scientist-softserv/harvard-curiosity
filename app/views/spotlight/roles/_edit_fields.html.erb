@@ -1,6 +1,6 @@
         <tr data-edit-for="<%= f.object.new_record? ? 'new' : f.object.id %>">
           <td>
-            <%= f.select :user_key, User.pluck(:email), hide_label: true, disabled: f.object.persisted?, help: (t('.help') if f.object.new_record?) %>
+            <%= f.select :user_key, User.where(guest: false).pluck(:email), hide_label: true, disabled: f.object.persisted?, help: (t('.help') if f.object.new_record?) %>
           </td>
           <td><%= f.select :role, roles_for_select, hide_label: true %></td>
           <td></td>
