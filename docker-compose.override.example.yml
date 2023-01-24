@@ -33,7 +33,7 @@ services:
       - .env
     entrypoint: ["sh", "-c"]
     command:
-      - bin/db-wait.sh postgres:5432 sh -c "bundle exec rake db:migrate && echo 'migrated' && bundle exec rake devise_guests:delete_old_guest_users[7] && echo 'deleted guests' && bundle exec rake blacklight:delete_old_searches[7] && echo 'old searches deleted'"
+      - bin/db-wait.sh postgres:5432 sh -c "bundle exec rake db:migrate && echo 'migrated' && bundle exec rake devise_guests:delete_old_guest_users[7] && echo 'deleted guests' && sleep 1d"
     depends_on:
       - postgres
     volumes:
